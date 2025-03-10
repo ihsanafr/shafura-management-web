@@ -21,3 +21,11 @@ Route::get('customers/contacts', function () {
 Route::get('customers/services', function () {
     return view('pages.customer.services');
 });
+
+Route::get('login', function () {
+    return view('auth.login');
+});
+
+Route::get('register', function () {
+    return view('auth.register');
+});
