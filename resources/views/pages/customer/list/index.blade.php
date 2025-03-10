@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mr-3">List Customer</h3>
+                                <h3 class="mr-3">Customer Lists</h3>
                                 <button type="button" class="btn btn-primary btn-sm">+ Tambah</button>
                             </div>
 
