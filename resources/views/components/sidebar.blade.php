@@ -19,13 +19,13 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('/') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-house"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('products') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-box"></i>
                         <p>Product</p>
                     </a>
@@ -40,20 +40,41 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ url('customers/lists') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
+                                <p>Lists</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('customers/services') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                                <p>Services</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('customers/contacts') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Contacts</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-calendar-days"></i>
+                        <p>Agenda</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-gear"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
+
+
+                <!-- Sidebar Templates -->
+                {{-- <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -84,7 +105,8 @@
                             <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
-                </li>
+                </li> --}}
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
