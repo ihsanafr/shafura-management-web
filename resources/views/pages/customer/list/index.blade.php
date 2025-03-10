@@ -30,11 +30,11 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td>Produk 1</td>
                                                 <td class="text-truncate" style="max-width: 300px;">
                                                     X6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
-                                                <td>Produk 1</td>
-                                                <td>BNI</td>
-                                                <td class="w-25">https://indonesia.bni.co.id</td>
+                                                <td>https://list.co.id</td>
+                                                <td>081234567890</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <a href="#" class="btn btn-info">Lihat</a>
@@ -45,11 +45,11 @@
                                             </tr>
 
                                             <tr>
+                                                <td>Produk 1</td>
                                                 <td class="text-truncate" style="max-width: 300px;">
                                                     X6RgzCXbAuBVwynKjLZP5GMJjb5WqStjX6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
-                                                <td>Produk 1</td>
-                                                <td>BNI</td>
-                                                <td class="w-25">https://indonesia.bni.co.id</td>
+                                                <td>https://list.co.id</td>
+                                                <td>081234567890</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <a href="#" class="btn btn-info">Lihat</a>
@@ -60,10 +60,10 @@
                                             </tr>
 
                                             <tr>
-                                                <td class="text-truncate" style="max-width: 300px;">LZP5GMJjb5WqSt</td>
                                                 <td>Produk 1</td>
-                                                <td>BNI</td>
-                                                <td class="w-25">https://indonesia.bni.co.id</td>
+                                                <td class="text-truncate" style="max-width: 300px;">LZP5GMJjb5WqSt</td>
+                                                <td>https://list.co.id</td>
+                                                <td>081234567890</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <a href="#" class="btn btn-info">Lihat</a>
