@@ -71,6 +71,18 @@
                         <p>Settings</p>
                     </a>
                 </li>
+                <li class="nav-item bg-white">
+                    <a href="{{ url('login') }}" class="nav-link">
+                        <i class="nav-icon fa-solid  fa-sign-in"></i>
+                        <p>Login</p>
+                    </a>
+                </li>
+                <li class="nav-item bg-white">
+                    <a href="{{ url('register') }}" class="nav-link">
+                        <i class="nav-icon fa fa-hand-pointer-o"></i>
+                        <p>Register</p>
+                    </a>
+                </li>
 
 
                 <!-- Sidebar Templates -->
