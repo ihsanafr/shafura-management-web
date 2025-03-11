@@ -15,10 +15,10 @@
         </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <ul class="nav nav-pills nav-sidebar flex-column" id="sidebar-menu" data-widget="treeview" role="menu">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-                <li class="nav-item">
+                <li class="nav-item acive">
                     <a href="{{ url('/') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-house"></i>
                         <p>Dashboard</p>
@@ -125,3 +125,34 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.querySelectorAll("#sidebar-menu .nav-link");
+
+        // Ambil menu yang terakhir diklik dari localStorage
+        const activeMenu = localStorage.getItem("activeMenu");
+
+        if (activeMenu) {
+            menuItems.forEach(item => {
+                item.classList.remove("active"); // Reset semua menu
+                if (item.textContent.trim() === activeMenu) {
+                    item.classList.add("active"); // Set menu yang terakhir aktif
+                }
+            });
+        }
+
+        menuItems.forEach(item => {
+            item.addEventListener("click", function () {
+                // Hapus kelas active dari semua menu
+                menuItems.forEach(link => link.classList.remove("active"));
+
+                // Tambahkan kelas active ke menu yang diklik
+                this.classList.add("active");
+
+                // Simpan nama menu yang aktif di localStorage
+                localStorage.setItem("activeMenu", this.textContent.trim());
+            });
+        });
+    });
+</script>
