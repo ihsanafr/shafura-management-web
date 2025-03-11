@@ -40,7 +40,6 @@ Route::get('users/create', function () {
 
 Route::get('users/edit', function () {
     return view('pages.users.edit');
-
 });
 
 Route::get('products/show', function () {
