@@ -28,7 +28,7 @@
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" required>
-                                        <label for="lastName" class="form-label">UserName</label>
+                                        <label for="lastName" class="form-label">username</label>
                                     </div>
                                 </div>
                                 <div class="col-12">

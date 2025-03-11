@@ -15,7 +15,7 @@
         </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+            <ul class="nav nav-pills nav-sidebar flex-column" id="sidebar-menu" data-widget="treeview" role="menu">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item">
@@ -25,22 +25,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('user') }}" class="nav-link">
+                    <a href="{{ url('users') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-user"></i>
-                        <p>User</p>
+                        <p>Users</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('products') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-box"></i>
-                        <p>Product</p>
+                        <p>Products</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
-                            Customer
+                            Customers
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -131,3 +131,40 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.querySelectorAll("#sidebar-menu .nav-link");
+
+        // Ambil menu yang terakhir aktif dari localStorage
+        let activeMenu = localStorage.getItem("activeMenu");
+
+        // Jika belum ada menu yang tersimpan, set default ke "Dashboard"
+        if (!activeMenu) {
+            activeMenu = "Dashboard";
+            localStorage.setItem("activeMenu", activeMenu);
+        }
+
+        // Atur menu yang aktif berdasarkan localStorage
+        menuItems.forEach(item => {
+            item.classList.remove("active"); // Reset semua menu
+            if (item.textContent.trim() === activeMenu) {
+                item.classList.add("active"); // Set menu yang sesuai dengan localStorage
+            }
+        });
+
+        // Event listener untuk mengubah active menu saat diklik
+        menuItems.forEach(item => {
+            item.addEventListener("click", function () {
+                // Hapus kelas active dari semua menu
+                menuItems.forEach(link => link.classList.remove("active"));
+
+                // Tambahkan kelas active ke menu yang diklik
+                this.classList.add("active");
+
+                // Simpan nama menu yang aktif di localStorage
+                localStorage.setItem("activeMenu", this.textContent.trim());
+            });
+        });
+    });
+</script>
