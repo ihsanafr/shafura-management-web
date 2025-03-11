@@ -25,6 +25,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('user') }}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-user"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('products') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-box"></i>
                         <p>Product</p>

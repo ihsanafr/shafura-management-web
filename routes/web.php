@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('pages.dashboard');
 });
 
+Route::get('user', function () {
+    return view('pages.user.index');
+});
+
 Route::get('products', function () {
     return view('pages.products.index');
 });
