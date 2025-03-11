@@ -27,20 +27,20 @@
                 <li class="nav-item">
                     <a href="{{ url('users') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-user"></i>
-                        <p>User</p>
+                        <p>Users</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('products') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-box"></i>
-                        <p>Product</p>
+                        <p>Products</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
-                            Customer
+                            Customers
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
