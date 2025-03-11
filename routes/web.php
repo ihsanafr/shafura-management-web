@@ -31,15 +31,15 @@ Route::get('register', function () {
 });
 
 Route::get('users', function () {
-    return view('pages.user.index');
+    return view('pages.users.index');
 });
 
 Route::get('users/create', function () {
-    return view('pages.user.create');
+    return view('pages.users.create');
 });
 
 Route::get('users/edit', function () {
-    return view('pages.user.edit');
+    return view('pages.users.create');
 });
 
 Route::get('products/show', function () {
