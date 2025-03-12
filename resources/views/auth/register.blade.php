@@ -8,7 +8,7 @@
         </a>
     </div>
     <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Enter your details to register</h2>
-    <form method="POST" action="{{ route('register.store') }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="row gy-2 overflow-hidden">
             <div class="col-12">

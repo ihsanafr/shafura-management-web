@@ -126,7 +126,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true"
-                onclick="event.preventDefault(); document.getElementById('logging-out').submit();" role="button"><i
+                onclick="event.preventDefault(); document.getElementById('logging-out').submit();"><i
                     class="fas fa-sign-out-alt text-danger"></i></a>
             <form method="POST" action="{{ route('logout') }}" id="logging-out">
                 @csrf

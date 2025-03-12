@@ -8,7 +8,7 @@
         </a>
     </div>
     <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Enter your details to Login</h2>
-    <form method="POST" action="{{ route('login.store') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="row gy-2 overflow-hidden">
 
