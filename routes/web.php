@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', function () {
+        return view('pages.dashboard');
+    });
 });
 
 Route::get('products', function () {
@@ -22,24 +24,16 @@ Route::get('customers/services', function () {
     return view('pages.customer.service.index');
 });
 
-Route::get('login', function () {
-    return view('auth.login');
-});
-
-Route::get('register', function () {
-    return view('auth.register');
-});
-
 Route::get('users', function () {
-    return view('pages.user.index');
+    return view('pages.users.index');
 });
 
 Route::get('users/create', function () {
-    return view('pages.user.create');
+    return view('pages.users.create');
 });
 
 Route::get('users/edit', function () {
-    return view('pages.user.edit');
+    return view('pages.users.edit');
 });
 
 Route::get('products/show', function () {
