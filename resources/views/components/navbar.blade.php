@@ -6,26 +6,28 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{ url('/') }}" class="nav-link">Dashboard</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="{{ url('products') }}" class="nav-link">Products</a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Help
+                Customers
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <a class="dropdown-item" href="#">FAQ</a>
-                <a class="dropdown-item" href="#">Support</a>
+                <a class="dropdown-item" href="{{ url('customers/lists') }}">Lists</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Contact</a>
+                <a class="dropdown-item" href="{{ url('customers/services') }}">Services</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url('customers/contacts') }}">Contacts</a>
+
             </div>
         </li>
     </ul>
 
-    <!-- SEARCH FORM -->
+    {{-- <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
         <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -35,11 +37,11 @@
                 </button>
             </div>
         </div>
-    </form>
+    </form> --}}
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
+        {{-- <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
@@ -123,10 +125,10 @@
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true"
-                onclick="event.preventDefault(); document.getElementById('logging-out').submit();"><i
+            <a class="nav-link text-danger" data-widget="control-sidebar" data-slide="true"
+                onclick="event.preventDefault(); document.getElementById('logging-out').submit();">Logout <i
                     class="fas fa-sign-out-alt text-danger"></i></a>
             <form method="POST" action="{{ route('logout') }}" id="logging-out">
                 @csrf
