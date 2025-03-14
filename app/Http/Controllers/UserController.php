@@ -10,7 +10,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('pages.users.index');
+        $users = User::all();
+        return view('pages.users.index', compact('users'));
     }
 
     /**
@@ -26,15 +27,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'name' =>'required | string ',
-            'email' =>'required | email ',
-            'password' =>'required |  ',
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'role' => 'required',
+            'password' => 'required'
         ]);
+
         $data = [
-            'name'=> $validate['name'],
-            'email'=> $validate['email'],
-            'password'=> Hash::make($validate['name'],)
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => Hash::make($request->password)
         ];
 
         User::create($data);
@@ -55,31 +59,35 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pages.users.edit');
+        $user = User::findOrFail($id);
+        return view('pages.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        $request -> validate([
+
+        $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
-            'password' => 'nullable',
+            'role' => 'required',
         ]);
-        $data =[
-            'name'=> $request->name,
-            'email'=> $request->email,
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
         ];
-        if($request->filled('password')){
-Hash::make($request->password);
+
+        if ($request->filled('password')) {
+            Hash::make($request->password);
         };
 
-        User::update($data);
+        $user->update($data);
 
         return redirect('users');
-
     }
 
     /**

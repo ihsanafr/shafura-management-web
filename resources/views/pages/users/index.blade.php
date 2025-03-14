@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">User</h3>
-                                <button type="button" class="btn btn-primary btn-sm">+ Tambah</button>
+                                <a href="{{ route('users.create') }}" type="button" class="btn btn-primary btn-sm">+ Tambah</a>
                             </div>
 
                             <div class="clearfix mb-3"></div>
@@ -30,41 +30,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($users as $user)
                                             <tr>
                                                 
-                                                <td>Ihsan ahmad fakhriansy</td>
-                                                <td>ihsan12345678@com</td>
-                                                <td>Admin</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ __('roles.' . $user->role) }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $user->id }}').submit();" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                        <form action="{{ route('users.destroy', $user->id) }}" id="delete-form-{{ $user->id }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td>Vallian sayoga chandra</td>
-                                                <td>wallian12345678@com</td>
-                                                <td>staff</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td>Mawaldy Adha Majid</td>
-                                                <td>Mawaldy12345678@com</td>
-                                                <td>Admin</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
+                                            </tr> 
+                                            @endforeach
                                             </tr>
 
                                             
