@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -24,17 +25,23 @@ Route::get('customers/services', function () {
     return view('pages.customer.service.index');
 });
 
-Route::get('users', function () {
-    return view('pages.users.index');
-});
+///
 
-Route::get('users/create', function () {
-    return view('pages.users.create');
-});
+Route::resource('users', UserController::class);
 
-Route::get('users/edit', function () {
-    return view('pages.users.edit');
-});
+// Route::get('users', function () {
+//     return view('pages.users.index');
+// });
+
+// Route::get('users/create', function () {
+//     return view('pages.users.create');
+// });
+
+// Route::get('users/edit', function () {
+//     return view('pages.users.edit');
+// });
+
+///
 
 Route::get('products/show', function () {
     return view('pages.products.show');

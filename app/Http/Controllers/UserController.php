@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return view('pages.users.index');
     }
 
     /**
@@ -19,7 +18,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.users.create');
     }
 
     /**
@@ -27,7 +26,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'name' =>'required | string ',
+            'email' =>'required | email ',
+            'password' =>'required |  ',
+        ]);
+        $data = [
+            'name'=> $validate['name'],
+            'email'=> $validate['email'],
+            'password'=> Hash::make($validate['name'],)
+        ];
+
+        User::create($data);
+
+        return redirect('users');
     }
 
     /**
@@ -43,7 +55,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pages.users.edit');
     }
 
     /**
@@ -51,7 +63,23 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request -> validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'nullable',
+        ]);
+        $data =[
+            'name'=> $request->name,
+            'email'=> $request->email,
+        ];
+        if($request->filled('password')){
+Hash::make($request->password);
+        };
+
+        User::update($data);
+
+        return redirect('users');
+
     }
 
     /**
@@ -59,6 +87,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        return redirect('users');
     }
 }
