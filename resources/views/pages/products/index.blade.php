@@ -39,9 +39,9 @@
                                                 <td class="w-25">https://indonesia.bni.co.id</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-info">Lihat</a>
-                                                        <a href="#" class="btn btn-primary">Edit</a>
-                                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -54,9 +54,9 @@
                                                 <td class="w-25">https://indonesia.bni.co.id</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-info">Lihat</a>
-                                                        <a href="#" class="btn btn-primary">Edit</a>
-                                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -68,9 +68,9 @@
                                                 <td class="w-25">https://indonesia.bni.co.id</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-info">Lihat</a>
-                                                        <a href="#" class="btn btn-primary">Edit</a>
-                                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -40,9 +40,9 @@
                                                 <td>081234567890</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-info">Lihat</a>
-                                                        <a href="#" class="btn btn-primary">Edit</a>
-                                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
