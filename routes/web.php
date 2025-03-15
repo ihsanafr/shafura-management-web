@@ -7,6 +7,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return view('pages.dashboard');
     });
+
+    Route::resource('users', UserController::class);
 });
 
 Route::get('products', function () {
@@ -24,10 +26,6 @@ Route::get('customers/contacts', function () {
 Route::get('customers/services', function () {
     return view('pages.customer.service.index');
 });
-
-///
-
-Route::resource('users', UserController::class);
 
 // Route::get('users', function () {
 //     return view('pages.users.index');

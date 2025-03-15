@@ -24,12 +24,14 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                @can('onlyAdmin')
                 <li class="nav-item">
                     <a href="{{ url('users') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-user"></i>
                         <p>Users</p>
                     </a>
-                </li>
+                </li>    
+                @endcan
                 <li class="nav-item">
                     <a href="{{ url('products') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-box"></i>

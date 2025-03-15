@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
+        Gate::authorize('onlyAdmin');
+        
         $users = User::all();
         return view('pages.users.index', compact('users'));
     }
@@ -19,6 +22,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        Gate::authorize('onlyAdmin');
+
         return view('pages.users.create');
     }
 
@@ -27,6 +32,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('onlyAdmin');
+
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
@@ -59,6 +66,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        Gate::authorize('onlyAdmin');
+
         $user = User::findOrFail($id);
         return view('pages.users.edit', compact('user'));
     }
@@ -68,6 +77,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        Gate::authorize('onlyAdmin');
 
         $request->validate([
             'name' => 'required|string',
@@ -95,6 +105,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        Gate::authorize('onlyAdmin');
+
         User::destroy($id);
         return redirect('users');
     }
