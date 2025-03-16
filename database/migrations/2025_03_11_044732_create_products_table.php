@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('vendor_name');
+            $table->string('vendor_url');
             $table->timestamps();
         });
     }
