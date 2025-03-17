@@ -11,9 +11,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('users', UserController::class);
 });
 
-Route::get('products', function () {
-    return view('pages.products.index');
-});
+
 
 Route::get('customers/lists', function () {
     return view('pages.customer.list.index');
@@ -41,6 +39,14 @@ Route::get('customers/services', function () {
 
 ///
 
-Route::get('products/show', function () {
-    return view('pages.products.show');
-});
+
+
+Route::resource('products',ProductController::class);
+
+// Route::get('products', function () {
+//     return view('pages.products.index');
+// });
+
+// Route::get('products/show', function () {
+//     return view('pages.products.show');
+// });
