@@ -14,48 +14,49 @@
                     <div class="col-12 ">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Edit User</h4>
+                                <h4>Edit Contact</h4>
                             </div>
-                            <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Nama</label>
+                                        <label>Company</label>
+                                        <input type="text" name="company" class="form-control"
+                                            value="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Name</label>
                                         <input type="text" name="name" class="form-control"
-                                            value="{{ old('name', $user->name) }}">
-                                        @error('name')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                            value="">
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" name="email" class="form-control"
-                                            value="{{ old('email', $user->email) }}">
-                                        @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Role</label>
+                                        <label>Position</label>
                                         <select name="role" class="form-control">
-                                            <option value="">Posisi sekarang: {{ old('role', __('roles.' . $user->role)) }}</option>
+                                            <option value="">Posisi sekarang: </option>
                                             <option value="admin">Admin</option>
                                             <option value="sales">Sales</option>
                                             <option value="staff_engineer">Staff Engineer</option>
                                             <option value="lead_engineer">Lead Engineer</option>
                                             <option value="finance">Finance</option>
                                         </select>
-                                        @error('role')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                        @error('password')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <label>Address</label>
+                                        <input type="text" name="address" class="form-control" value="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email" class="form-control" value="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>PIC Phone</label>
+                                        <input type="number" name="phone" class="form-control" value="">
                                     </div>
 
                                     {{-- button submit --}}

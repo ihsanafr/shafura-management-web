@@ -14,48 +14,42 @@
                     <div class="col-12 ">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Edit User</h4>
+                                <h4>Edit Service</h4>
                             </div>
-                            <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" name="name" class="form-control"
-                                            value="{{ old('name', $user->name) }}">
-                                        @error('name')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <label>Type</label>
+                                        <input type="text" name="type" class="form-control"
+                                            value="">
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" name="email" class="form-control"
-                                            value="{{ old('email', $user->email) }}">
-                                        @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <label>Company</label>
+                                        <input type="text" name="company" class="form-control"
+                                            value="">
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Role</label>
-                                        <select name="role" class="form-control">
-                                            <option value="">Posisi sekarang: {{ old('role', __('roles.' . $user->role)) }}</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="sales">Sales</option>
-                                            <option value="staff_engineer">Staff Engineer</option>
-                                            <option value="lead_engineer">Lead Engineer</option>
-                                            <option value="finance">Finance</option>
-                                        </select>
-                                        @error('role')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <label>Title</label>
+                                        <input type="text" name="title" class="form-control" value="">
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                        @error('password')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <label>Product</label>
+                                        <input type="text" name="product" class="form-control" value="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="date" name="start" class="form-control" value="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="date" name="end" class="form-control" value="">
                                     </div>
 
                                     {{-- button submit --}}
