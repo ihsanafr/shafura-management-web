@@ -43,6 +43,14 @@ Route::get('customers/contacts/edit', function () {
     return view('pages.customer.contact.edit');
 });
 
+Route::get('customers/lists/edit', function () {
+    return view('pages.customer.list.edit');
+});
+
+Route::get('customers/services/edit', function () {
+    return view('pages.customer.service.edit');
+});
+
 Route::resource('products',ProductController::class);
 
 // Route::get('products', function () {

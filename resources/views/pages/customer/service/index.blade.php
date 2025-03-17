@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mr-3">Customer Services</h3>
+                                <h3 class="mr-3">Services</h3>
                                 <button type="button" class="btn btn-primary btn-sm">+ Tambah</button>
                             </div>
 
@@ -35,9 +35,41 @@
                                                 <td>Type 123</td>
                                                 <td>Perusahaan Donat Salju Indonesia</td>
                                                 <td>Donat Title</td>
+                                                <td>Product 1</td>
                                                 <td>12/12/2024</td>
                                                 <td>12/12/2025</td>
-                                                <td>081234567890</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Type 123</td>
+                                                <td>Perusahaan Donat Salju Indonesia</td>
+                                                <td>Donat Title</td>
+                                                <td>Product 1</td>
+                                                <td>12/12/2024</td>
+                                                <td>12/12/2025</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Type 123</td>
+                                                <td>Perusahaan Donat Salju Indonesia</td>
+                                                <td>Donat Title</td>
+                                                <td>Product 1</td>
+                                                <td>12/12/2024</td>
+                                                <td>12/12/2025</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
