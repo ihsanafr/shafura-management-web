@@ -39,7 +39,9 @@ Route::get('customers/services', function () {
 
 ///
 
-
+Route::get('customers/contacts/edit', function () {
+    return view('pages.customer.contact.edit');
+});
 
 Route::resource('products',ProductController::class);
 
