@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products/index');
+        return view('pages.products.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-       return view('products/create');
+       return view('pages.products.create');
         
     }
 
@@ -29,15 +29,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name'=>'required',
             'vendor_name'=>'required',
             'vendor_url'=>'required',
         ]);
 
-        $data = $request->all();
+        $data = [
+            'name' => $request->name,
+            'vendor_name' => $request->vendor_name,
+            'vendor_url' => $request->vendor_url
+        ];
 
         Product::create($data);
+
+        return redirect('products');
     }
 
     /**
@@ -45,7 +52,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('pages.products.show');
     }
 
     /**
@@ -53,7 +60,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products/show');
+        //
     }
 
     /**
@@ -61,22 +68,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
         $request->validate([
             'name'=>'required',
             'vendor_name'=>'required',
-            'vendor_url'=>'required',
+            'vendor_url'=>'required'
         ]);
 
-        $data=([
-            'name'=>$request->name,
-            'vendor_name'=>$request->vendor_name,
-            'vendor_url'=>$request->vendor_url,
+        $data = [
+            'name' => $request->name,
+            'vendor_name' => $request->vendor_name,
+            'vendor_url' => $request->vendor_url
+        ];
 
-        ]);
-
-        $data = $request->all();
         $product->update($data);
-        return view('products/index');
+
+        return redirect('products');
     }
 
     /**
@@ -84,7 +91,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->destroy();
-        return view('products/index');
+
+        $product->delete();
+
+        return redirect('products');
+        
     }
 }
