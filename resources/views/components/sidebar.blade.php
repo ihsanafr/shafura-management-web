@@ -124,36 +124,33 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const menuItems = document.querySelectorAll("#sidebar-menu .nav-link");
+        const sidebarMenuItems = document.querySelectorAll("#sidebar-menu .nav-link");
 
         // Ambil menu yang terakhir aktif dari localStorage
         let activeMenu = localStorage.getItem("activeMenu");
 
-        // Jika belum ada menu yang tersimpan, set default ke "Dashboard"
-        if (!activeMenu) {
-            activeMenu = "Dashboard";
-            localStorage.setItem("activeMenu", activeMenu);
+        // Fungsi untuk mengatur active menu di sidebar
+        function updateSidebarActive(menuText) {
+            sidebarMenuItems.forEach(item => {
+                item.classList.remove("active");
+                if (item.textContent.trim() === menuText) {
+                    item.classList.add("active");
+                }
+            });
         }
 
-        // Atur menu yang aktif berdasarkan localStorage
-        menuItems.forEach(item => {
-            item.classList.remove("active"); // Reset semua menu
-            if (item.textContent.trim() === activeMenu) {
-                item.classList.add("active"); // Set menu yang sesuai dengan localStorage
-            }
-        });
+        // Atur menu yang aktif di sidebar saat halaman dimuat
+        if (activeMenu) {
+            updateSidebarActive(activeMenu);
+        }
 
-        // Event listener untuk mengubah active menu saat diklik
-        menuItems.forEach(item => {
+        // Event listener untuk sidebar (jika diklik langsung)
+        sidebarMenuItems.forEach(item => {
             item.addEventListener("click", function () {
-                // Hapus kelas active dari semua menu
-                menuItems.forEach(link => link.classList.remove("active"));
-
-                // Tambahkan kelas active ke menu yang diklik
-                this.classList.add("active");
-
-                // Simpan nama menu yang aktif di localStorage
-                localStorage.setItem("activeMenu", this.textContent.trim());
+                const menuText = this.textContent.trim();
+                
+                // Simpan ke localStorage agar navbar ikut berubah
+                localStorage.setItem("activeMenu", menuText);
             });
         });
     });
