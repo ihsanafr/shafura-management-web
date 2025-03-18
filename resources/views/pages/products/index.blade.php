@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">Products</h3>
-                                <button type="button" class="btn btn-primary btn-sm">+ Tambah</button>
+                                <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Tambah</a>
                             </div>
 
                             <div class="clearfix mb-3"></div>
@@ -31,49 +31,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($products as $product)
                                             <tr>
-                                                <td class="text-truncate" style="max-width: 300px;">
-                                                    X6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
-                                                <td>Produk 1</td>
-                                                <td>BNI</td>
-                                                <td class="w-25">https://indonesia.bni.co.id</td>
+                                                <td class="text-truncate" style="max-width: 300px;">{{ $product->id }}</td>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->vendor_name }}</td>
+                                                <td><a href="{{ $product->vendor_url }}" target="_blank">{{ $product->vendor_url }}</a></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                        <a href="{{ route('products.show', $product) }}" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $product->id }}').submit();" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                        <form action="{{ route('products.destroy', $product) }}" id="delete-form-{{ $product->id }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
-
-                                            <tr>
-                                                <td class="text-truncate" style="max-width: 300px;">
-                                                    X6RgzCXbAuBVwynKjLZP5GMJjb5WqStjX6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
-                                                <td>Produk 1</td>
-                                                <td>BNI</td>
-                                                <td class="w-25">https://indonesia.bni.co.id</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="text-truncate" style="max-width: 300px;">LZP5GMJjb5WqSt</td>
-                                                <td>Produk 1</td>
-                                                <td>BNI</td>
-                                                <td class="w-25">https://indonesia.bni.co.id</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

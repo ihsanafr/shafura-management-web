@@ -15,22 +15,22 @@
                         <tr>
                             <th>Code</th>
                             <td>:</td>
-                            <td>X6RgzCXbAuBVwynKjLZP5GMJjb5WqStjX6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
+                            <td>{{ $product->id }}</td>
                         </tr>
                         <tr>
                             <th>Nama</th>
                             <td>:</td>
-                            <td>Produk 1</td>
+                            <td>{{ $product->name }}</td>
                         </tr>
                         <tr>
                             <th>Vendor Name</th>
                             <td>:</td>
-                            <td>BNI</td>
+                            <td>{{ $product->vendor_name }}</td>
                         </tr>
                         <tr>
                             <th>Vendor URL</th>
                             <td>:</td>
-                            <td><a href="#" target="_blank">https://indonesia.bni.co.id</a></td>
+                            <td><a href="{{ $product->vendor_url }}" target="_blank">{{ $product->vendor_url }}</a></td>
                         </tr>
                     </table>
                 </div>
@@ -40,7 +40,7 @@
         <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
-            <a href="#" class="btn btn-primary">Edit Produk</a>
+            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Produk</a>
         </div>
     </div>
 </div>
