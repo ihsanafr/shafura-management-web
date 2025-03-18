@@ -14,23 +14,23 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah User</h4>
+                            <h4>Tambah Contact</h4>
                         </div>
-                        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Nama</label>
+                                    <label>Company</label>
                                     <input type="text" name="name"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email"
+                                    <label>Name</label>
+                                    <input type="text" 
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Role</label>
+                                    <label>Position</label>
                                     <select name="role" class="form-control">
                                         <option value="admin">Admin</option>
                                         <option value="sales">Sales</option>
@@ -40,15 +40,28 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password"
+                                    <label>Address</label>
+                                    <input type="text" 
                                         class="form-control">
                                 </div>
-                                
-                                {{-- button submit --}}
-                                <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" 
+                                        class="form-control">
                                 </div>
+                                <div class="form-group">
+                                    <label>PIC Phone</label>
+                                    <input type="number" 
+                                        class="form-control">
+                                </div>
+                                {{-- button--}}
+                                    
+                                    <div class="form-group d-flex justify-content-between">
+                                        <a href="{{ url('customers/contacts') }}" class="btn btn-secondary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                    </div>
+                                
+                                
                             </div>
                         </form>
                     </div>

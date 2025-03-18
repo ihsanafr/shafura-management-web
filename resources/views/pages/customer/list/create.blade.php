@@ -14,9 +14,9 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah User</h4>
+                            <h4>Tambah List</h4>
                         </div>
-                        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -25,30 +25,28 @@
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email"
+                                    <label>Customer Code</label>
+                                    <input type="number" 
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Role</label>
-                                    <select name="role" class="form-control">
-                                        <option value="admin">Admin</option>
-                                        <option value="sales">Sales</option>
-                                        <option value="staff_engineer">Staff Engineer</option>
-                                        <option value="lead_engineer">Lead Engineer</option>
-                                        <option value="finance">Finance</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password"
+                                    <label>Website</label>
+                                    <input type="text" 
                                         class="form-control">
                                 </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="number" 
+                                        class="form-control">
+                                </div>
+                                {{-- button--}}
+                                    
+                                    <div class="form-group d-flex justify-content-between">
+                                        <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                    </div>
                                 
-                                {{-- button submit --}}
-                                <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
-                                </div>
+                                
                             </div>
                         </form>
                     </div>

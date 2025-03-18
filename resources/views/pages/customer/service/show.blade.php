@@ -4,33 +4,44 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Detail Produk</h4>
+            <h4 class="mb-0">Detail Services</h4>
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Produk -->
+                <!-- Kiri: Informasi Services -->
                 <div class="col-12">
-                    <h5>Informasi Produk</h5>
+                    <h5>Informasi Services</h5>
                     <table class="table table-borderless table-responsive">
+                        
                         <tr>
-                            <th>Code</th>
+                            <th>Type</th>
                             <td>:</td>
-                            <td>X6RgzCXbAuBVwynKjLZP5GMJjb5WqStjX6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
+                            <td>123</td>
                         </tr>
                         <tr>
-                            <th>Nama</th>
+                            <th>Company</th>
+                            <td>:</td>
+                            <td>Shafura example</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>:</td>
+                            <td>hello test</td>
+                        </tr>
+                        <tr>
+                            <th>Product</th>
                             <td>:</td>
                             <td>Produk 1</td>
                         </tr>
                         <tr>
-                            <th>Vendor Name</th>
+                            <th>Start Date</th>
                             <td>:</td>
-                            <td>BNI</td>
+                            <td>12/12/20</td>
                         </tr>
                         <tr>
-                            <th>Vendor URL</th>
+                            <th>Product</th>
                             <td>:</td>
-                            <td><a href="#" target="_blank">https://indonesia.bni.co.id</a></td>
+                            <td>12/10/24</td>
                         </tr>
                     </table>
                 </div>
@@ -39,8 +50,8 @@
 
         <!-- Footer dengan tombol -->
         <div class="card-footer">
-            <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
-            <a href="#" class="btn btn-primary">Edit Produk</a>
+            <a href="{{ url('customers/services') }}" class="btn btn-secondary">Kembali</a>
+            <a href="#" class="btn btn-primary">Edit Services</a>
         </div>
     </div>
 </div>
