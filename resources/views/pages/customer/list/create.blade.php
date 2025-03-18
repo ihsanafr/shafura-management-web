@@ -26,17 +26,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Customer Code</label>
-                                    <input type="number" 
+                                    <input type="text" name="customer_code"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Website</label>
-                                    <input type="text" 
+                                    <input type="text" name="website_url"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input type="number" 
+                                    <input type="number" name="phone"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}

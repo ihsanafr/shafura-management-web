@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">Customer Lists</h3>
-                                <button type="button" class="btn btn-primary btn-sm">+ Tambah</button>
+                                <a href="{{ route('lists.create') }}" class="btn btn-primary btn-sm">+ Tambah</a>
                             </div>
 
                             <div class="clearfix mb-3"></div>

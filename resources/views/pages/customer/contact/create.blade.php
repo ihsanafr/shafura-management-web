@@ -21,37 +21,32 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="name"
+                                    <input type="text" name="company"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" 
+                                    <input type="text" name="name"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Position</label>
-                                    <select name="role" class="form-control">
-                                        <option value="admin">Admin</option>
-                                        <option value="sales">Sales</option>
-                                        <option value="staff_engineer">Staff Engineer</option>
-                                        <option value="lead_engineer">Lead Engineer</option>
-                                        <option value="finance">Finance</option>
-                                    </select>
+                                    <input type="text" name="position"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" 
+                                    <input type="text" name="address"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" 
+                                    <input type="email" name="email"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Phone</label>
-                                    <input type="number" 
+                                    <input type="number" name="pic_phone"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}

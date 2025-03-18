@@ -21,32 +21,32 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <input type="text" name="name"
+                                    <input type="text" name="type"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" 
+                                    <input type="text" name="company_name"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" 
+                                    <input type="text" name="title"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Product</label>
-                                    <input type="number" 
+                                    <input type="text" name="products"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Start Date</label>
-                                    <input type="date" 
+                                    <input type="date" name="created_at"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>End Date</label>
-                                    <input type="date" 
+                                    <input type="date" name="updated_at"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}
