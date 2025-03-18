@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -21,6 +22,11 @@ class ProductController extends Controller
      */
     public function create()
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+        
        return view('pages.products.create');
         
     }
@@ -30,6 +36,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
+        if (Gate::check('staff')) {
+            abort(403);
+        }
 
         $request->validate([
             'name'=>'required',
@@ -61,6 +71,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.products.edit', compact('product'));
     }
 
@@ -69,6 +84,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }       
 
         $request->validate([
             'name'=>'required',
@@ -92,6 +111,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if (Gate::any(['staff', 'sales'])) {
+            abort(403);
+        }
 
         $product->delete();
 

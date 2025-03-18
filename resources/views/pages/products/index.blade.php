@@ -12,7 +12,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">Products</h3>
+                                @cannot('staff')
                                 <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Tambah</a>
+                                @endcannot
                             </div>
 
                             <div class="clearfix mb-3"></div>
@@ -40,12 +42,16 @@
                                                 <td>
                                                     <div class="btn-group">
                                                         <a href="{{ route('products.show', $product) }}" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        @cannot('staff')
                                                         <a href="{{ route('products.edit', $product) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        @cannot('sales')
                                                         <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $product->id }}').submit();" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
                                                         <form action="{{ route('products.destroy', $product) }}" id="delete-form-{{ $product->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
+                                                        @endcannot
+                                                        @endcannot
                                                     </div>
                                                 </td>
                                             </tr>

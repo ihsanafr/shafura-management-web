@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        Gate::authorize('onlyAdmin');
+        Gate::authorize('admin');
         
         $users = User::all();
         return view('pages.users.index', compact('users'));
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        Gate::authorize('onlyAdmin');
+        Gate::authorize('admin');
 
         return view('pages.users.create');
     }
@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        Gate::authorize('onlyAdmin');
+        Gate::authorize('admin');
 
         $request->validate([
             'name' => 'required|string',
@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        Gate::authorize('onlyAdmin');
+        Gate::authorize('admin');
 
         $user = User::findOrFail($id);
         return view('pages.users.edit', compact('user'));
@@ -77,7 +77,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        Gate::authorize('onlyAdmin');
+        Gate::authorize('admin');
 
         $request->validate([
             'name' => 'required|string',
@@ -105,7 +105,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        Gate::authorize('onlyAdmin');
+        Gate::authorize('admin');
 
         User::destroy($id);
         return redirect('users');

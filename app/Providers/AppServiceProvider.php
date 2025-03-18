@@ -25,16 +25,20 @@ class AppServiceProvider extends ServiceProvider
         //Authorization
 
         //Admin Only
-        Gate::define('onlyAdmin', function (User $user) {
+        Gate::define('admin', function (User $user) {
             return $user->role === 'admin';
         });
-        //Full Access to any features (Admin and Lead Engineer)
-        Gate::define('full_access', function (User $user) {
+        //Full Access to any features except users (Lead Engineer)
+        Gate::define('lead', function (User $user) {
             return $user->role === 'lead_engineer';
         });
-        //Full Access but cannot delete User (only applies to Sales)
-        Gate::define('noDelete', function (User $user) {
+        //Full Access but cannot delete User (Sales)
+        Gate::define('sales', function (User $user) {
             return $user->role === 'sales';
+        });
+        //can't CRUD only view (Staff Engnineer)
+        Gate::define('staff', function (User $user) {
+            return $user->role === 'staff_engineer';
         });
     }
 }

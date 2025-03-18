@@ -40,7 +40,9 @@
         <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
-            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Produk</a>
+            @cannot('staff')
+            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Produk</a> 
+            @endcannot
         </div>
     </div>
 </div>

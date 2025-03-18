@@ -24,7 +24,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                @can('onlyAdmin')
+                @can('admin')
                 <li class="nav-item">
                     <a href="{{ url('users') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-user"></i>
