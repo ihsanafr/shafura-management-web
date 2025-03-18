@@ -4,33 +4,44 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Detail Produk</h4>
+            <h4 class="mb-0">Detail Contact</h4>
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Produk -->
+                <!-- Kiri: Informasi Contact -->
                 <div class="col-12">
-                    <h5>Informasi Produk</h5>
+                    <h5>Informasi Contact</h5>
                     <table class="table table-borderless table-responsive">
+                        
                         <tr>
-                            <th>Code</th>
+                            <th>Company</th>
                             <td>:</td>
-                            <td>X6RgzCXbAuBVwynKjLZP5GMJjb5WqStjX6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
+                            <td>Perusahaan Donat Salju	</td>
                         </tr>
                         <tr>
-                            <th>Nama</th>
+                            <th>Name</th>
                             <td>:</td>
-                            <td>Produk 1</td>
+                            <td>Ihsan Ahmad Fakhriansyah</td>
                         </tr>
                         <tr>
-                            <th>Vendor Name</th>
+                            <th>Position</th>
                             <td>:</td>
-                            <td>BNI</td>
+                            <td>Admin</td>
                         </tr>
                         <tr>
-                            <th>Vendor URL</th>
+                            <th>Address</th>
                             <td>:</td>
-                            <td><a href="#" target="_blank">https://indonesia.bni.co.id</a></td>
+                            <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>:</td>
+                            <td>ihsanahmadfakhriansyah@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th>PIC Phone</th>
+                            <td>:</td>
+                            <td>08123456789j</td>
                         </tr>
                     </table>
                 </div>
@@ -40,7 +51,7 @@
         <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
-            <a href="#" class="btn btn-primary">Edit Produk</a>
+            <a href="#" class="btn btn-primary">Edit Contact</a>
         </div>
     </div>
 </div>

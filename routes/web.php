@@ -15,18 +15,65 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
+//===================================================================================================
+
+
 
 Route::get('customers/lists', function () {
     return view('pages.customer.list.index');
 });
 
+Route::get('customers/lists/create', function () {
+    return view('pages.customer.list.create');
+});
+
+
+Route::get('customers/lists/show', function () {
+    return view('pages.customer.list.show');
+});
+
+Route::get('customers/lists/edit', function () {
+    return view('pages.customer.list.edit');
+});
+
+// ===========================================================================================
+
 Route::get('customers/contacts', function () {
     return view('pages.customer.contact.index');
 });
 
+Route::get('customers/contacts/create', function () {
+    return view('pages.customer.contact.create');
+});
+
+Route::get('customers/contacts/show', function () {
+    return view('pages.customer.contact.show');
+});
+
+Route::get('customers/contacts/edit', function () {
+    return view('pages.customer.contact.edit');
+});
+
+
+//==============================================================================================
+
 Route::get('customers/services', function () {
     return view('pages.customer.service.index');
 });
+
+Route::get('customers/services/create', function () {
+    return view('pages.customer.service.create');
+});
+
+Route::get('customers/services/show', function () {
+    return view('pages.customer.service.show');
+});
+
+Route::get('customers/services/edit', function () {
+    return view('pages.customer.service.edit');
+});
+//==============================================================================================
+
 
 // Route::get('users', function () {
 //     return view('pages.users.index');

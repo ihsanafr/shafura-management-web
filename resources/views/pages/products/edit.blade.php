@@ -36,7 +36,8 @@
                                         class="form-control" value="{{ old('vendor_url', $product->vendor_url) }}">
                                 </div>
                                 {{-- button submit --}}
-                                <div class="form-group text-right">
+                                <div class="form-group d-flex justify-content-between">
+                                    <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
                                     <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
                             </div>

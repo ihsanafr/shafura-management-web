@@ -4,33 +4,34 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Detail Produk</h4>
+            <h4 class="mb-0">Detail List</h4>
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Produk -->
+                <!-- Kiri: Informasi List -->
                 <div class="col-12">
-                    <h5>Informasi Produk</h5>
+                    <h5>Informasi List</h5>
                     <table class="table table-borderless table-responsive">
-                        <tr>
-                            <th>Code</th>
-                            <td>:</td>
-                            <td>X6RgzCXbAuBVwynKjLZP5GMJjb5WqStjX6RgzCXbAuBVwynKjLZP5GMJjb5WqStj</td>
-                        </tr>
+                        
                         <tr>
                             <th>Nama</th>
                             <td>:</td>
-                            <td>Produk 1</td>
+                            <td>List 1</td>
                         </tr>
                         <tr>
-                            <th>Vendor Name</th>
+                            <th>Customer Code</th>
                             <td>:</td>
-                            <td>BNI</td>
+                            <td>dsjnvsdvjkndsnvjkndjkn</td>
                         </tr>
                         <tr>
-                            <th>Vendor URL</th>
+                            <th>Website</th>
                             <td>:</td>
-                            <td><a href="#" target="_blank">https://indonesia.bni.co.id</a></td>
+                            <td>www.youtube.com</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>:</td>
+                            <td>086782344577</td>
                         </tr>
                     </table>
                 </div>
@@ -40,7 +41,7 @@
         <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
-            <a href="#" class="btn btn-primary">Edit Produk</a>
+            <a href="#" class="btn btn-primary">Edit List</a>
         </div>
     </div>
 </div>

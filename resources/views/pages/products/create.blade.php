@@ -14,7 +14,7 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah User</h4>
+                            <h4>Tambah produk</h4>
                         </div>
                         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -35,7 +35,8 @@
                                         class="form-control">
                                 </div>
                                 {{-- button submit --}}
-                                <div class="form-group text-right">
+                                <div class="form-group d-flex justify-content-between">
+                                    <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
                                     <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
                             </div>
