@@ -45,7 +45,7 @@
                                     {{-- button  --}}
                                     <div class="form-group d-flex justify-content-between">
                                         <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Kembali</a>
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 </div>
                             </form>
