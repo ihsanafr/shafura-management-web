@@ -29,4 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'contacts' => 'contactsCustomer'
     ]);
 
+    Route::get('settings', function () {
+        return view('pages.settings.edit');
+    });
+
 });

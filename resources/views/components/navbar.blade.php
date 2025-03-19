@@ -39,20 +39,14 @@
             </div>
         </div>
     </form> --}}
+    
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link text-danger" data-widget="control-sidebar" data-slide="true"
-                onclick="event.preventDefault(); document.getElementById('logging-out').submit();">Logout <i
-                    class="fas fa-sign-out-alt text-danger"></i></a>
-            <form method="POST" action="{{ route('logout') }}" id="logging-out">
-                @csrf
-            </form>
-        </li>
-    </ul>
+    
+    
 </nav>
 <!-- /.navbar -->
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
