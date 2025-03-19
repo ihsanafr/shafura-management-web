@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customers;
 use App\Http\Controllers\Controller;
 use App\Models\ListCustomer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ListController extends Controller
 {
@@ -13,7 +14,8 @@ class ListController extends Controller
      */
     public function index()
     {
-        return view('pages.customer.list.index');
+        $customers = ListCustomer::all();
+        return view('pages.customer.list.index', compact('customers'));
     }
 
     /**
@@ -21,6 +23,11 @@ class ListController extends Controller
      */
     public function create()
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.customer.list.create');
     }
 
@@ -29,7 +36,29 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
+        $request->validate([
+            'name' => 'required|string',
+            'customer_code' => 'required',
+            'website_url' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'customer_code' => $request->customer_code,
+            'website_url' => $request->website_url,
+            'phone' => $request->phone
+        ];
+
+        ListCustomer::create($data);
+
+        return redirect('customers/lists');
+
     }
 
     /**
@@ -37,7 +66,7 @@ class ListController extends Controller
      */
     public function show(ListCustomer $listCustomer)
     {
-        return view('pages.customer.list.show');
+        return view('pages.customer.list.show', compact('listCustomer'));
     }
 
     /**
@@ -45,7 +74,12 @@ class ListController extends Controller
      */
     public function edit(ListCustomer $listCustomer)
     {
-        return view('pages.customer.list.edit');
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
+        return view('pages.customer.list.edit', compact('listCustomer'));
     }
 
     /**
@@ -53,7 +87,29 @@ class ListController extends Controller
      */
     public function update(Request $request, ListCustomer $listCustomer)
     {
-        //
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
+        $request->validate([
+            'name' => 'required|string',
+            'customer_code' => 'required',
+            'website_url' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'customer_code' => $request->customer_code,
+            'website_url' => $request->website_url,
+            'phone' => $request->phone
+        ];
+
+        $listCustomer->update($data);
+
+        return redirect('customers/lists');
+
     }
 
     /**
@@ -61,6 +117,12 @@ class ListController extends Controller
      */
     public function destroy(ListCustomer $listCustomer)
     {
-        //
+        if (Gate::any(['staff', 'sales'])) {
+            abort(403);
+        }
+
+        $listCustomer->delete();
+
+        return redirect('customers/lists');
     }
 }

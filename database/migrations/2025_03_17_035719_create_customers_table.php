@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('customer_code');
             $table->string('website_url');
-            $table->integer('phone');
+            $table->string('phone');
             $table->timestamps();
         });
 
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('address');
             $table->string('email');
-            $table->integer('pic_phone');
+            $table->string('pic_phone');
             $table->timestamps();
         });
         

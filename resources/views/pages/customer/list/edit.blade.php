@@ -16,30 +16,32 @@
                             <div class="card-header">
                                 <h4>Edit List</h4>
                             </div>
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('lists.update', $listCustomer) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" class="form-control"
-                                            value="">
+                                            value="{{ old('name', $listCustomer->name) }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Customer Code</label>
-                                        <input type="name" name="code" class="form-control"
-                                            value="">
+                                        <input type="text" name="customer_code" class="form-control"
+                                            value="{{ old('customer_code', $listCustomer->customer_code) }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Website</label>
-                                        <input type="text" name="website" class="form-control" value="">
+                                        <input type="text" name="website_url" class="form-control" 
+                                        value="{{ old('website_url', $listCustomer->website_url) }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="number" name="phone" class="form-control" value="">
+                                        <input type="text" name="phone" class="form-control" 
+                                        value="{{ old('phone', $listCustomer->phone) }}">
                                     </div>
 
                                     {{-- button  --}}
