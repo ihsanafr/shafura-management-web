@@ -22,4 +22,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('customers/contacts', ContactController::class);
 
+    Route::get('agenda', function () {
+        return view('pages.agenda.index');
+    });
 });
