@@ -29,4 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'contacts' => 'contactsCustomer'
     ]);
 
+    Route::get('agenda', function () {
+        return view('pages.agenda.index');
+    });
 });
