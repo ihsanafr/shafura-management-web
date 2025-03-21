@@ -23,11 +23,17 @@
                                     <label>Name</label>
                                     <input type="text" name="name"
                                         class="form-control">
+                                        @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" name="email"
                                         class="form-control">
+                                        @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Role</label>
@@ -38,11 +44,17 @@
                                         <option value="lead_engineer">Lead Engineer</option>
                                         <option value="finance">Finance</option>
                                     </select>
+                                    @error('role')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" name="password"
                                         class="form-control">
+                                        @error('password')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 
                                 {{-- button submit --}}

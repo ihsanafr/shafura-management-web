@@ -23,21 +23,33 @@
                                     <label>Name</label>
                                     <input type="text" name="name"
                                         class="form-control">
+                                        @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Customer Code</label>
                                     <input type="text" name="customer_code"
                                         class="form-control">
+                                        @error('customer_code')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Website</label>
                                     <input type="text" name="website_url"
                                         class="form-control">
+                                        @error('website_url')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Phone</label>
                                     <input type="text" name="phone"
                                         class="form-control">
+                                        @error('phone')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 {{-- button--}}
                                     

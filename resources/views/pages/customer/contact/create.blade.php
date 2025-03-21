@@ -9,7 +9,7 @@
         </div> --}}
 
         <div class="section-body">
-            
+
             <div class="row">
                 <div class="col-12 ">
                     <div class="card">
@@ -21,47 +21,57 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="company"
-                                        class="form-control">
+                                    <input type="text" name="company" class="form-control">
+                                    @error('company')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="name"
-                                        class="form-control">
+                                    <input type="text" name="name" class="form-control">
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Position</label>
-                                    <input type="text" name="position"
-                                        class="form-control">
+                                    <input type="text" name="position" class="form-control">
+                                    @error('position')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" name="address"
-                                        class="form-control">
+                                    <input type="text" name="address" class="form-control">
+                                    @error('address')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" name="email"
-                                        class="form-control">
+                                    <input type="email" name="email" class="form-control">
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Phone</label>
-                                    <input type="text" name="pic_phone"
-                                        class="form-control">
+                                    <input type="text" name="pic_phone" class="form-control">
+                                    @error('pic_phone')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 {{-- button--}}
-                                    
-                                    <div class="form-group d-flex justify-content-between">
-                                        <a href="{{ url('customers/contacts') }}" class="btn btn-secondary">Back</a>
-                                        <button type="submit" class="btn btn-primary">Add</button>
-                                    </div>
-                                
-                                
+
+                                <div class="form-group d-flex justify-content-between">
+                                    <a href="{{ url('customers/contacts') }}" class="btn btn-secondary">Back</a>
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
