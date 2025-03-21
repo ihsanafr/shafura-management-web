@@ -16,32 +16,32 @@
                         <tr>
                             <th>Company</th>
                             <td>:</td>
-                            <td>Perusahaan Donat Salju	</td>
+                            <td>{{ $contactCustomer->company }}</td>
                         </tr>
                         <tr>
                             <th>Name</th>
                             <td>:</td>
-                            <td>Ihsan Ahmad Fakhriansyah</td>
+                            <td>{{ $contactCustomer->name }}</td>
                         </tr>
                         <tr>
                             <th>Position</th>
                             <td>:</td>
-                            <td>Admin</td>
+                            <td>{{ $contactCustomer->position }}</td>
                         </tr>
                         <tr>
                             <th>Address</th>
                             <td>:</td>
-                            <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
+                            <td>{{ $contactCustomer->address }}</td>
                         </tr>
                         <tr>
                             <th>Email</th>
                             <td>:</td>
-                            <td>ihsanahmadfakhriansyah@gmail.com</td>
+                            <td>{{ $contactCustomer->email }}</td>
                         </tr>
                         <tr>
                             <th>PIC Phone</th>
                             <td>:</td>
-                            <td>08123456789j</td>
+                            <td>{{ $contactCustomer->pic_phone }}</td>
                         </tr>
                     </table>
                 </div>
@@ -50,8 +50,8 @@
 
         <!-- Footer dengan tombol -->
         <div class="card-footer">
-            <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
-            <a href="#" class="btn btn-primary">Edit Contact</a>
+            <a href="{{ url('customers/contacts') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('contacts.edit', $contactCustomer) }}" class="btn btn-primary">Edit Contact</a>
         </div>
     </div>
 </div>

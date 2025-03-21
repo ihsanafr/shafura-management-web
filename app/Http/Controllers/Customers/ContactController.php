@@ -13,7 +13,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('pages.customer.contact.index');
+
+        $contacts = ContactCustomer::all();
+
+        return view('pages.customer.contact.index', compact('contacts'));
+
     }
 
     /**
@@ -29,7 +33,29 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'company' => 'required|string',
+            'name' => 'required|string',
+            'position' => 'required',
+            'address' => 'required',
+            'email' => 'required|email',
+            'pic_phone' => 'required',
+        ]);
+
+        $data = [
+            'company' => $request->company,
+            'name' => $request->name,
+            'position' => $request->position,
+            'address' => $request->address,
+            'email' => $request->email,
+            'pic_phone' => $request->pic_phone,
+        ];
+
+        ContactCustomer::create($data);
+
+        return redirect('customers/contacts');
+
     }
 
     /**
@@ -37,7 +63,7 @@ class ContactController extends Controller
      */
     public function show(ContactCustomer $contactCustomer)
     {
-        return view('pages.customer.contact.show');
+        return view('pages.customer.contact.show', compact('contactCustomer'));
     }
 
     /**
@@ -45,7 +71,7 @@ class ContactController extends Controller
      */
     public function edit(ContactCustomer $contactCustomer)
     {
-        return view('pages.customer.contact.edit');
+        return view('pages.customer.contact.edit', compact('contactCustomer'));
     }
 
     /**
@@ -53,7 +79,29 @@ class ContactController extends Controller
      */
     public function update(Request $request, ContactCustomer $contactCustomer)
     {
-        //
+
+        $request->validate([
+            'company' => 'required|string',
+            'name' => 'required|string',
+            'position' => 'required',
+            'address' => 'required',
+            'email' => 'required|email',
+            'pic_phone' => 'required'
+        ]);
+
+        $data = [
+            'company' => $request->company,
+            'name' => $request->name,
+            'position' => $request->position,
+            'address' => $request->address,
+            'email' => $request->email,
+            'pic_phone' => $request->pic_phone
+        ];
+
+        $contactCustomer->update($data);
+
+        return redirect('customers/contacts');
+
     }
 
     /**
@@ -61,6 +109,10 @@ class ContactController extends Controller
      */
     public function destroy(ContactCustomer $contactCustomer)
     {
-        //
+
+        $contactCustomer->delete();
+
+        return redirect('customers/contacts');
+
     }
 }

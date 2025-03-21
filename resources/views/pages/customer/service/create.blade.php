@@ -16,7 +16,7 @@
                         <div class="card-header">
                             <h4>Tambah Services</h4>
                         </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('services.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -41,12 +41,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Start Date</label>
-                                    <input type="date" name="created_at"
+                                    <input type="date" name="start_date"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>End Date</label>
-                                    <input type="date" name="updated_at"
+                                    <input type="date" name="end_date"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}

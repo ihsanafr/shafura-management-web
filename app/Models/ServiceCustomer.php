@@ -10,8 +10,12 @@ class ServiceCustomer extends Model
         'type',
         'company_name',
         'title',
-        'products'
+        'products',
+        'start_date',
+        'end_date'
     ];
+
+    public $timestamps = false;
 
     protected $table = 'service_customers';
 }

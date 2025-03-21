@@ -3,7 +3,7 @@
 @section('main')
     <div class="main-content">
         <section class="section">
-            
+
             <div class="section-body">
                 <div class="row mt-4">
                     <div class="col-12">
@@ -31,53 +31,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Perusahaan Donat Salju</td>
-                                                <td>Mawaldy Adha Majid</td>
-                                                <td>Admin</td>
-                                                <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
-                                                <td>ihsanahmadfakhriansyah@gmail.com</td>
-                                                <td>081234567890</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach ($contacts as $contact)
+                                                <tr>
+                                                    <td>{{ $contact->company }}</td>
+                                                    <td>{{ $contact->name }}</td>
+                                                    <td>{{ $contact->position }}</td>
+                                                    <td>{{ $contact->address }}</td>
+                                                    <td>{{ $contact->email }}</td>
+                                                    <td>{{ $contact->pic_phone }}</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="{{ route('contacts.show', $contact) }}"
+                                                                class="btn btn-link text-info"><i
+                                                                    class="fa-solid fa-eye"></i></a>
 
-                                            <tr>
-                                                <td>Perusahaan Donat Salju</td>
-                                                <td>Abdurrahman Ilyasa</td>
-                                                <td>Karyawan</td>
-                                                <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
-                                                <td>ihsanahmadfakhriansyah@gmail.com</td>
-                                                <td>081234567890</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                            <a href="{{ route('contacts.edit', $contact) }}"
+                                                                class="btn btn-link text-primary"><i
+                                                                    class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $contact->id }}').submit();"
+                                                                class="btn btn-link text-danger"><i
+                                                                    class="fa-solid fa-trash"></i></a>
+                                                            <form action="{{ route('contacts.destroy', $contact) }}"
+                                                                method="post" id="delete-form-{{ $contact->id }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                                            <tr>
-                                                <td>Perusahaan Donat Salju</td>
-                                                <td>Ihsan Ahmad Fakhriansyah</td>
-                                                <td>User</td>
-                                                <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
-                                                <td>ihsanahmadfakhriansyah@gmail.com</td>
-                                                <td>081234567890</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>

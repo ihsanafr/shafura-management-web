@@ -16,42 +16,38 @@
                         <div class="card-header">
                             <h4>Edit Contact</h4>
                         </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('contacts.update', $contactCustomer)}}" method="PUT" enctype="multipart/form-data">
                             @csrf
+                            @method("POST")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="name"
+                                    <input type="text" name="company" value="{{ old('company', $contactCustomer->company )}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" 
+                                    <input type="text" name="name" value="{{ old('name', $contactCustomer->name )}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Position</label>
-                                    <select name="role" class="form-control">
-                                        <option value="admin">Admin</option>
-                                        <option value="sales">Sales</option>
-                                        <option value="staff_engineer">Staff Engineer</option>
-                                        <option value="lead_engineer">Lead Engineer</option>
-                                        <option value="finance">Finance</option>
-                                    </select>
+                                    <input type="text" name="position" value="{{ old('position', $contactCustomer->position )}}"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" 
+                                    <input type="text" name="address" value="{{ old('address', $contactCustomer->address )}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" 
+                                    <input type="email" name="email" value="{{ old('email', $contactCustomer->email) }}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Phone</label>
-                                    <input type="number" 
+                                    <input type="number" name="pic_phone" value="{{ old('pic_phone', $contactCustomer->pic_phone )}}"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}
