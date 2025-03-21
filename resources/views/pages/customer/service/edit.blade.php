@@ -16,37 +16,38 @@
                         <div class="card-header">
                             <h4>Edit Services</h4>
                         </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('services.update', $serviceCustomer) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <input type="text" name="name"
+                                    <input type="text" name="type" value="{{ old('type', $serviceCustomer->type ) }}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" 
+                                    <input type="text" name="company_name" value="{{ old('company_name', $serviceCustomer->company_name )}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" 
+                                    <input type="text" name="title" value="{{ old('title', $serviceCustomer->title) }}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Product</label>
-                                    <input type="number" 
+                                    <input type="text" name="products" value="{{ old('products', $serviceCustomer->products) }}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Start Date</label>
-                                    <input type="date" 
+                                    <input type="date" name="start_date" value="{{ old('created_at', $serviceCustomer->start_date ) }}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>End Date</label>
-                                    <input type="date" 
+                                    <input type="date" name="end_date"value="{{ old('updated_at', $serviceCustomer->end_date) }}"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}

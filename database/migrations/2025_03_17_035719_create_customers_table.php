@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('title');
             $table->string('products');
-            $table->timestamps();
+            $table->date('start_date');
+            $table->date('end_date');
         });
 
         Schema::create('contact_customers', function (Blueprint $table) {

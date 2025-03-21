@@ -13,7 +13,11 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('pages.customer.service.index');
+
+        $services = ServiceCustomer::all();
+
+        return view('pages.customer.service.index', compact('services'));
+
     }
 
     /**
@@ -29,7 +33,29 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'type' => 'required',
+            'company_name' => 'required',
+            'title' => 'required',
+            'products' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ]);
+
+        $data = [
+            'type' => $request->type,
+            'company_name' => $request->company_name,
+            'title' => $request->title,
+            'products' => $request->products,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date
+        ];
+
+        ServiceCustomer::create($data);
+
+        return redirect('customers/services');
+
     }
 
     /**
@@ -37,7 +63,7 @@ class ServiceController extends Controller
      */
     public function show(ServiceCustomer $serviceCustomer)
     {
-        return view('pages.customer.service.show');
+        return view('pages.customer.service.show', compact('serviceCustomer'));
     }
 
     /**
@@ -45,7 +71,7 @@ class ServiceController extends Controller
      */
     public function edit(ServiceCustomer $serviceCustomer)
     {
-        return view('pages.customer.service.edit');
+        return view('pages.customer.service.edit', compact('serviceCustomer'));
     }
 
     /**
@@ -53,7 +79,29 @@ class ServiceController extends Controller
      */
     public function update(Request $request, ServiceCustomer $serviceCustomer)
     {
-        //
+
+        $request->validate([
+            'type' => 'required',
+            'company_name' => 'required',
+            'title' => 'required',
+            'products' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ]);
+        
+        $data = [
+            'type' => $request->type,
+            'company_name' => $request->company_name,
+            'title' => $request->title,
+            'products' => $request->products,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date
+        ];
+
+        $serviceCustomer->update($data);
+
+        return redirect('customers/services');
+
     }
 
     /**
@@ -61,6 +109,10 @@ class ServiceController extends Controller
      */
     public function destroy(ServiceCustomer $serviceCustomer)
     {
-        //
+
+        $serviceCustomer->delete();
+
+        return redirect('customers/services');
+        
     }
 }

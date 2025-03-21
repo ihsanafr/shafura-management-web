@@ -16,32 +16,32 @@
                         <tr>
                             <th>Type</th>
                             <td>:</td>
-                            <td>123</td>
+                            <td>{{ $serviceCustomer->type }}</td>
                         </tr>
                         <tr>
                             <th>Company</th>
                             <td>:</td>
-                            <td>Shafura example</td>
+                            <td>{{ $serviceCustomer->company_name }}</td>
                         </tr>
                         <tr>
                             <th>Title</th>
                             <td>:</td>
-                            <td>hello test</td>
+                            <td>{{ $serviceCustomer->title }}</td>
                         </tr>
                         <tr>
                             <th>Product</th>
                             <td>:</td>
-                            <td>Produk 1</td>
+                            <td>{{ $serviceCustomer->products }}</td>
                         </tr>
                         <tr>
                             <th>Start Date</th>
                             <td>:</td>
-                            <td>12/12/20</td>
+                            <td>{{ $serviceCustomer->start_date }}</td>
                         </tr>
                         <tr>
                             <th>Product</th>
                             <td>:</td>
-                            <td>12/10/24</td>
+                            <td>{{ $serviceCustomer->end_date }}</td>
                         </tr>
                     </table>
                 </div>
@@ -51,7 +51,7 @@
         <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('customers/services') }}" class="btn btn-secondary">Kembali</a>
-            <a href="#" class="btn btn-primary">Edit Services</a>
+            <a href="{{ route('services.edit', $serviceCustomer) }}" class="btn btn-primary">Edit Services</a>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
 @section('main')
     <div class="main-content">
         <section class="section">
-            
+
             <div class="section-body">
                 <div class="row mt-4">
                     <div class="col-12">
@@ -31,53 +31,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Type 123</td>
-                                                <td>Perusahaan Donat Salju Indonesia</td>
-                                                <td>Donat Title</td>
-                                                <td>Product 1</td>
-                                                <td>12/12/2024</td>
-                                                <td>12/12/2025</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach ($services as $service)
+                                                <tr>
+                                                    <td>{{ $service->type }}</td>
+                                                    <td>{{ $service->company_name }}</td>
+                                                    <td>{{ $service->title }}</td>
+                                                    <td>{{ $service->products }}</td>
+                                                    <td>{{ $service->start_date }}</td>
+                                                    <td>{{ $service->end_date }}</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="{{ route('services.show', $service) }}"
+                                                                class="btn btn-link text-info"><i
+                                                                    class="fa-solid fa-eye"></i></a>
+                                                            <a href="{{ route('services.edit', $service) }}"
+                                                                class="btn btn-link text-primary"><i
+                                                                    class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href=""
+                                                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $service->id }}').submit();"
+                                                                class="btn btn-link text-danger"><i
+                                                                    class="fa-solid fa-trash"></i></a>
+                                                            <form action="{{ route('services.destroy', $service->id) }}"
+                                                                method="post" id="delete-form-{{ $service->id }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                                            <tr>
-                                                <td>Type 123</td>
-                                                <td>Perusahaan Donat Salju Indonesia</td>
-                                                <td>Donat Title</td>
-                                                <td>Product 1</td>
-                                                <td>12/12/2024</td>
-                                                <td>12/12/2025</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
 
-                                            <tr>
-                                                <td>Type 123</td>
-                                                <td>Perusahaan Donat Salju Indonesia</td>
-                                                <td>Donat Title</td>
-                                                <td>Product 1</td>
-                                                <td>12/12/2024</td>
-                                                <td>12/12/2025</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

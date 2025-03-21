@@ -16,7 +16,7 @@
                         <div class="card-header">
                             <h4>Tambah Contact</h4>
                         </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('contacts.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Phone</label>
-                                    <input type="number" name="pic_phone"
+                                    <input type="text" name="pic_phone"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}

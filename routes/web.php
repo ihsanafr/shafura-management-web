@@ -1,11 +1,10 @@
 <?php
 
-
+use App\Http\Controllers\Customers\ContactController;
 use App\Http\Controllers\Customers\ListController;
 use App\Http\Controllers\Customers\ServiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use App\Models\ContactCustomer;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -25,10 +24,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'services' => 'serviceCustomer'
     ]);
 
-    Route::resource('customers/contacts', ContactCustomer::class)->parameters([
-        'contacts' => 'contactsCustomer'
+    Route::resource('customers/contacts', ContactController::class)->parameters([
+        'contacts' => 'contactCustomer'
     ]);
 
+    Route::get('agenda', function () {
+        return view('pages.agenda.index');
+    });
     Route::get('settings', function () {
         return view('pages.settings.edit');
     });
