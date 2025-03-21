@@ -11,7 +11,7 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Customer Lists</h3>
                                 @cannot('staff')
-                                <a href="{{ route('lists.create') }}" class="btn btn-primary btn-sm">+ Tambah</a>
+                                <a href="{{ route('lists.create') }}" class="btn btn-primary btn-sm">+ Add New</a>
                                 @endcannot
                             </div>
 
@@ -23,7 +23,7 @@
                                     <table class="table-striped table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Nama</th>
+                                                <th>Name</th>
                                                 <th>Customer Code</th>
                                                 <th>Website</th>
                                                 <th>Phone</th>

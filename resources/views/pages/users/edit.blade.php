@@ -21,7 +21,7 @@
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Nama</label>
+                                        <label>Name</label>
                                         <input type="text" name="name" class="form-control"
                                             value="{{ old('name', $user->name) }}">
                                         @error('name')
@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <label>Role</label>
                                         <select name="role" class="form-control">
-                                            <option value="">Posisi sekarang: {{ old('role', __('roles.' . $user->role)) }}</option>
+                                            <option value="">current position: {{ old('role', __('roles.' . $user->role)) }}</option>
                                             <option value="admin">Admin</option>
                                             <option value="sales">Sales</option>
                                             <option value="staff_engineer">Staff Engineer</option>
@@ -60,7 +60,7 @@
 
                                     {{-- button submit --}}
                                     <div class="form-group d-flex justify-content-between">
-                                        <a href="{{ url('users') }}" class="btn btn-secondary">Kembali</a>
+                                        <a href="{{ url('users') }}" class="btn btn-secondary">Back</a>
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 </div>

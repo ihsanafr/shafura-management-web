@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">Customer Contact</h3>
-                                <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Tambah</a>
+                                <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add New Contact</a>
                             </div>
 
                             <div class="clearfix mb-3"></div>

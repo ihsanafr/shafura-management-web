@@ -4,17 +4,17 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">List Information</h4>
+            <h4 class="mb-0">Detail List</h4>
         </div>
         <div class="card-body">
             <div class="row">
                 <!-- Kiri: Informasi List -->
                 <div class="col-12">
-                    <h5>Detail List</h5>
+                    <h5>List Information</h5>
                     <table class="table table-borderless table-responsive">
                         
                         <tr>
-                            <th>Nama</th>
+                            <th>Name</th>
                             <td>:</td>
                             <td>{{ $listCustomer->name }}</td>
                         </tr>
@@ -40,7 +40,7 @@
 
         <!-- Footer dengan tombol -->
         <div class="card-footer">
-            <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
             <a href="{{ route('lists.edit', $listCustomer) }}" class="btn btn-primary">Edit List</a>
             @endcannot

@@ -14,13 +14,13 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah List</h4>
+                            <h4>Add New List</h4>
                         </div>
                         <form action="{{ route('lists.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Nama</label>
+                                    <label>Name</label>
                                     <input type="text" name="name"
                                         class="form-control">
                                 </div>
@@ -42,8 +42,8 @@
                                 {{-- button--}}
                                     
                                     <div class="form-group d-flex justify-content-between">
-                                        <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Kembali</a>
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Back</a>
+                                        <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 
                                 

@@ -53,7 +53,7 @@
                                 {{-- button--}}
                                     
                                     <div class="form-group d-flex justify-content-between">
-                                        <a href="{{ url('customers/services') }}" class="btn btn-secondary">Kembali</a>
+                                        <a href="{{ url('customers/services') }}" class="btn btn-secondary">Back</a>
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 

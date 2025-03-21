@@ -9,7 +9,7 @@
         <div class="card-body">
             <!-- Dropdown Pilih Bulan -->
             <div class="form-group ml-3">
-                <label for="monthSelector" class="form-label fw-bold">Pilih Bulan:</label>
+                <label for="monthSelector" class="form-label fw-bold">Months:</label>
                 <div class="input-group">
                     <span class="input-group-text bg-primary text-white">
                         <i class="fas fa-calendar-alt"></i>

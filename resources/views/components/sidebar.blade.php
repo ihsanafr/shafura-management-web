@@ -2,18 +2,47 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">Company name</span>
+        <span class="brand-text font-weight-light">Management Company</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-                <a href="#" class="d-block">Username</a>
-            </div>
+    <div class="user-panel">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>
+                        {{ Auth::user()->name }}
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ url('settings') }}" class="nav-link">
+                          <i class="fa fa-cog nav-icon"></i>
+                          <p>Settings</p>
+                        </a>
+                      </li>
+                      <li class="nav-item bg-danger">
+                        <a class="nav-link " 
+                        onclick="event.preventDefault(); document.getElementById('logging-out').submit();">
+                          <i class="fa fa-sign-out nav-icon"></i>
+                          <p>Logout</p>
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}" id="logging-out">
+                            @csrf
+                        </form>
+                      </li>
+                    </ul>
+                  </li>
+            </ul>
         </div>
         <!-- Sidebar Menu -->
+        
+
+        <div></div>
+        
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" id="sidebar-menu" data-widget="treeview" role="menu">
                 <!-- Add icons to the links using the .nav-icon class
@@ -73,48 +102,7 @@
                         <p>Agenda</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-gear"></i>
-                        <p>Settings</p>
-                    </a>
-                </li>
-
-
-                <!-- Sidebar Templates -->
-                {{-- <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Starter Pages
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Simple Link
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li> --}}
-
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
