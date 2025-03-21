@@ -31,53 +31,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($service as $item)
+                                                
+                                            @endforeach
+
                                             <tr>
-                                                <td>Type 123</td>
-                                                <td>Perusahaan Donat Salju Indonesia</td>
-                                                <td>Donat Title</td>
-                                                <td>Product 1</td>
-                                                <td>12/12/2024</td>
-                                                <td>12/12/2025</td>
+
+                                                <td>{{$item->type}}</td>
+                                                <td>{{$item->company_name}}</td>
+                                                <td>{{$item->title}}</td>
+                                                <td>{{$item->porducts}}</td>
+                                                <td>{{$item->created_at}}</td>
+                                                <td>{{$item->updated_at}}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                        <a href="{{route('services.show')}}" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{route('services.edit')}}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href=""
+                                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
+                                                         class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                         <form action="{{route('services.destroy', $item->id)}}" method="post" id="delete-form-{{$item->id}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form> 
                                                     </div>
                                                 </td>
                                             </tr>
 
-                                            <tr>
-                                                <td>Type 123</td>
-                                                <td>Perusahaan Donat Salju Indonesia</td>
-                                                <td>Donat Title</td>
-                                                <td>Product 1</td>
-                                                <td>12/12/2024</td>
-                                                <td>12/12/2025</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Type 123</td>
-                                                <td>Perusahaan Donat Salju Indonesia</td>
-                                                <td>Donat Title</td>
-                                                <td>Product 1</td>
-                                                <td>12/12/2024</td>
-                                                <td>12/12/2025</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                          
                                         </tbody>
                                     </table>
                                 </div>

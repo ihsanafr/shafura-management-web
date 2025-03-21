@@ -31,53 +31,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Perusahaan Donat Salju</td>
-                                                <td>Mawaldy Adha Majid</td>
-                                                <td>Admin</td>
-                                                <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
-                                                <td>ihsanahmadfakhriansyah@gmail.com</td>
-                                                <td>081234567890</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach ($contact as $item)
+                                                <tr>
 
-                                            <tr>
-                                                <td>Perusahaan Donat Salju</td>
-                                                <td>Abdurrahman Ilyasa</td>
-                                                <td>Karyawan</td>
-                                                <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
-                                                <td>ihsanahmadfakhriansyah@gmail.com</td>
-                                                <td>081234567890</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    <td>{{$item->company}}</td>
+                                                    <td>{{$item->name}}</td>
+                                                    <td>{{$item->position}}</td>
+                                                    <td>{{$item->address}}</td>
+                                                    <td>{{$item->email}}</td>
+                                                    <td>{{$item->pic_phone}}</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="{{route('contacts.show')}}" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
 
-                                            <tr>
-                                                <td>Perusahaan Donat Salju</td>
-                                                <td>Ihsan Ahmad Fakhriansyah</td>
-                                                <td>User</td>
-                                                <td>RT.005/RW.002, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 13620</td>
-                                                <td>ihsanahmadfakhriansyah@gmail.com</td>
-                                                <td>081234567890</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                            <a href="{{route('contacts.edit')}}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+
+
+                                                            <a href=""
+                                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
+                                                         class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                         <form action="{{route('contacts.destroy', $item->id)}}" method="post" id="delete-form-{{$item->id}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form> 
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                              @endforeach
+                                         
+
                                         </tbody>
                                     </table>
                                 </div>

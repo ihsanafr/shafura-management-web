@@ -13,7 +13,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('pages.customer.service.index');
+        $service = Secviceustomer::all();
+        return view('pages.customer.service.index',compact('service'));
     }
 
     /**
@@ -29,8 +30,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request ->validate([
+            "type"=>"required",
+            "company_name"=>"required",
+            "title"=>"required",
+            "products"=>"required",
+        ]);
+        $data =$request->all();
+        ServiceCustomer::create($data);
+
+        return redirect('pages.customer.service.index');
+        }
 
     /**
      * Display the specified resource.
@@ -53,7 +63,21 @@ class ServiceController extends Controller
      */
     public function update(Request $request, ServiceCustomer $serviceCustomer)
     {
-        //
+        $request ->validate([
+            "type"=>"required",
+            "company_name"=>"required",
+            "title"=>"required",
+            "products"=>"required",
+        ]);
+        $data = ([
+            "type"=>$request ->type,
+            "company_name"=>$request ->company_name,
+            "title"=>$request ->title,
+            "products"=>$request ->products,
+        ]);
+
+        ServiceCustomer::update($data);
+        return redirect('pages.customer.service.index');
     }
 
     /**
@@ -61,6 +85,8 @@ class ServiceController extends Controller
      */
     public function destroy(ServiceCustomer $serviceCustomer)
     {
-        //
+        $serviceCustomer->delete();
+        return redirect('pages.customer.service.index');
+
     }
 }

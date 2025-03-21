@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'services' => 'serviceCustomer'
     ]);
 
-    Route::resource('customers/contacts', ContactCustomer::class)->parameters([
+    Route::resource('customers/contacts', ContactController::class)->parameters([
         'contacts' => 'contactsCustomer'
     ]);
 

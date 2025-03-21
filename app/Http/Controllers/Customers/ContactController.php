@@ -13,7 +13,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('pages.customer.contact.index');
+        $contact = ContactCustomer::all();
+        return view('pages.customer.contact.index',compact('contact'));
     }
 
     /**
@@ -29,7 +30,18 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            "company"=>"required |string",
+            "name"=>"required |string",
+            "position"=>"required |",
+            "address"=>"required |",
+            "email"=>"required | email",
+            "pic_phone"=>"required |",
+        ]);
+$data = $request->all();
+ContactCoustomer::create($data);
+return redirect('pages.customer.contact.index');
+
     }
 
     /**
@@ -53,7 +65,26 @@ class ContactController extends Controller
      */
     public function update(Request $request, ContactCustomer $contactCustomer)
     {
-        //
+        $request -> validate([
+            "company"=>"required |string",
+            "name"=>"required |string",
+            "position"=>"required |",
+            "address"=>"required |",
+            "email"=>"required | email",
+            "pic_phone"=>"required |",
+        ]);
+
+        $data = ([
+            "company"=> $request -> company,
+            "name"=> $request-> name,
+            "position"=> $request -> position,
+            "address"=>$request -> address,
+            "email"=> $request -> email,
+            "pic_phone"=> $request-> pic_phone,
+        ]);
+
+        ContactCustomer::update($data);
+        return redirect("pages.customer.contact.index");
     }
 
     /**
@@ -61,6 +92,7 @@ class ContactController extends Controller
      */
     public function destroy(ContactCustomer $contactCustomer)
     {
-        //
+        $contactCustomer->delete();
+        return redirect('pages.customer.contact.index');
     }
 }

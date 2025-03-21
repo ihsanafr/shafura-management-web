@@ -16,17 +16,18 @@
                         <div class="card-header">
                             <h4>Edit Contact</h4>
                         </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('contact.update',$contact->id)}}" method="PUT" enctype="multipart/form-data">
                             @csrf
+                            @method("POST")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="name"
+                                    <input type="text" name="company" value="{{$contact->company}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" 
+                                    <input type="text" value="{{$contact->name}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
@@ -41,17 +42,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" 
+                                    <input type="text" name="address" value="{{$contact->address}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" 
+                                    <input type="email" name="email" value="{{$contact->email}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Phone</label>
-                                    <input type="number" 
+                                    <input type="number" name="pic_phone" value="{{$contact->pic_phone}}"
                                         class="form-control">
                                 </div>
                                 {{-- button--}}
