@@ -13,8 +13,9 @@
                 <div class="row">
                     <div class="col-12 ">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header row-auto d-flex justify-content-between">
                                 <h4>Settings Account</h4>
+                                <a href="{{ url('customers/services') }}" class="btn btn-danger ml-auto">Logout</a>
                             </div>
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -41,7 +42,7 @@
                                     </div>
 
                                     {{-- button submit --}}
-                                    <div class="form-group d-flex text-right">
+                                    <div class="form-group text-right">
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 </div>

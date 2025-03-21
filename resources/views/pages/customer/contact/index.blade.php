@@ -10,7 +10,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">Customer Contact</h3>
-                                <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add New Contact</a>
+                                @cannot('staff')
+                                <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add New Contact</a>  
+                                @endcannot
                             </div>
 
                             <div class="clearfix mb-3"></div>
@@ -45,17 +47,17 @@
                                                                 class="btn btn-link text-info"><i
                                                                     class="fa-solid fa-eye"></i></a>
 
-                                                            <a href="{{ route('contacts.edit', $contact) }}"
-                                                                class="btn btn-link text-primary"><i
-                                                                    class="fa-solid fa-pen-to-square"></i></a>
-                                                            <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $contact->id }}').submit();"
-                                                                class="btn btn-link text-danger"><i
-                                                                    class="fa-solid fa-trash"></i></a>
-                                                            <form action="{{ route('contacts.destroy', $contact) }}"
-                                                                method="post" id="delete-form-{{ $contact->id }}">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                            </form>
+                                                            @cannot('staff')
+                                                                <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                                @cannot('sales')
+                                                                    <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $contact->id }}').submit();"
+                                                                        class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                                    <form action="{{ route('contacts.destroy', $contact) }}" id="delete-form-{{ $contact->id }}" method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                    </form>
+                                                                @endcannot
+                                                            @endcannot
                                                         </div>
                                                     </td>
                                                 </tr>

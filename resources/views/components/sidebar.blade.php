@@ -8,35 +8,10 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-    <div class="user-panel">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <p>
-                        {{ Auth::user()->name }}
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{ url('settings') }}" class="nav-link">
-                          <i class="fa fa-cog nav-icon"></i>
-                          <p>Settings</p>
-                        </a>
-                      </li>
-                      <li class="nav-item bg-danger">
-                        <a class="nav-link " 
-                        onclick="event.preventDefault(); document.getElementById('logging-out').submit();">
-                          <i class="fa fa-sign-out nav-icon"></i>
-                          <p>Logout</p>
-                        </a>
-                        <form method="POST" action="{{ route('logout') }}" id="logging-out">
-                            @csrf
-                        </form>
-                      </li>
-                    </ul>
-                  </li>
-            </ul>
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="info">
+                <a href="#" class="d-block">Username</a>
+            </div>
         </div>
         <!-- Sidebar Menu -->
         
@@ -100,6 +75,12 @@
                     <a href="{{ url('agenda') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-calendar-days"></i>
                         <p>Agenda</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('settings') }}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-gear"></i>
+                        <p>Settings</p>
                     </a>
                 </li>
                 

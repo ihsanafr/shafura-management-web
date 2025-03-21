@@ -31,8 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('agenda', function () {
         return view('pages.agenda.index');
     });
+
     Route::get('settings', function () {
-        return view('pages.settings.edit');
+        return view('pages.settings.index');
     });
 
 });

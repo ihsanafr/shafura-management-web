@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customers;
 use App\Http\Controllers\Controller;
 use App\Models\ServiceCustomer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ServiceController extends Controller
 {
@@ -25,6 +26,11 @@ class ServiceController extends Controller
      */
     public function create()
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.customer.service.create');
     }
 
@@ -33,6 +39,10 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
 
         $request->validate([
             'type' => 'required',
@@ -63,6 +73,11 @@ class ServiceController extends Controller
      */
     public function show(ServiceCustomer $serviceCustomer)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.customer.service.show', compact('serviceCustomer'));
     }
 
@@ -71,6 +86,11 @@ class ServiceController extends Controller
      */
     public function edit(ServiceCustomer $serviceCustomer)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.customer.service.edit', compact('serviceCustomer'));
     }
 
@@ -79,6 +99,10 @@ class ServiceController extends Controller
      */
     public function update(Request $request, ServiceCustomer $serviceCustomer)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
 
         $request->validate([
             'type' => 'required',
@@ -109,6 +133,10 @@ class ServiceController extends Controller
      */
     public function destroy(ServiceCustomer $serviceCustomer)
     {
+
+        if (Gate::any(['staff', 'sales'])) {
+            abort(403);
+        }
 
         $serviceCustomer->delete();
 

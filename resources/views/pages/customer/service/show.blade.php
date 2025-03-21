@@ -51,7 +51,9 @@
         <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('customers/services') }}" class="btn btn-secondary">Back</a>
+            @cannot('staff')
             <a href="{{ route('services.edit', $serviceCustomer) }}" class="btn btn-primary">Edit Services</a>
+            @endcannot
         </div>
     </div>
 </div>

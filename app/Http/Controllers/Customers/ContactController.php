@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customers;
 use App\Http\Controllers\Controller;
 use App\Models\ContactCustomer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ContactController extends Controller
 {
@@ -25,6 +26,11 @@ class ContactController extends Controller
      */
     public function create()
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.customer.contact.create');
     }
 
@@ -33,6 +39,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
 
         $request->validate([
             'company' => 'required|string',
@@ -71,6 +81,11 @@ class ContactController extends Controller
      */
     public function edit(ContactCustomer $contactCustomer)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
+
         return view('pages.customer.contact.edit', compact('contactCustomer'));
     }
 
@@ -79,6 +94,10 @@ class ContactController extends Controller
      */
     public function update(Request $request, ContactCustomer $contactCustomer)
     {
+
+        if (Gate::check('staff')) {
+            abort(403);
+        }
 
         $request->validate([
             'company' => 'required|string',
@@ -109,6 +128,10 @@ class ContactController extends Controller
      */
     public function destroy(ContactCustomer $contactCustomer)
     {
+
+        if (Gate::any(['staff', 'sales'])) {
+            abort(403);
+        }
 
         $contactCustomer->delete();
 
