@@ -4,13 +4,13 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Detail Produk</h4>
+            <h4 class="mb-0">Detail Product</h4>
         </div>
         <div class="card-body">
             <div class="row">
                 <!-- Kiri: Informasi Produk -->
                 <div class="col-12">
-                    <h5>Informasi Produk</h5>
+                    <h5>Product Information</h5>
                     <table class="table table-borderless table-responsive">
                         <tr>
                             <th>Code</th>
@@ -18,7 +18,7 @@
                             <td>{{ $product->id }}</td>
                         </tr>
                         <tr>
-                            <th>Nama</th>
+                            <th>Name</th>
                             <td>:</td>
                             <td>{{ $product->name }}</td>
                         </tr>
@@ -39,9 +39,9 @@
 
         <!-- Footer dengan tombol -->
         <div class="card-footer">
-            <a href="{{ url('products') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ url('products') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
-            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Produk</a> 
+            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Product</a> 
             @endcannot
         </div>
     </div>

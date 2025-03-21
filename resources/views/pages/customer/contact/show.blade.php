@@ -10,7 +10,7 @@
             <div class="row">
                 <!-- Kiri: Informasi Contact -->
                 <div class="col-12">
-                    <h5>Informasi Contact</h5>
+                    <h5>Contact Information</h5>
                     <table class="table table-borderless table-responsive">
                         
                         <tr>
@@ -50,7 +50,7 @@
 
         <!-- Footer dengan tombol -->
         <div class="card-footer">
-            <a href="{{ url('customers/contacts') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ url('customers/contacts') }}" class="btn btn-secondary">Back</a>
             <a href="{{ route('contacts.edit', $contactCustomer) }}" class="btn btn-primary">Edit Contact</a>
         </div>
     </div>

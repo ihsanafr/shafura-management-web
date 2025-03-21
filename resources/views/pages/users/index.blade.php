@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">User</h3>
-                                <a href="{{ route('users.create') }}" type="button" class="btn btn-primary btn-sm">+ Tambah</a>
+                                <a href="{{ route('users.create') }}" type="button" class="btn btn-primary btn-sm">+ Add New User</a>
                             </div>
 
                             <div class="clearfix mb-3"></div>
@@ -23,7 +23,7 @@
                                     <table class="table-striped table table-hover">
                                         <thead>
                                             <tr>
-                                                <th class="w-25">Nama</th>
+                                                <th class="w-25">Name</th>
                                                 <th class="w-25">Email</th>
                                                 <th class="w-25">Role</th>
                                                 <th class="w-25">Action</th>

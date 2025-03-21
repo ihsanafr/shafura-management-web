@@ -14,7 +14,7 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah Services</h4>
+                            <h4>Add New Services</h4>
                         </div>
                         <form action="{{route('services.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -52,8 +52,8 @@
                                 {{-- button--}}
                                     
                                     <div class="form-group d-flex justify-content-between">
-                                        <a href="{{ url('customers/services') }}" class="btn btn-secondary">Kembali</a>
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <a href="{{ url('customers/services') }}" class="btn btn-secondary">Back</a>
+                                        <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 
                                 
