@@ -23,13 +23,13 @@
                                     <div class="form-group">
                                         <label>Nama</label>
                                         <input type="text" name="name" class="form-control"
-                                            value="">
+                                            value="nama lama">
                                         
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            value="">
+                                            value="email lama">
                                         
                                     </div>
                                     <div class="form-group">
@@ -41,8 +41,7 @@
                                     </div>
 
                                     {{-- button submit --}}
-                                    <div class="form-group d-flex justify-content-between">
-                                        <a href="" class="btn btn-secondary">Kembali</a>
+                                    <div class="form-group d-flex text-right">
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 </div>
