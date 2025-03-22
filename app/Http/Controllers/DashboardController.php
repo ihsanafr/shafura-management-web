@@ -12,16 +12,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $product = Product::count();
-        $customer = ListCustomer::count();
-        $service = ServiceCustomer::count();
-        $contact = ContactCustomer::count();
+        $count  = [
+            "product" => Product::count(),
+            'customer' => ListCustomer::count(),
+            'service' => ServiceCustomer::count(),
+            'contact' => ContactCustomer::count()
+        ];
 
-        return view('pages.dashboard', compact([
-            'product',
-            'customer',
-            'service',
-            'contact'
-        ]));
+        return view('pages.dashboard', compact('count'));
     }
 }
