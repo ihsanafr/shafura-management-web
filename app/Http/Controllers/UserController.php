@@ -13,7 +13,8 @@ class UserController extends Controller
     {
         Gate::authorize('admin');
         
-        $users = User::all();
+        $users = User::orderByDesc('id')->paginate(10);
+        
         return view('pages.users.index', compact('users'));
     }
 

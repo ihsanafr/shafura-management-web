@@ -14,7 +14,8 @@ class ListController extends Controller
      */
     public function index()
     {
-        $customers = ListCustomer::all();
+        $customers = ListCustomer::orderByDesc('id')->paginate(10);
+        
         return view('pages.customer.list.index', compact('customers'));
     }
 

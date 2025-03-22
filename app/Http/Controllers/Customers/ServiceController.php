@@ -15,7 +15,7 @@ class ServiceController extends Controller
     public function index()
     {
 
-        $services = ServiceCustomer::all();
+        $services = ServiceCustomer::orderByDesc('id')->paginate(10);
 
         return view('pages.customer.service.index', compact('services'));
 
