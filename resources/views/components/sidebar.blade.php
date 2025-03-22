@@ -83,7 +83,16 @@
                         <p>Settings</p>
                     </a>
                 </li>
-                
+                <li class="nav-item bg-danger">
+                    <a class="nav-link" 
+                    onclick="event.preventDefault(); document.getElementById('logging-out').submit();">
+                      <i class="fa fa-sign-out nav-icon"></i>
+                      <p>Logout</p>
+                    </a>
+                    <form method="POST" action="{{ route('logout') }}" id="logging-out">
+                        @csrf
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

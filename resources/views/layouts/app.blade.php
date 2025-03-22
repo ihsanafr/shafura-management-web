@@ -14,13 +14,14 @@
 </head>
 
 
-<body>
+{{-- <body class="layout-fixed layout-navbar-fixed sidebar-mini sidebar-collapse"> --}}
+<body class="layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         @include('components.navbar')
 
         @include('components.sidebar')
 
-        <div class="content-wrapper p-3">
+        <div class="content-wrapper p-3" style="min-height: 100vh">
             @yield('main')
         </div>
         
