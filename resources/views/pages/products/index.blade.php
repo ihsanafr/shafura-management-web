@@ -35,7 +35,7 @@
                                         <tbody>
                                             @foreach ($products as $product)
                                             <tr>
-                                                <td class="text-truncate" style="max-width: 300px;">{{ $product->id }}</td>
+                                                <td>{{ $product->id }}</td>
                                                 <td>{{ $product->name }}</td>
                                                 <td>{{ $product->vendor_name }}</td>
                                                 <td><a href="{{ $product->vendor_url }}" target="_blank">{{ $product->vendor_url }}</a></td>

@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-header row-auto d-flex justify-content-between">
                                 <h4>Settings Account</h4>
-                                <a href="{{ url('customers/services') }}" class="btn btn-danger ml-auto">Logout</a>
+                                {{-- <a href="{{ route('logout') }}" class="btn btn-danger ml-auto">Logout</a> --}}
                             </div>
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf

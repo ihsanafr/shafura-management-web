@@ -34,8 +34,7 @@
                                             @foreach ($customers as $customer)
                                             <tr>
                                                 <td>{{ $customer->name }}</td>
-                                                <td class="text-truncate" style="max-width: 300px;">
-                                                    {{ $customer->customer_code }}</td>
+                                                <td>{{ $customer->customer_code }}</td>
                                                 <td>{{ $customer->website_url }}</td>
                                                 <td>{{ $customer->phone }}</td>
                                                 <td>
