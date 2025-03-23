@@ -12,12 +12,19 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $contacts = ContactCustomer::orderByDesc('id')->paginate(10);
+        $search = $request->search;
 
-        return view('pages.customer.contact.index', compact('contacts'));
+        $contacts = ContactCustomer::whereAny([
+            'company', 'name', 'position', 'address', 'email', 'pic_phone'
+        ], 'like', "%$search%")
+        ->orderByDesc('id')
+        ->paginate(10)
+        ->withQueryString();
+
+        return view('pages.customer.contact.index', compact(['request', 'contacts']));
 
     }
 

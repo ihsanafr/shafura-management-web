@@ -11,11 +11,19 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderByDesc('id')->paginate(10);
-        
-        return view('pages.products.index', compact('products'));
+
+        $search = $request->search;
+
+        $products = Product::whereAny([
+            'id', 'name', 'vendor_name', 'vendor_url'
+        ], 'like', "%$search%")
+        ->orderByDesc('id')
+        ->paginate(10)
+        ->withQueryString();
+
+        return view('pages.products.index', compact(['request', 'products']));
     }
 
     /**
@@ -27,9 +35,8 @@ class ProductController extends Controller
         if (Gate::check('staff')) {
             abort(403);
         }
-        
-       return view('pages.products.create');
-        
+
+        return view('pages.products.create');
     }
 
     /**
@@ -37,15 +44,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         if (Gate::check('staff')) {
             abort(403);
         }
 
         $request->validate([
-            'name'=>'required',
-            'vendor_name'=>'required',
-            'vendor_url'=>'required',
+            'name' => 'required',
+            'vendor_name' => 'required',
+            'vendor_url' => 'required',
         ]);
 
         $data = [
@@ -88,12 +95,12 @@ class ProductController extends Controller
 
         if (Gate::check('staff')) {
             abort(403);
-        }       
+        }
 
         $request->validate([
-            'name'=>'required',
-            'vendor_name'=>'required',
-            'vendor_url'=>'required'
+            'name' => 'required',
+            'vendor_name' => 'required',
+            'vendor_url' => 'required'
         ]);
 
         $data = [
@@ -119,6 +126,5 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect('products');
-        
     }
 }

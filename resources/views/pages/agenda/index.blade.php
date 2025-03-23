@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('head')
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+@endpush
+
 @section('main')
 <div class="container">
     <div class="card shadow-lg">

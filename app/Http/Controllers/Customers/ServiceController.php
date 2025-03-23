@@ -12,12 +12,19 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $services = ServiceCustomer::orderByDesc('id')->paginate(10);
+        $search = $request->search;
 
-        return view('pages.customer.service.index', compact('services'));
+        $services = ServiceCustomer::whereAny([
+            'type', 'company_name', 'title', 'products'
+        ], 'like', "%$search%")
+        ->orderByDesc('id')
+        ->paginate(10)
+        ->withQueryString();
+
+        return view('pages.customer.service.index', compact(['request', 'services']));
 
     }
 

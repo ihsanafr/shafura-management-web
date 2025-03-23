@@ -9,13 +9,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         Gate::authorize('admin');
         
-        $users = User::orderByDesc('id')->paginate(10);
+        $search = $request->search;
+
+        $users = User::whereAny([
+            'name', 'email', 'role'
+        ], 'like', "%$search%")
+        ->orderByDesc('id')
+        ->paginate(10)
+        ->withQueryString();
         
-        return view('pages.users.index', compact('users'));
+        return view('pages.users.index', compact(['request', 'users']));
     }
 
     /**

@@ -15,10 +15,22 @@
                                 @endcannot
                             </div>
 
-                            <div class="clearfix mb-3"></div>
+                            <div class="m-3">
+                                <form method="GET">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="search"
+                                            placeholder="Search anything" value="">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
                             <div class="card-body">
-
+                                @if ($request->filled('search'))
+                                    <p><b>Result for "{{ $request->search }}"</b></p>
+                                @endif
                                 <div class="table-responsive">
                                     <table class="table-striped table table-hover">
                                         <thead>

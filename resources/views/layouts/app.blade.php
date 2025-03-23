@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- This Font awesome Kit belongs to Dean Denaki. Please change when there's problem occurs -->
     <script src="https://kit.fontawesome.com/2b9cba7764.js" crossorigin="anonymous"></script>
+    <!-- adminLTE (Dashboard) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.min.js"></script>
+    <!-- Calendar from -->
+    @stack('head')
 </head>
 
-
+{{-- a snippet to make a mini sidebar --}}
 {{-- <body class="layout-fixed layout-navbar-fixed sidebar-mini sidebar-collapse"> --}}
+    
 <body class="layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         @include('components.navbar')
@@ -33,6 +35,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+    @stack('scripts')
 
 </body>
 

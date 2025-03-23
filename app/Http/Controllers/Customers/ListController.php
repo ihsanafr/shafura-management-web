@@ -12,11 +12,19 @@ class ListController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = ListCustomer::orderByDesc('id')->paginate(10);
+
+        $search = $request->search;
+
+        $customers = ListCustomer::whereAny([
+            'name', 'customer_code', 'website_url', 'phone'
+        ], 'like', "%$search%")
+        ->orderByDesc('id')
+        ->paginate(10)
+        ->withQueryString();
         
-        return view('pages.customer.list.index', compact('customers'));
+        return view('pages.customer.list.index', compact(['request', 'customers']));
     }
 
     /**
