@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">Management Company</span>
+        <span class="brand-text font-weight-light">Shafura Digital Indonesia</span>
     </a>
 
     <!-- Sidebar -->
@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">Username</a>
+                <a href="#" class="d-block">Hello, {{ Auth::user()->name }}</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
