@@ -17,24 +17,30 @@
                                 <h4>Settings Account</h4>
                                 {{-- <a href="{{ route('logout') }}" class="btn btn-danger ml-auto">Logout</a> --}}
                             </div>
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('settings.update', $users) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Nama</label>
                                         <input type="text" name="name" class="form-control"
-                                            value="nama lama">
-                                        
+                                            value="{{ old('name', $users->name) }}">
+                                        @error('name')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            value="email lama">
-                                        
+                                            value="{{ old('email', $users->email) }}">
+                                        @error('email')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+
                                     </div>
                                     <div class="form-group">
-                                        <label>Password</label>
+                                        <label>Password &#40;Optional&#41;</label>
                                         <input type="password" name="password" class="form-control">
                                         @error('password')
                                             <div class="text-danger">{{ $message }}</div>
