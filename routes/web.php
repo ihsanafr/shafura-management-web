@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Customers\ContactController;
 use App\Http\Controllers\Customers\ListController;
 use App\Http\Controllers\Customers\ServiceController;
@@ -32,7 +33,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('pages.agenda.index');
     });
 
+    Route::get('/events', [CalendarController::class, 'index']);
+    Route::post('/events/store', [CalendarController::class, 'store']);
+    Route::post('/events/update', [CalendarController::class, 'update']);
+    Route::post('/events/delete', [CalendarController::class, 'destroy']);
+
+
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('settings/{user}', [SettingsController::class, 'update'])->name('settings.update');
-
 });
