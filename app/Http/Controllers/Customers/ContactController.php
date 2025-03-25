@@ -17,9 +17,14 @@ class ContactController extends Controller
 
         $search = $request->search;
 
-        $contacts = ContactCustomer::whereAny([
-            'company', 'name', 'position', 'address', 'email', 'pic_phone'
-        ], 'like', "%$search%")
+        $contacts = ContactCustomer::where(function ($query) use ($search) {
+            $query->where('company', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('position', 'like', "%$search%")
+                ->orWhere('address', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%")
+                ->orWhere('pic_phone', 'like', "%$search%");
+        })
         ->orderByDesc('id')
         ->paginate(10)
         ->withQueryString();

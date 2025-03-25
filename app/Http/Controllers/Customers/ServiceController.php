@@ -17,13 +17,12 @@ class ServiceController extends Controller
 
         $search = $request->search;
 
-        $search = $request->search;
-
         $services = ServiceCustomer::where(function ($query) use ($search) {
-            $query->where('id', 'like', "%$search%")
-                ->orWhere('name', 'like', "%$search%")
-                ->orWhere('vendor_name', 'like', "%$search%")
-                ->orWhere('vendor_url', 'like', "%$search%");
+            $query->where('type', 'like', "%$search%")
+                ->orWhere('company_name', 'like', "%$search%")
+                ->orWhere('title', 'like', "%$search%")
+                ->orWhere('products', 'like', "%$search%");
+                
         })
         ->orderByDesc('id')
         ->paginate(10)

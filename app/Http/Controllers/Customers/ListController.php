@@ -17,13 +17,11 @@ class ListController extends Controller
 
         $search = $request->search;
 
-        $search = $request->search;
-
         $customers = ListCustomer::where(function ($query) use ($search) {
-            $query->where('id', 'like', "%$search%")
-                ->orWhere('name', 'like', "%$search%")
-                ->orWhere('vendor_name', 'like', "%$search%")
-                ->orWhere('vendor_url', 'like', "%$search%");
+            $query->where('name', 'like', "%$search%")
+                ->orWhere('customer_code', 'like', "%$search%")
+                ->orWhere('website_url', 'like', "%$search%")
+                ->orWhere('phone', 'like', "%$search%");
         })
         ->orderByDesc('id')
         ->paginate(10)
