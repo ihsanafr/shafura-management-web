@@ -16,9 +16,9 @@
                         <div class="card-header">
                             <h4>Edit Contact</h4>
                         </div>
-                        <form action="{{route('contacts.update', $contactCustomer)}}" method="PUT" enctype="multipart/form-data">
+                        <form action="{{route('contacts.update', $contactCustomer)}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method("POST")
+                            @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Company</label>
