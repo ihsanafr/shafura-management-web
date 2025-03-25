@@ -17,9 +17,14 @@ class ServiceController extends Controller
 
         $search = $request->search;
 
-        $services = ServiceCustomer::whereAny([
-            'type', 'company_name', 'title', 'products'
-        ], 'like', "%$search%")
+        $search = $request->search;
+
+        $services = ServiceCustomer::where(function ($query) use ($search) {
+            $query->where('id', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('vendor_name', 'like', "%$search%")
+                ->orWhere('vendor_url', 'like', "%$search%");
+        })
         ->orderByDesc('id')
         ->paginate(10)
         ->withQueryString();
@@ -51,7 +56,7 @@ class ServiceController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'type' => 'required',
             'company_name' => 'required',
             'title' => 'required',
@@ -60,16 +65,7 @@ class ServiceController extends Controller
             'end_date' => 'required'
         ]);
 
-        $data = [
-            'type' => $request->type,
-            'company_name' => $request->company_name,
-            'title' => $request->title,
-            'products' => $request->products,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date
-        ];
-
-        ServiceCustomer::create($data);
+        ServiceCustomer::create($validatedData);
 
         return redirect('customers/services');
 
@@ -111,7 +107,7 @@ class ServiceController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'type' => 'required',
             'company_name' => 'required',
             'title' => 'required',
@@ -119,17 +115,8 @@ class ServiceController extends Controller
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
-        
-        $data = [
-            'type' => $request->type,
-            'company_name' => $request->company_name,
-            'title' => $request->title,
-            'products' => $request->products,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date
-        ];
 
-        $serviceCustomer->update($data);
+        $serviceCustomer->update($validatedData);
 
         return redirect('customers/services');
 

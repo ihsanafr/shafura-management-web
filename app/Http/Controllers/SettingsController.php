@@ -11,40 +11,30 @@ use function PHPUnit\Framework\isEmpty;
 
 class SettingsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $getAuthId = Auth::id();
-        
-        $users = User::findOrFail($getAuthId);
-
+        $users = Auth::user();
         return view('pages.settings.index', compact('users'));
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required'
-        ]);
+        if (Auth::id() !== $user->id) {
+            abort(403, 'Unauthorized action.');
+        }
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email
-        ];
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id
+        ]);
 
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
-        };
+        }
 
-        $user->update($data);
+        $user->update($validatedData);
 
-        return redirect('settings');
+        return redirect('settings')->with('success', 'Profile updated successfully.');
     }
 }
+

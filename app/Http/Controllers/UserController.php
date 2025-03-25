@@ -15,9 +15,14 @@ class UserController extends Controller
         
         $search = $request->search;
 
-        $users = User::whereAny([
-            'name', 'email', 'role'
-        ], 'like', "%$search%")
+        $search = $request->search;
+
+        $users = User::where(function ($query) use ($search) {
+            $query->where('id', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('vendor_name', 'like', "%$search%")
+                ->orWhere('vendor_url', 'like', "%$search%");
+        })
         ->orderByDesc('id')
         ->paginate(10)
         ->withQueryString();
@@ -42,21 +47,14 @@ class UserController extends Controller
     {
         Gate::authorize('admin');
 
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
             'role' => 'required',
             'password' => 'required'
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request->password)
-        ];
-
-        User::create($data);
+        User::create($validatedData);
 
         return redirect('users');
     }
@@ -87,23 +85,17 @@ class UserController extends Controller
     {
         Gate::authorize('admin');
 
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
             'role' => 'required',
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-        ];
-
         if ($request->filled('password')) {
-            Hash::make($request->password);
+            $validatedData['password'] = Hash::make($request->password);
         };
 
-        $user->update($data);
+        $user->update($validatedData);
 
         return redirect('users');
     }

@@ -16,9 +16,12 @@ class ProductController extends Controller
 
         $search = $request->search;
 
-        $products = Product::whereAny([
-            'id', 'name', 'vendor_name', 'vendor_url'
-        ], 'like', "%$search%")
+        $products = Product::where(function ($query) use ($search) {
+            $query->where('id', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('vendor_name', 'like', "%$search%")
+                ->orWhere('vendor_url', 'like', "%$search%");
+        })
         ->orderByDesc('id')
         ->paginate(10)
         ->withQueryString();
@@ -45,23 +48,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        if (Gate::check('staff')) {
-            abort(403);
-        }
-
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'vendor_name' => 'required',
             'vendor_url' => 'required',
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'vendor_name' => $request->vendor_name,
-            'vendor_url' => $request->vendor_url
-        ];
-
-        Product::create($data);
+        Product::create($validatedData);
 
         return redirect('products');
     }
@@ -97,19 +90,13 @@ class ProductController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'vendor_name' => 'required',
             'vendor_url' => 'required'
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'vendor_name' => $request->vendor_name,
-            'vendor_url' => $request->vendor_url
-        ];
-
-        $product->update($data);
+        $product->update($validatedData);
 
         return redirect('products');
     }

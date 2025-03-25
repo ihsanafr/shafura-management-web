@@ -51,7 +51,7 @@ class ContactController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'company' => 'required|string',
             'name' => 'required|string',
             'position' => 'required',
@@ -60,16 +60,7 @@ class ContactController extends Controller
             'pic_phone' => 'required',
         ]);
 
-        $data = [
-            'company' => $request->company,
-            'name' => $request->name,
-            'position' => $request->position,
-            'address' => $request->address,
-            'email' => $request->email,
-            'pic_phone' => $request->pic_phone,
-        ];
-
-        ContactCustomer::create($data);
+        ContactCustomer::create($validatedData);
 
         return redirect('customers/contacts');
 
@@ -106,7 +97,7 @@ class ContactController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'company' => 'required|string',
             'name' => 'required|string',
             'position' => 'required',
@@ -115,16 +106,7 @@ class ContactController extends Controller
             'pic_phone' => 'required'
         ]);
 
-        $data = [
-            'company' => $request->company,
-            'name' => $request->name,
-            'position' => $request->position,
-            'address' => $request->address,
-            'email' => $request->email,
-            'pic_phone' => $request->pic_phone
-        ];
-
-        $contactCustomer->update($data);
+        $contactCustomer->update($validatedData);
 
         return redirect('customers/contacts');
 

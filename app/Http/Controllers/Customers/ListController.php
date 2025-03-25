@@ -17,9 +17,14 @@ class ListController extends Controller
 
         $search = $request->search;
 
-        $customers = ListCustomer::whereAny([
-            'name', 'customer_code', 'website_url', 'phone'
-        ], 'like', "%$search%")
+        $search = $request->search;
+
+        $customers = ListCustomer::where(function ($query) use ($search) {
+            $query->where('id', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('vendor_name', 'like', "%$search%")
+                ->orWhere('vendor_url', 'like', "%$search%");
+        })
         ->orderByDesc('id')
         ->paginate(10)
         ->withQueryString();
@@ -50,21 +55,15 @@ class ListController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string',
             'customer_code' => 'required',
             'website_url' => 'required',
             'phone' => 'required'
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'customer_code' => $request->customer_code,
-            'website_url' => $request->website_url,
-            'phone' => $request->phone
-        ];
 
-        ListCustomer::create($data);
+        ListCustomer::create($validatedData);
 
         return redirect('customers/lists');
 
@@ -101,21 +100,14 @@ class ListController extends Controller
             abort(403);
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string',
             'customer_code' => 'required',
             'website_url' => 'required',
             'phone' => 'required'
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'customer_code' => $request->customer_code,
-            'website_url' => $request->website_url,
-            'phone' => $request->phone
-        ];
-
-        $listCustomer->update($data);
+        $listCustomer->update($validatedData);
 
         return redirect('customers/lists');
 
