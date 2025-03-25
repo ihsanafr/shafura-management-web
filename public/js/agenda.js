@@ -17,10 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
         eventDurationEditable: false, // Prevents resizing events 
         locale: "id",
         events: "/events",
+
+        //Set color for events
         eventDidMount: function(info) {
             info.el.style.backgroundColor = "cornflowerblue";
-            info.el.style.color = "white"; // Change text color for contrast
+            info.el.style.color = "white";
         },
+
         // Click date to add event
         dateClick: function(info) {
             resetModal();
@@ -34,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $("#calendarModal").modal("show");
         },
 
+        //Content event
         eventContent: function(info) {
             return {
                 html: `<b>${info.event.extendedProps.type}</b>: ${info.event.title}`,
@@ -56,31 +60,27 @@ document.addEventListener("DOMContentLoaded", function() {
     function fillModal(event) {
         $("#eventId").val(event.id);
         $("#eventDate").val(event.startStr);
-
-        // Fix: Ensure the PIC (title) input shows the correct data
-        // let picTitle = event.extendedProps.title ? event.extendedProps.title : event.title;
         $("#title").val(event.title);
-
         $("#eventType").val(event.extendedProps.type || event.type);
         $("#description").val(event.extendedProps.description || "");
     }
 
 
     // Save or Update Event
-    $("#agendaForm").submit(function(e) {
+    $("#agendaForm").on("submit", function(e) {
         e.preventDefault();
 
         let eventId = $("#eventId").val();
         let eventTitle = $("#title").val().trim();
-        let eventStartRaw = $("#eventDate").val(); // Get raw date
+        let eventStartRaw = $("#eventDate").val();
 
-        // ✅ Fix: Ensure the date format is correct for MySQL
+        // Fix: Ensure the date format is correct for MySQL
         let eventStart = eventStartRaw.split("T")[0]; // Extract YYYY-MM-DD
 
         let eventData = {
             id: eventId,
             title: eventTitle,
-            start: eventStart, // Correct format
+            start: eventStart,
             type: $("#eventType").val(),
             description: $("#description").val(),
         };
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // Delete Event
-    $("#deleteEvent").click(function() {
+    $("#deleteEvent").on("click" ,function() {
         let eventId = $("#eventId").val();
         if (!eventId) return;
 
