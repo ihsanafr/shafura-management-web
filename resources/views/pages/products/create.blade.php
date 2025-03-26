@@ -22,7 +22,7 @@
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" name="name"
-                                        class="form-control">
+                                        class="form-control" placeholder="Product Name">
                                         @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label>Vendor Name</label>
                                     <input type="text" name="vendor_name"
-                                        class="form-control">
+                                        class="form-control" placeholder="Vendor Name">
                                         @error('vendor_name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label>Vendor URL</label>
                                     <input type="text" name="vendor_url"
-                                        class="form-control">
+                                        class="form-control" placeholder="Vendor URL">
                                         @error('vendor_url')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror

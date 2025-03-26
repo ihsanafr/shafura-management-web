@@ -21,42 +21,42 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="company" class="form-control">
+                                    <input type="text" name="company" class="form-control" placeholder="Company Name">
                                     @error('company')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" placeholder="Customer Name">
                                     @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Position</label>
-                                    <input type="text" name="position" class="form-control">
+                                    <input type="text" name="position" class="form-control" placeholder="Customer Position">
                                     @error('position')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" name="address" class="form-control">
+                                    <input type="text" name="address" class="form-control" placeholder="Address">
                                     @error('address')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" name="email" class="form-control">
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
                                     @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Phone</label>
-                                    <input type="text" name="pic_phone" class="form-control">
+                                    <input type="text" name="pic_phone" class="form-control" placeholder="PIC Phone">
                                     @error('pic_phone')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror

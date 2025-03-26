@@ -22,7 +22,7 @@
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" name="name"
-                                        class="form-control">
+                                        class="form-control" placeholder="Customer Name">
                                         @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label>Customer Code</label>
                                     <input type="text" name="customer_code"
-                                        class="form-control">
+                                        class="form-control" placeholder="Customer Code">
                                         @error('customer_code')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label>Website</label>
                                     <input type="text" name="website_url"
-                                        class="form-control">
+                                        class="form-control" placeholder="Customer Website">
                                         @error('website_url')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label>Phone</label>
                                     <input type="text" name="phone"
-                                        class="form-control">
+                                        class="form-control" placeholder="Customer Phone">
                                         @error('phone')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror

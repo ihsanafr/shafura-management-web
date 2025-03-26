@@ -21,42 +21,42 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <input type="text" name="type" class="form-control">
+                                    <input type="text" name="type" class="form-control" placeholder="Type">
                                     @error('type')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="company_name" class="form-control">
+                                    <input type="text" name="company_name" class="form-control" placeholder="Company Name">
                                     @error('company_name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" class="form-control" placeholder="Title">
                                     @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Product</label>
-                                    <input type="text" name="products" class="form-control">
+                                    <input type="text" name="products" class="form-control" placeholder="Products">
                                     @error('products')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Start Date</label>
-                                    <input type="date" name="start_date" class="form-control">
+                                    <input type="date" name="start_date" class="form-control" placeholder="Start Date">
                                     @error('start_date')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>End Date</label>
-                                    <input type="date" name="end_date" class="form-control">
+                                    <input type="date" name="end_date" class="form-control" placeholder="End Date">
                                     @error('end_date')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
