@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- This Font awesome Kit belongs to Dean Denaki. Please change when there's problem occurs -->
-    <script src="https://kit.fontawesome.com/2b9cba7764.js"
-        integrity="sha384-yLuvS9fxa+MvsOnJ6TjzulP77gT0OtUEOl6/X9bIOy8mhhakaWi8M/dbYNfnilSS" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2b9cba7764.js" crossorigin="anonymous">
     </script>
     <!-- adminLTE (Dashboard) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css"
