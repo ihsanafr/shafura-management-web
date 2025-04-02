@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" name="name" id="name" placeholder="Username">
                     <label for="name" class="form-label font-weight-normal">Username</label>
                     @error('name')
-                        {{ $message }}
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
                     <label for="email" class="form-label font-weight-normal">Email</label>
                     @error('email')
-                        {{ $message }}
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     <label for="password" class="form-label font-weight-normal">Password</label>
                     @error('password')
-                        {{ $message }}
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <p class="m-0 text-secondary text-center">Already have an account? <a href="{{ route('login.store')}}"
+                <p class="m-0 text-secondary text-center">Already have an account? <a href="{{ route('login.store') }}"
                         class="link-primary text-decoration-none">Login</a></p>
             </div>
         </div>
