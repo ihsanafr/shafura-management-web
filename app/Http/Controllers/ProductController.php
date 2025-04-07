@@ -51,7 +51,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'vendor_name' => 'required',
-            'vendor_url' => 'required|regex:/^https?:\/\/.+$/i',
+            'vendor_url' => 'required|regex:/^https?:\/\/.+$/i'
         ]);
 
         Product::create($validatedData);
@@ -93,7 +93,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'vendor_name' => 'required',
-            'vendor_url' => 'required'
+            'vendor_url' => 'required|regex:/^https?:\/\/.+$/i'
         ]);
 
         $product->update($validatedData);
