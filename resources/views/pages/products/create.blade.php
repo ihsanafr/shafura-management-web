@@ -14,7 +14,7 @@
                     <div class="col-12 ">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Add New products</h4>
+                                <h4>Add New product</h4>
                             </div>
                             <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf

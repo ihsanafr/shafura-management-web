@@ -14,7 +14,7 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Edit Products</h4>
+                            <h4>Edit Product</h4>
                         </div>
                         <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
                             @csrf

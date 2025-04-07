@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mr-3">Customer Lists</h3>
+                                <h3 class="mr-3">Customers</h3>
                                 @cannot('staff')
                                 <a href="{{ route('lists.create') }}" class="btn btn-primary btn-sm">+ Add New Customer</a>
                                 @endcannot

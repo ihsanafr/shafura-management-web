@@ -10,7 +10,7 @@
     <div class="container">
         <div class="card shadow-lg">
             <div class="card-header bg-primary text-white p-4 text-center">
-                <h2>Calendar Events</h2>
+                <h2>Agenda</h2>
             </div>
             <div class="card-body">
                 <!-- Dropdown Pilih Bulan -->

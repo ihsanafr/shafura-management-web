@@ -14,7 +14,7 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Edit List</h4>
+                            <h4>Edit Customer</h4>
                         </div>
                         <form action="{{ route('lists.update', $listCustomer) }}" method="POST"
                             enctype="multipart/form-data">

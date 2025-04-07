@@ -4,13 +4,13 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Detail List</h4>
+            <h4 class="mb-0">Detail Customer</h4>
         </div>
         <div class="card-body">
             <div class="row">
                 <!-- Kiri: Informasi List -->
                 <div class="col-12">
-                    <h5>List Information</h5>
+                    <h5>Customer Information</h5>
                     <table class="table table-borderless table-responsive">
                         
                         <tr>
@@ -42,7 +42,7 @@
         <div class="card-footer">
             <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
-            <a href="{{ route('lists.edit', $listCustomer) }}" class="btn btn-primary">Edit List</a>
+            <a href="{{ route('lists.edit', $listCustomer) }}" class="btn btn-primary">Edit Customer</a>
             @endcannot
         </div>
     </div>

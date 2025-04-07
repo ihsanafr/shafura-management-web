@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mr-3">Customer Contact</h3>
+                                <h3 class="mr-3">Contacts</h3>
                                 @cannot('staff')
                                 <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add New Contact</a>  
                                 @endcannot

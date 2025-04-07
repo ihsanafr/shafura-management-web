@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mr-3">User</h3>
+                                <h3 class="mr-3">Users</h3>
                                 <a href="{{ route('users.create') }}" type="button" class="btn btn-primary btn-sm">+ Add New User</a>
                             </div>
 

@@ -13,7 +13,7 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Products</h3>
                                 @cannot('staff')
-                                    <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Add New Products</a>
+                                    <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Add New Product</a>
                                 @endcannot
                             </div>
 
