@@ -11,7 +11,7 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Customers</h3>
                                 @cannot('staff')
-                                <a href="{{ route('lists.create') }}" class="btn btn-primary btn-sm">+ Add New Customer</a>
+                                <a href="{{ route('customers.create') }}" class="btn btn-primary btn-sm">+ Add New Customer</a>
                                 @endcannot
                             </div>
 
@@ -52,12 +52,12 @@
                                                 <td>{{ $customer->phone }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="{{ route('lists.show', $customer) }}" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('customers.show', $customer) }}" class="btn btn-link text-info"><i class="fa-solid fa-eye"></i></a>
                                                         @cannot('staff')
-                                                        <a href="{{ route('lists.edit', $customer) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="{{ route('customers.edit', $customer) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                                                         @cannot('sales')
                                                         <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $customer->id }}').submit();" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                        <form action="{{ route('lists.destroy', $customer) }}" id="delete-form-{{ $customer->id }}" method="POST">
+                                                        <form action="{{ route('customers.destroy', $customer) }}" id="delete-form-{{ $customer->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>

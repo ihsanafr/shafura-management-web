@@ -16,7 +16,7 @@
                         <div class="card-header">
                             <h4>Edit Customer</h4>
                         </div>
-                        <form action="{{ route('lists.update', $listCustomer) }}" method="POST"
+                        <form action="{{ route('customers.update', $listCustomer) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -59,7 +59,7 @@
 
                                 {{-- button  --}}
                                 <div class="form-group d-flex justify-content-between">
-                                    <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Back</a>
+                                    <a href="{{ url('customers') }}" class="btn btn-secondary">Back</a>
                                     <button type="submit" class="btn btn-primary">Edit</button>
                                 </div>
                             </div>

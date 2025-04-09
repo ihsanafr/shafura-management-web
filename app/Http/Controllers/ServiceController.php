@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customers;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ServiceCustomer;
@@ -25,10 +25,10 @@ class ServiceController extends Controller
                 
         })
         ->orderByDesc('id')
-        ->paginate(10)
+        ->paginate(50)
         ->withQueryString();
 
-        return view('pages.customer.service.index', compact(['request', 'services']));
+        return view('pages.service.index', compact(['request', 'services']));
 
     }
 
@@ -42,7 +42,7 @@ class ServiceController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.service.create');
+        return view('pages.service.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class ServiceController extends Controller
 
         ServiceCustomer::create($validatedData);
 
-        return redirect('customers/services');
+        return redirect('services');
 
     }
 
@@ -80,7 +80,7 @@ class ServiceController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.service.show', compact('serviceCustomer'));
+        return view('pages.service.show', compact('serviceCustomer'));
     }
 
     /**
@@ -93,7 +93,7 @@ class ServiceController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.service.edit', compact('serviceCustomer'));
+        return view('pages.service.edit', compact('serviceCustomer'));
     }
 
     /**
@@ -117,7 +117,7 @@ class ServiceController extends Controller
 
         $serviceCustomer->update($validatedData);
 
-        return redirect('customers/services');
+        return redirect('services');
 
     }
 
@@ -133,7 +133,7 @@ class ServiceController extends Controller
 
         $serviceCustomer->delete();
 
-        return redirect('customers/services');
+        return redirect('services');
         
     }
 }

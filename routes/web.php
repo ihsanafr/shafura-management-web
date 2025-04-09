@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\Customers\ContactController;
-use App\Http\Controllers\Customers\ListController;
-use App\Http\Controllers\Customers\ServiceController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CostumersController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingsController;
@@ -17,17 +17,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('products', ProductController::class);
 
-    Route::resource('customers/lists', ListController::class)->parameters([
-        'lists' => 'listCustomer'
+    Route::resource('customers', CostumersController::class)->parameters([
+        'customers' => 'listCustomer'
     ]);
-
-    Route::resource('customers/services', ServiceController::class)->parameters([
+    
+    Route::resource('services', ServiceController::class)->parameters([
         'services' => 'serviceCustomer'
     ]);
-
-    Route::resource('customers/contacts', ContactController::class)->parameters([
+    
+    Route::resource('contacts', ContactController::class)->parameters([
         'contacts' => 'contactCustomer'
-    ]);
+    ]);    
 
     Route::get('agenda', function () {
         return view('pages.agenda.index');
@@ -37,7 +37,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/events/store', [CalendarController::class, 'store']);
     Route::post('/events/update', [CalendarController::class, 'update']);
     Route::post('/events/delete', [CalendarController::class, 'destroy']);
-
 
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('settings/{user}', [SettingsController::class, 'update'])->name('settings.update');

@@ -23,7 +23,7 @@ class UserController extends Controller
                 ->orWhere('role', 'like', "%$search%");
         })
         ->orderByDesc('id')
-        ->paginate(10)
+        ->paginate(50)
         ->withQueryString();
         
         return view('pages.users.index', compact(['request', 'users']));

@@ -4,44 +4,44 @@
 <div class="main-content container">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Detail Service</h4>
+            <h4 class="mb-0">Detail Contact</h4>
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Services -->
+                <!-- Kiri: Informasi Contact -->
                 <div class="col-12">
-                    <h5>Service Information</h5>
+                    <h5>Contact Information</h5>
                     <table class="table table-borderless table-responsive">
                         
                         <tr>
-                            <th>Type</th>
-                            <td>:</td>
-                            <td>{{ $serviceCustomer->type }}</td>
-                        </tr>
-                        <tr>
                             <th>Company</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->company_name }}</td>
+                            <td>{{ $contactCustomer->company }}</td>
                         </tr>
                         <tr>
-                            <th>Title</th>
+                            <th>Name</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->title }}</td>
+                            <td>{{ $contactCustomer->name }}</td>
                         </tr>
                         <tr>
-                            <th>Product</th>
+                            <th>Position</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->products }}</td>
+                            <td>{{ $contactCustomer->position }}</td>
                         </tr>
                         <tr>
-                            <th>Start Date</th>
+                            <th>Address</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->start_date }}</td>
+                            <td>{{ $contactCustomer->address }}</td>
                         </tr>
                         <tr>
-                            <th>Product</th>
+                            <th>Email</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->end_date }}</td>
+                            <td>{{ $contactCustomer->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>PIC Phone</th>
+                            <td>:</td>
+                            <td>{{ $contactCustomer->pic_phone }}</td>
                         </tr>
                     </table>
                 </div>
@@ -50,9 +50,9 @@
 
         <!-- Footer dengan tombol -->
         <div class="card-footer">
-            <a href="{{ url('customers/services') }}" class="btn btn-secondary">Back</a>
+            <a href="{{ url('contacts') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
-            <a href="{{ route('services.edit', $serviceCustomer) }}" class="btn btn-primary">Edit Service</a>
+            <a href="{{ route('contacts.edit', $contactCustomer) }}" class="btn btn-primary">Edit Contact</a> 
             @endcannot
         </div>
     </div>

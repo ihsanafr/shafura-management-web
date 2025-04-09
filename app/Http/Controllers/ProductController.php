@@ -23,7 +23,7 @@ class ProductController extends Controller
                 ->orWhere('vendor_url', 'like', "%$search%");
         })
         ->orderByDesc('id')
-        ->paginate(10)
+        ->paginate(50)
         ->withQueryString();
 
         return view('pages.products.index', compact(['request', 'products']));

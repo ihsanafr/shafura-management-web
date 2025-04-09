@@ -43,19 +43,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('customers/lists') }}" class="nav-link nav-active">
+                    <a href="{{ url('customers') }}" class="nav-link nav-active">
                         <i class="nav-icon fa-solid fa-users"></i></i>
                         <p>Customers</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('customers/contacts') }}" class="nav-link nav-active">
+                    <a href="{{ url('contacts') }}" class="nav-link nav-active">
                         <i class="nav-icon fa-solid fa-phone"></i>
                         <p>Contacts</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('customers/services') }}" class="nav-link nav-active">
+                    <a href="{{ url('services') }}" class="nav-link nav-active">
                         <i class="nav-icon fa-solid fa-screwdriver-wrench"></i></i>
                         <p>Services</p>
                     </a>

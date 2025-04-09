@@ -16,7 +16,7 @@
                         <div class="card-header">
                             <h4>Add New Customer</h4>
                         </div>
-                        <form action="{{ route('lists.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('customers.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -54,7 +54,7 @@
                                 {{-- button--}}
                                     
                                     <div class="form-group d-flex justify-content-between">
-                                        <a href="{{ url('customers/lists') }}" class="btn btn-secondary">Back</a>
+                                        <a href="{{ url('customers') }}" class="btn btn-secondary">Back</a>
                                         <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 

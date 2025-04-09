@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Customers;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ListCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class ListController extends Controller
+class CostumersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +24,10 @@ class ListController extends Controller
                 ->orWhere('phone', 'like', "%$search%");
         })
         ->orderByDesc('id')
-        ->paginate(10)
+        ->paginate(50)
         ->withQueryString();
         
-        return view('pages.customer.list.index', compact(['request', 'customers']));
+        return view('pages.costumers.index', compact(['request', 'customers']));
     }
 
     /**
@@ -40,7 +40,7 @@ class ListController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.list.create');
+        return view('pages.costumers.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class ListController extends Controller
 
         ListCustomer::create($validatedData);
 
-        return redirect('customers/lists');
+        return redirect('customers');
 
     }
 
@@ -72,7 +72,7 @@ class ListController extends Controller
      */
     public function show(ListCustomer $listCustomer)
     {
-        return view('pages.customer.list.show', compact('listCustomer'));
+        return view('pages.costumers.show', compact('listCustomer'));
     }
 
     /**
@@ -85,7 +85,7 @@ class ListController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.list.edit', compact('listCustomer'));
+        return view('pages.costumers.edit', compact('listCustomer'));
     }
 
     /**
@@ -107,7 +107,7 @@ class ListController extends Controller
 
         $listCustomer->update($validatedData);
 
-        return redirect('customers/lists');
+        return redirect('customers');
 
     }
 
@@ -122,6 +122,6 @@ class ListController extends Controller
 
         $listCustomer->delete();
 
-        return redirect('customers/lists');
+        return redirect('customers');
     }
 }

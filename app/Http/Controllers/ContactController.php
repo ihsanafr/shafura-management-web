@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customers;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactCustomer;
@@ -26,10 +26,10 @@ class ContactController extends Controller
                 ->orWhere('pic_phone', 'like', "%$search%");
         })
         ->orderByDesc('id')
-        ->paginate(10)
+        ->paginate(50)
         ->withQueryString();
 
-        return view('pages.customer.contact.index', compact(['request', 'contacts']));
+        return view('pages.contact.index', compact(['request', 'contacts']));
 
     }
 
@@ -43,7 +43,7 @@ class ContactController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.contact.create');
+        return view('pages.contact.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class ContactController extends Controller
 
         ContactCustomer::create($validatedData);
 
-        return redirect('customers/contacts');
+        return redirect('contacts');
 
     }
 
@@ -76,7 +76,7 @@ class ContactController extends Controller
      */
     public function show(ContactCustomer $contactCustomer)
     {
-        return view('pages.customer.contact.show', compact('contactCustomer'));
+        return view('pages.contact.show', compact('contactCustomer'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ContactController extends Controller
             abort(403);
         }
 
-        return view('pages.customer.contact.edit', compact('contactCustomer'));
+        return view('pages.contact.edit', compact('contactCustomer'));
     }
 
     /**
@@ -113,7 +113,7 @@ class ContactController extends Controller
 
         $contactCustomer->update($validatedData);
 
-        return redirect('customers/contacts');
+        return redirect('contacts');
 
     }
 
@@ -129,7 +129,7 @@ class ContactController extends Controller
 
         $contactCustomer->delete();
 
-        return redirect('customers/contacts');
+        return redirect('contacts');
 
     }
 }
