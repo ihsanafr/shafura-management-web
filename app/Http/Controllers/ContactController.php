@@ -67,7 +67,7 @@ class ContactController extends Controller
 
         ContactCustomer::create($validatedData);
 
-        return redirect('contacts');
+        return redirect('contacts')->with('success', 'Data berhasil dibuat.');
 
     }
 
@@ -113,7 +113,7 @@ class ContactController extends Controller
 
         $contactCustomer->update($validatedData);
 
-        return redirect('contacts');
+        return redirect('contacts')->with('success', 'Data berhasil diubah.');
 
     }
 
@@ -129,7 +129,7 @@ class ContactController extends Controller
 
         $contactCustomer->delete();
 
-        return redirect('contacts');
+        return redirect('contacts')->with('success', 'Data berhasil dihapus.');
 
     }
 }

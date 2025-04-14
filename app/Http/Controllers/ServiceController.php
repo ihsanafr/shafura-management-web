@@ -66,7 +66,7 @@ class ServiceController extends Controller
 
         ServiceCustomer::create($validatedData);
 
-        return redirect('services');
+        return redirect('services')->with('success', 'Data berhasil dibuat.');
 
     }
 
@@ -117,7 +117,7 @@ class ServiceController extends Controller
 
         $serviceCustomer->update($validatedData);
 
-        return redirect('services');
+        return redirect('services')->with('success', 'Data berhasil diubah.');
 
     }
 
@@ -133,7 +133,7 @@ class ServiceController extends Controller
 
         $serviceCustomer->delete();
 
-        return redirect('services');
+        return redirect('services')->with('success', 'Data berhasil dihapus.');
         
     }
 }
