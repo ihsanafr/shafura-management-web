@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+// use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -54,8 +56,9 @@ class UserController extends Controller
         ]);
 
         User::create($validatedData);
+        // session()->flash('success', 'Data berhasil dibuat.');
 
-        return redirect('users');
+        return redirect('users')->with('success', 'Data berhasil dibuat.');
     }
 
     /**
@@ -74,6 +77,9 @@ class UserController extends Controller
         Gate::authorize('admin');
 
         $user = User::findOrFail($id);
+
+        // session()->flash('success', 'Data berhasil diubah.');
+
         return view('pages.users.edit', compact('user'));
     }
 
@@ -96,7 +102,7 @@ class UserController extends Controller
 
         $user->update($validatedData);
 
-        return redirect('users');
+        return redirect('users')->with('success', 'Data berhasil diubah.');
     }
 
     /**
@@ -107,6 +113,10 @@ class UserController extends Controller
         Gate::authorize('admin');
 
         User::destroy($id);
-        return redirect('users');
+
+        // session()->flash('success', 'Data berhasil dihapus.');
+        // Alert::success('Berhasil', 'Data berhasil dihapus.');
+
+        return redirect('users')->with('success', 'Data berhasil dihapus.');
     }
 }

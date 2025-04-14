@@ -63,7 +63,7 @@ class CostumersController extends Controller
 
         ListCustomer::create($validatedData);
 
-        return redirect('customers');
+        return redirect('customers')->with('success', 'Data berhasil dibuat.');
 
     }
 
@@ -107,7 +107,7 @@ class CostumersController extends Controller
 
         $listCustomer->update($validatedData);
 
-        return redirect('customers');
+        return redirect('customers')->with('success', 'Data berhasil diubah.');
 
     }
 
@@ -122,6 +122,6 @@ class CostumersController extends Controller
 
         $listCustomer->delete();
 
-        return redirect('customers');
+        return redirect('customers')->with('success', 'Data berhasil dihapus.');
     }
 }

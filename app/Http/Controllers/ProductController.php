@@ -56,7 +56,7 @@ class ProductController extends Controller
 
         Product::create($validatedData);
 
-        return redirect('products');
+        return redirect('products')->with('success', 'Data berhasil dibuat.');
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductController extends Controller
 
         $product->update($validatedData);
 
-        return redirect('products');
+        return redirect('products')->with('success', 'Data berhasil diubah.');
     }
 
     /**
@@ -112,6 +112,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect('products');
+        return redirect('products')->with('success', 'Data berhasil dihapus.');
     }
 }
