@@ -3,10 +3,6 @@
 @section('main')
 <div class="main-content">
     <section class="section">
-        {{-- <div class="section-header">
-            <h1>Tambah User</h1>
-            
-        </div> --}}
 
         <div class="section-body">
 
@@ -15,7 +11,6 @@
                     <div class="card">
                         <div class="card-header row-auto d-flex justify-content-between">
                             <h4>Settings Account</h4>
-                            {{-- <a href="{{ route('logout') }}" class="btn btn-danger ml-auto">Logout</a> --}}
                         </div>
                         <form action="{{ route('settings.update', $users) }}" method="POST"
                             enctype="multipart/form-data">
@@ -78,7 +73,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary" id="confirmEdit">Yes, Save Changes</button>
+                <button type="submit" class="btn btn-primary" id="confirmEdit">Save Changes</button>
             </div>
         </div>
     </div>

@@ -20,8 +20,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Set color for events
         eventDidMount: function(info) {
-            info.el.style.backgroundColor = "cornflowerblue";
+            const type = info.event.extendedProps.type;
+            let color = getColorByType(type);
+            info.el.style.backgroundColor = color;
             info.el.style.color = "white";
+            info.el.style.border = color;
         },
 
         // Click date to add event
@@ -47,7 +50,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     calendar.render();
 
-    // Reset modal fields
+    //getting color by type
+    function getColorByType(type) {
+        const colors = {
+            PICKET: "#3498db",
+            PM: "#1abc9c",
+            KT: "#e67e22",
+            MEETING: "#9b59b6",
+            PROJECT: "#f1c40f",
+            CUTI: "#e74c3c",
+            TRAINING: "#34495e",
+            UPGRADE: "#2ecc71",
+            KDR: "#95a5a6",
+            INSTALL: "#16a085",
+            SAKIT: "#c0392b",
+        };
+        return colors[type] || "cornflowerblue";
+    }
+
+    //reset all the content inside modal form
     function resetModal() {
         $("#eventId").val("");
         $("#eventDate").val("");
@@ -73,9 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let eventId = $("#eventId").val();
         let eventTitle = $("#title").val().trim();
         let eventStartRaw = $("#eventDate").val();
-
-        // Fix: Ensure the date format is correct for MySQL
-        let eventStart = eventStartRaw.split("T")[0]; // Extract YYYY-MM-DD
+        let eventStart = eventStartRaw.split("T")[0];
 
         let eventData = {
             id: eventId,
@@ -95,15 +114,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (eventId) {
                     let existingEvent = calendar.getEventById(eventId);
                     if (existingEvent) {
-                        existingEvent.setProp("title", eventData.title);
-                        existingEvent.setDates(eventData.start);
-                        existingEvent.setExtendedProp("description", eventData
-                            .description);
-                        existingEvent.setExtendedProp("type", eventData.type);
+                        existingEvent.remove();
                     }
-                } else {
-                    calendar.addEvent(response);
                 }
+
+                calendar.addEvent({
+                    id: response.id || eventId,
+                    title: eventData.title,
+                    start: eventData.start,
+                    extendedProps: {
+                        type: eventData.type,
+                        description: eventData.description,
+                    }
+                });
+
                 $("#calendarModal").modal("hide");
             },
             error: function(xhr) {

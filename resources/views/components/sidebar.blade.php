@@ -60,37 +60,6 @@
                         <p>Services</p>
                     </a>
                 </li>
-
-                {{-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-users"></i>
-                        <p>
-                            Customers
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ url('customers/lists') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Lists</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('customers/services') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Services</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('customers/contacts') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Contacts</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
-
                 <li class="nav-item">
                     <a href="{{ url('agenda') }}" class="nav-link nav-active">
                         <i class="nav-icon fa-solid fa-calendar-days"></i>
