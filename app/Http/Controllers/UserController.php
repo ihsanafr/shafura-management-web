@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         Gate::authorize('admin');
-        
+
         $search = $request->search;
 
         $search = $request->search;
@@ -27,7 +27,7 @@ class UserController extends Controller
         ->orderByDesc('id')
         ->paginate(50)
         ->withQueryString();
-        
+
         return view('pages.users.index', compact(['request', 'users']));
     }
 
@@ -92,7 +92,7 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email',
             'role' => 'required'
         ]);
 
