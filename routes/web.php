@@ -20,23 +20,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('customers', CostumersController::class)->parameters([
         'customers' => 'listCustomer'
     ]);
-    
+
     Route::resource('services', ServiceController::class)->parameters([
         'services' => 'serviceCustomer'
     ]);
-    
+
     Route::resource('contacts', ContactController::class)->parameters([
         'contacts' => 'contactCustomer'
-    ]);    
+    ]);
 
-    Route::get('agenda', function () {
-        return view('pages.agenda.index');
+    Route::prefix('agenda')->group(function () {
+        Route::get('/', [CalendarController::class, 'index']);
+        Route::post('store', [CalendarController::class, 'store']);
+        Route::post('update', [CalendarController::class, 'update']);
+        Route::post('delete', [CalendarController::class, 'destroy']);
     });
-
-    Route::get('/events', [CalendarController::class, 'index']);
-    Route::post('/events/store', [CalendarController::class, 'store']);
-    Route::post('/events/update', [CalendarController::class, 'update']);
-    Route::post('/events/delete', [CalendarController::class, 'destroy']);
 
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('settings/{user}', [SettingsController::class, 'update'])->name('settings.update');

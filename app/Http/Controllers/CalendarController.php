@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event; // Ensure you have an Event model
+use Illuminate\Support\Facades\Gate;
 
 class CalendarController extends Controller
 {
     // Fetch all events
     public function index()
     {
-        return response()->json(Event::all());
+        $events = Event::all();
+        return view('pages.agenda.index', compact('events'));
     }
 
     // Store a new event
