@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Illuminate\Http\RedirectResponse;
 
@@ -92,7 +93,7 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
             'role' => 'required'
         ]);
 
