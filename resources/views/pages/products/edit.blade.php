@@ -5,11 +5,11 @@
     <section class="section">
         {{-- <div class="section-header">
             <h1>Tambah User</h1>
-            
+
         </div> --}}
 
         <div class="section-body">
-            
+
             <div class="row">
                 <div class="col-12 ">
                     <div class="card">
@@ -41,7 +41,7 @@
                                     <input type="text" name="vendor_url"
                                         class="form-control" value="{{ old('vendor_url', $product->vendor_url) }}">
                                         @error('vendor_url')
-                                    <div class="text-danger">{{ $message }}</div>
+                                    <div class="text-danger">{{ __('product.regex') }}</div>
                                     @enderror
                                 </div>
                                 {{-- button submit --}}
@@ -53,7 +53,7 @@
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>

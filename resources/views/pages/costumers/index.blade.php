@@ -3,7 +3,7 @@
 @section('main')
     <div class="main-content">
         <section class="section">
-            
+
             <div class="section-body">
                 <div class="row mt-4">
                     <div class="col-12">
@@ -48,7 +48,7 @@
                                             <tr>
                                                 <td>{{ $customer->name }}</td>
                                                 <td>{{ $customer->customer_code }}</td>
-                                                <td>{{ $customer->website_url }}</td>
+                                                <td><a href="{{ $customer->website_url }}" target="_blank">{{ $customer->website_url }}</a></td>
                                                 <td>{{ $customer->phone }}</td>
                                                 <td>
                                                     <div class="btn-group">

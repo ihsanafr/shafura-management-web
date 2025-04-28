@@ -5,11 +5,11 @@
     <section class="section">
         {{-- <div class="section-header">
             <h1>Tambah User</h1>
-            
+
         </div> --}}
 
         <div class="section-body">
-            
+
             <div class="row">
                 <div class="col-12 ">
                     <div class="card">
@@ -40,7 +40,7 @@
                                     <input type="text" name="website_url"
                                         class="form-control" placeholder="Customer Website">
                                         @error('website_url')
-                                    <div class="text-danger">{{ $message }}</div>
+                                    <div class="text-danger">{{ __('customer.regex') }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
@@ -52,18 +52,18 @@
                                     @enderror
                                 </div>
                                 {{-- button--}}
-                                    
+
                                     <div class="form-group d-flex justify-content-between">
                                         <a href="{{ url('customers') }}" class="btn btn-secondary">Back</a>
                                         <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
-                                
-                                
+
+
                             </div>
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
