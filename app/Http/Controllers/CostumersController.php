@@ -26,7 +26,7 @@ class CostumersController extends Controller
         ->orderByDesc('id')
         ->paginate(50)
         ->withQueryString();
-        
+
         return view('pages.costumers.index', compact(['request', 'customers']));
     }
 
@@ -56,7 +56,7 @@ class CostumersController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string',
             'customer_code' => 'required',
-            'website_url' => 'required',
+            'website_url' => 'required|regex:/^https?:\/\/.+$/i',
             'phone' => 'required'
         ]);
 
@@ -101,7 +101,7 @@ class CostumersController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string',
             'customer_code' => 'required',
-            'website_url' => 'required',
+            'website_url' => 'required|regex:/^https?:\/\/.+$/i',
             'phone' => 'required'
         ]);
 

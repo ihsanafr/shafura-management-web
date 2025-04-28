@@ -5,7 +5,7 @@
     <section class="section">
         {{-- <div class="section-header">
             <h1>Tambah User</h1>
-            
+
         </div> --}}
 
         <div class="section-body">
@@ -44,7 +44,7 @@
                                     <input type="text" name="website_url" class="form-control"
                                         value="{{ old('website_url', $listCustomer->website_url) }}">
                                         @error('website_url')
-                                    <div class="text-danger">{{ $message }}</div>
+                                    <div class="text-danger">{{ __('customer.regex') }}</div>
                                     @enderror
                                 </div>
 
