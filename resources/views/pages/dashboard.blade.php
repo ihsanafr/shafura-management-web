@@ -39,4 +39,10 @@
             </div>
         </div>
     </div>
+    @env('local')
+    <form action="{{ route('mail') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Send mail</button>
+    </form>
+    @endenv
 @endsection

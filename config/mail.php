@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'resend'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +63,7 @@ return [
 
         'resend' => [
             'transport' => 'resend',
+            'resend_to' => env('MAIL_RESEND_TO')
         ],
 
         'sendmail' => [

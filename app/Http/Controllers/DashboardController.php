@@ -6,7 +6,8 @@ use App\Models\ContactCustomer;
 use App\Models\ListCustomer;
 use App\Models\Product;
 use App\Models\ServiceCustomer;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class DashboardController extends Controller
 {
@@ -20,5 +21,14 @@ class DashboardController extends Controller
         ];
 
         return view('pages.dashboard', compact('count'));
+    }
+
+    public function sendEmail() {
+
+        //send mail
+        Mail::to(config('mail.mailers.resend.resend_to'))->send(new TestMail());
+
+        return redirect('/')->with('success', 'email already sent');
+
     }
 }
