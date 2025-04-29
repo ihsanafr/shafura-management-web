@@ -11,7 +11,7 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Services</h3>
                                 @cannot('staff')
-                                <a href="{{ route('services.create') }}" class="btn btn-primary btn-sm">+ Add New Services</a> 
+                                <a href="{{ route('services.create') }}" class="btn btn-primary btn-sm">+ Add New Services</a>
                                 @endcannot
                             </div>
 
