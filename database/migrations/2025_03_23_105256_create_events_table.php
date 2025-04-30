@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->dateTime('start');
+            $table->date('start');
             $table->string('type')->default('PICKET');
             $table->text('description')->nullable();
             $table->timestamps();
