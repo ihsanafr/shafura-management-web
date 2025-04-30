@@ -186,8 +186,7 @@
 
                 let eventId = $("#eventId").val();
                 let eventTitle = $("#title").val().trim();
-                let eventStartRaw = $("#eventDate").val();
-                let eventStart = eventStartRaw.split("T")[0];
+                let eventStart = $("#eventDate").val();
 
                 let eventData = {
                     id: eventId,
