@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CostumersController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeletedController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
@@ -52,4 +53,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     if(app()->environment('local')){
         Route::post('send-test-mail', [DashboardController::class, 'sendEmail'])->name('mail');
     }
+
+    Route::resource('restore', DeletedController::class);
 });
