@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('vendor_name');
             $table->string('vendor_url');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

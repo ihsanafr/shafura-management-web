@@ -53,6 +53,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     if(app()->environment('local')){
         Route::post('send-test-mail', [DashboardController::class, 'sendEmail'])->name('mail');
     }
-
-    Route::resource('restore', DeletedController::class);
 });
