@@ -132,4 +132,55 @@ class ContactController extends Controller
         return redirect('contacts')->with('success', 'Data berhasil dihapus.');
 
     }
+
+    /**
+     * Displaying soft deleted Contact.
+     */
+    public function indexDeleted()
+    {
+
+        $deletedContacts = ContactCustomer::onlyTrashed()->get();
+
+        return view('pages.contact.deleted.index', compact('deletedContacts'));
+    }
+
+    /**
+     * Show a single soft deleted contact by ID.
+     */
+    public function showDeleted(string $id)
+    {
+        $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
+
+        return view('pages.contact.deleted.show', compact('Contact'));
+    }
+
+    /**
+     * Fully delete specific contact from database.
+     */
+    public function fullyDelete(string $id)
+    {
+        ContactCustomer::forceDestroy($id);
+
+        return redirect('contacts/deleted')->with('success', 'Contact permanently deleted.');
+    }
+
+    /**
+     * Restore deleted specific contact from database.
+     */
+    public function restoreDeleted(string $id)
+    {
+        $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
+        $contact->restore();
+
+        return redirect('contacts/deleted')->with('success', 'Contact successfully restored');
+    }
+
+    /**
+     * Delete All contact in soft deletes.
+     */
+    public function deleteAll()
+    {
+        ContactCustomer::onlyTrashed()->forceDelete();
+        return redirect('contacts/deleted')->with('success', 'All contacts are successfully deleted');
+    }
 }

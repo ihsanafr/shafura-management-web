@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('customer_code');
             $table->string('website_url');
             $table->string('phone');
+            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->string('products');
             $table->date('start_date');
             $table->date('end_date');
+            $table->softDeletes();
         });
 
         Schema::create('contact_customers', function (Blueprint $table) {
@@ -38,9 +40,10 @@ return new class extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('pic_phone');
+            $table->softDeletes();
             $table->timestamps();
         });
-        
+
     }
 
     /**

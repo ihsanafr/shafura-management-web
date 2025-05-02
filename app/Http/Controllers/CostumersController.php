@@ -124,4 +124,55 @@ class CostumersController extends Controller
 
         return redirect('customers')->with('success', 'Data berhasil dihapus.');
     }
+
+    /**
+     * Displaying soft deleted Customer.
+     */
+    public function indexDeleted()
+    {
+
+        $deletedCustomers = ListCustomer::onlyTrashed()->get();
+
+        return view('pages.costumers.deleted.index', compact('deletedCustomers'));
+    }
+
+    /**
+     * Show a single soft deleted customer by ID.
+     */
+    public function showDeleted(string $id)
+    {
+        $customer = ListCustomer::onlyTrashed()->findOrFail($id);
+
+        return view('pages.costumers.deleted.show', compact('Customer'));
+    }
+
+    /**
+     * Fully delete specific customer from database.
+     */
+    public function fullyDelete(string $id)
+    {
+        ListCustomer::forceDestroy($id);
+
+        return redirect('customers/deleted')->with('success', 'Customer permanently deleted.');
+    }
+
+    /**
+     * Restore deleted specific customer from database.
+     */
+    public function restoreDeleted(string $id)
+    {
+        $customer = ListCustomer::onlyTrashed()->findOrFail($id);
+        $customer->restore();
+
+        return redirect('customers/deleted')->with('success', 'Customer successfully restored');
+    }
+
+    /**
+     * Delete All customer in soft deletes.
+     */
+    public function deleteAll()
+    {
+        ListCustomer::onlyTrashed()->forceDelete();
+        return redirect('customers/deleted')->with('success', 'All customers are successfully deleted');
+    }
 }

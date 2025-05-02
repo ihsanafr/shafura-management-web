@@ -31,15 +31,42 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Products page
     Route::resource('products', ProductController::class);
 
+    //Deleted customers page
+    Route::prefix('customers/deleted')->group(function () {
+        Route::get('/', [CostumersController::class, 'indexDeleted'])->name('customers.deleted');
+        Route::get('/{trashedCustomer}', [CostumersController::class, 'showDeleted'])->name('customers.deleted.show');
+        Route::delete('/{trashedCustomer}', [CostumersController::class, 'fullyDelete'])->name('customers.deleted.delete');
+        Route::post('/{trashedCustomer}', [CostumersController::class, 'restoreDeleted'])->name('customers.deleted.restore');
+        Route::delete('/', [CostumersController::class, 'deleteAll'])->name('customers.deleted.deleteAll');
+    });
+
     //Customers page
     Route::resource('customers', CostumersController::class)->parameters([
         'customers' => 'listCustomer'
     ]);
 
+    //Deleted services page
+    Route::prefix('services/deleted')->group(function () {
+        Route::get('/', [ServiceController::class, 'indexDeleted'])->name('services.deleted');
+        Route::get('/{trashedService}', [ServiceController::class, 'showDeleted'])->name('services.deleted.show');
+        Route::delete('/{trashedService}', [ServiceController::class, 'fullyDelete'])->name('services.deleted.delete');
+        Route::post('/{trashedService}', [ServiceController::class, 'restoreDeleted'])->name('services.deleted.restore');
+        Route::delete('/', [ServiceController::class, 'deleteAll'])->name('services.deleted.deleteAll');
+    });
+
     //Service page
     Route::resource('services', ServiceController::class)->parameters([
         'services' => 'serviceCustomer'
     ]);
+
+    //Deleted contacts page
+    Route::prefix('contacts/deleted')->group(function () {
+        Route::get('/', [ContactController::class, 'indexDeleted'])->name('contacts.deleted');
+        Route::get('/{trashedContact}', [ContactController::class, 'showDeleted'])->name('contacts.deleted.show');
+        Route::delete('/{trashedContact}', [ContactController::class, 'fullyDelete'])->name('contacts.deleted.delete');
+        Route::post('/{trashedContact}', [ContactController::class, 'restoreDeleted'])->name('contacts.deleted.restore');
+        Route::delete('/', [ContactController::class, 'deleteAll'])->name('contacts.deleted.deleteAll');
+    });
 
     //Contacts page
     Route::resource('contacts', ContactController::class)->parameters([

@@ -146,7 +146,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Restore deleted specific product from database
+     * Restore deleted specific product from database.
      */
     public function restoreDeleted(string $id)
     {
@@ -156,6 +156,9 @@ class ProductController extends Controller
         return redirect('products/deleted')->with('success', 'Product successfully restored');
     }
 
+    /**
+     * Delete All product in soft deletes.
+     */
     public function deleteAll()
     {
         Product::onlyTrashed()->forceDelete();

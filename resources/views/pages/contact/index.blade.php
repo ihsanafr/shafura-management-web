@@ -11,15 +11,17 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Contacts</h3>
                                 @cannot('staff')
-                                <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add New Contact</a>  
+                                    <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add new contact</a>
                                 @endcannot
+                                <a href="{{ route('contacts.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
+                                    contacts</a>
                             </div>
 
                             <div class="m-3">
                                 <form method="GET">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="search"
-                                            placeholder="Search anything" value="">
+                                            placeholder="Search anything">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="submit">Search</button>
                                         </div>
@@ -61,11 +63,15 @@
                                                                     class="fa-solid fa-eye"></i></a>
 
                                                             @cannot('staff')
-                                                                <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                                <a href="{{ route('contacts.edit', $contact) }}"
+                                                                    class="btn btn-link text-primary"><i
+                                                                        class="fa-solid fa-pen-to-square"></i></a>
                                                                 @cannot('sales')
                                                                     <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $contact->id }}').submit();"
-                                                                        class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
-                                                                    <form action="{{ route('contacts.destroy', $contact) }}" id="delete-form-{{ $contact->id }}" method="POST">
+                                                                        class="btn btn-link text-danger"><i
+                                                                            class="fa-solid fa-trash"></i></a>
+                                                                    <form action="{{ route('contacts.destroy', $contact) }}"
+                                                                        id="delete-form-{{ $contact->id }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     </form>
@@ -80,9 +86,13 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="float-right">
-                                    {{ $contacts->links() }}
-                                </div>
+                                @if ($contacts->hasPages())
+                                    <div class="float-right">
+                                        <nav>
+                                            {{ $contacts->links() }}
+                                        </nav>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
