@@ -23,8 +23,10 @@
                                 @cannot('staff')
                                     <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Add new product</a>
                                 @endcannot
+                                @can('admin')
                                 <a href="{{ route('products.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
                                     products</a>
+                                @endcan
                             </div>
 
 

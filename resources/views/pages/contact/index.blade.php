@@ -13,8 +13,10 @@
                                 @cannot('staff')
                                     <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-sm">+ Add new contact</a>
                                 @endcannot
+                                @can('admin')
                                 <a href="{{ route('contacts.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
                                     contacts</a>
+                                @endcan
                             </div>
 
                             <div class="m-3">

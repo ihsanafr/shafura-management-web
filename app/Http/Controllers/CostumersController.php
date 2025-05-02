@@ -130,6 +130,7 @@ class CostumersController extends Controller
      */
     public function indexDeleted()
     {
+        Gate::authorize('admin');
 
         $deletedCustomers = ListCustomer::onlyTrashed()->get();
 
@@ -141,6 +142,8 @@ class CostumersController extends Controller
      */
     public function showDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $customer = ListCustomer::onlyTrashed()->findOrFail($id);
 
         return view('pages.costumers.deleted.show', compact('Customer'));
@@ -151,6 +154,8 @@ class CostumersController extends Controller
      */
     public function fullyDelete(string $id)
     {
+        Gate::authorize('admin');
+
         ListCustomer::forceDestroy($id);
 
         return redirect('customers/deleted')->with('success', 'Customer permanently deleted.');
@@ -161,6 +166,8 @@ class CostumersController extends Controller
      */
     public function restoreDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $customer = ListCustomer::onlyTrashed()->findOrFail($id);
         $customer->restore();
 
@@ -172,6 +179,8 @@ class CostumersController extends Controller
      */
     public function deleteAll()
     {
+        Gate::authorize('admin');
+
         ListCustomer::onlyTrashed()->forceDelete();
         return redirect('customers/deleted')->with('success', 'All customers are successfully deleted');
     }

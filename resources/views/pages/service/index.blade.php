@@ -27,9 +27,11 @@
                                 <h3 class="mr-3">Services</h3>
                                 @cannot('staff')
                                     <a href="{{ route('services.create') }}" class="btn btn-primary btn-sm">+ Add new services</a>
-                                    <a href="{{ route('services.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
-                                        services</a>
                                 @endcannot
+                                @can('admin')
+                                <a href="{{ route('services.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
+                                    services</a>
+                                @endcan
                             </div>
 
                             <div class="m-3">

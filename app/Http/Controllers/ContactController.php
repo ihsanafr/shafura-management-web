@@ -138,6 +138,7 @@ class ContactController extends Controller
      */
     public function indexDeleted()
     {
+        Gate::authorize('admin');
 
         $deletedContacts = ContactCustomer::onlyTrashed()->get();
 
@@ -149,6 +150,8 @@ class ContactController extends Controller
      */
     public function showDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
 
         return view('pages.contact.deleted.show', compact('Contact'));
@@ -159,6 +162,8 @@ class ContactController extends Controller
      */
     public function fullyDelete(string $id)
     {
+        Gate::authorize('admin');
+
         ContactCustomer::forceDestroy($id);
 
         return redirect('contacts/deleted')->with('success', 'Contact permanently deleted.');
@@ -169,6 +174,8 @@ class ContactController extends Controller
      */
     public function restoreDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
         $contact->restore();
 
@@ -180,6 +187,8 @@ class ContactController extends Controller
      */
     public function deleteAll()
     {
+        Gate::authorize('admin');
+
         ContactCustomer::onlyTrashed()->forceDelete();
         return redirect('contacts/deleted')->with('success', 'All contacts are successfully deleted');
     }

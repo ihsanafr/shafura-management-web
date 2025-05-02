@@ -119,6 +119,7 @@ class ProductController extends Controller
      */
     public function indexDeleted()
     {
+        Gate::authorize('admin');
 
         $deletedProducts = Product::onlyTrashed()->get();
 
@@ -130,6 +131,8 @@ class ProductController extends Controller
      */
     public function showDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $product = Product::onlyTrashed()->findOrFail($id);
 
         return view('pages.products.deleted.show', compact('product'));
@@ -140,6 +143,8 @@ class ProductController extends Controller
      */
     public function fullyDelete(string $id)
     {
+        Gate::authorize('admin');
+
         Product::forceDestroy($id);
 
         return redirect('products/deleted')->with('success', 'Product permanently deleted.');
@@ -150,6 +155,8 @@ class ProductController extends Controller
      */
     public function restoreDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $product = Product::onlyTrashed()->findOrFail($id);
         $product->restore();
 
@@ -161,6 +168,8 @@ class ProductController extends Controller
      */
     public function deleteAll()
     {
+        Gate::authorize('admin');
+        
         Product::onlyTrashed()->forceDelete();
         return redirect('products/deleted')->with('success', 'All products are successfully deleted');
     }

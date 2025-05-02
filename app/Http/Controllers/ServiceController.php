@@ -143,6 +143,7 @@ class ServiceController extends Controller
      */
     public function indexDeleted()
     {
+        Gate::authorize('admin');
 
         $deletedServices = ServiceCustomer::onlyTrashed()->get();
 
@@ -154,6 +155,8 @@ class ServiceController extends Controller
      */
     public function showDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $service = ServiceCustomer::onlyTrashed()->findOrFail($id);
 
         return view('pages.service.deleted.show', compact('service'));
@@ -164,6 +167,8 @@ class ServiceController extends Controller
      */
     public function fullyDelete(string $id)
     {
+        Gate::authorize('admin');
+
         ServiceCustomer::forceDestroy($id);
 
         return redirect('services/deleted')->with('success', 'Service permanently deleted.');
@@ -174,6 +179,8 @@ class ServiceController extends Controller
      */
     public function restoreDeleted(string $id)
     {
+        Gate::authorize('admin');
+
         $customer = ServiceCustomer::onlyTrashed()->findOrFail($id);
         $customer->restore();
 
@@ -185,6 +192,8 @@ class ServiceController extends Controller
      */
     public function deleteAll()
     {
+        Gate::authorize('admin');
+
         ServiceCustomer::onlyTrashed()->forceDelete();
         return redirect('services/deleted')->with('success', 'All services are successfully deleted');
     }

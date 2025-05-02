@@ -29,8 +29,10 @@
                                     <a href="{{ route('customers.create') }}" class="btn btn-primary btn-sm">+ Add new
                                         customer</a>
                                 @endcannot
+                                @can('admin')
                                 <a href="{{ route('customers.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
                                     customers</a>
+                                @endcan
                             </div>
 
                             <div class="m-3">
