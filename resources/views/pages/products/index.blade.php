@@ -13,8 +13,9 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Products</h3>
                                 @cannot('staff')
-                                    <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Add New Product</a>
+                                    <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Add new product</a>
                                 @endcannot
+                                <a href="{{ route('products.deleted') }}" class="btn btn-danger btn-sm">Restore deleted products</a>
                             </div>
 
 

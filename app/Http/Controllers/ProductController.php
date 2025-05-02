@@ -9,11 +9,10 @@ use Illuminate\Support\Facades\Gate;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a paginated list of products with optional search filtering.
      */
     public function index(Request $request)
     {
-
         $search = $request->search;
 
         $products = Product::where(function ($query) use ($search) {
@@ -22,19 +21,18 @@ class ProductController extends Controller
                 ->orWhere('vendor_name', 'like', "%$search%")
                 ->orWhere('vendor_url', 'like', "%$search%");
         })
-        ->orderByDesc('id')
-        ->paginate(50)
-        ->withQueryString();
+            ->orderByDesc('id')
+            ->paginate(50)
+            ->withQueryString();
 
         return view('pages.products.index', compact(['request', 'products']));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Showing the create products page with authorization.
      */
     public function create()
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
@@ -43,10 +41,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created product in database with validation and authorization.
      */
     public function store(Request $request)
     {
+        if (Gate::check('staff')) {
+            abort(403);
+        }
 
         $validatedData = $request->validate([
             'name' => 'required',
@@ -60,7 +61,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display or show the specified product.
      */
     public function show(Product $product)
     {
@@ -68,11 +69,10 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display edit page for the specified product with validation.
      */
     public function edit(Product $product)
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
@@ -81,11 +81,10 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified product with validation and role restriction.
      */
     public function update(Request $request, Product $product)
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
@@ -102,7 +101,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a specified product after authorization check.
      */
     public function destroy(Product $product)
     {
@@ -113,5 +112,53 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect('products')->with('success', 'Data berhasil dihapus.');
+    }
+
+    /**
+     * Displaying soft deleted product.
+     */
+    public function indexDeleted()
+    {
+
+        $deletedProducts = Product::onlyTrashed()->get();
+
+        return view('pages.products.deleted.index', compact('deletedProducts'));
+    }
+
+    /**
+     * Show a single soft deleted product by ID.
+     */
+    public function showDeleted(string $id)
+    {
+        $product = Product::onlyTrashed()->findOrFail($id);
+
+        return view('pages.products.deleted.show', compact('product'));
+    }
+
+    /**
+     * Fully delete specific product from database.
+     */
+    public function fullyDelete(string $id)
+    {
+        Product::forceDestroy($id);
+
+        return redirect('products/deleted')->with('success', 'Product permanently deleted.');
+    }
+
+    /**
+     * Restore deleted specific product from database
+     */
+    public function restoreDeleted(string $id)
+    {
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $product->restore();
+
+        return redirect('products/deleted')->with('success', 'Product successfully restored');
+    }
+
+    public function deleteAll()
+    {
+        Product::onlyTrashed()->forceDelete();
+        return redirect('products/deleted')->with('success', 'All products are successfully deleted');
     }
 }
