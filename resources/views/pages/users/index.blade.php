@@ -1,11 +1,21 @@
 @extends('layouts.app')
 
+{{--
+    View: Users Index Page
+
+    Description:
+    - Lists all users in a paginated table.
+    - Supports searching by query using GET method.
+    - "Add New User" button allows creation of a new user.
+    - Displays user name, email, and role.
+    - Action buttons include edit and delete options.
+    - Deletes are submitted via hidden POST forms with CSRF protection.
+    - Pagination links are shown at the bottom-right of the table.
+--}}
+
 @section('main')
     <div class="main-content">
         <section class="section">
-            {{-- <div class="section-header">
-            <h1>Products Management</h1>
-        </div> --}}
             <div class="section-body">
                 <div class="row mt-4">
                     <div class="col-12">
@@ -45,25 +55,21 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                             <tr>
-                                                
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ __('roles.' . $user->role) }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link text-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $user->id }}').submit();" class="btn btn-link text-danger"><i class="fa-solid fa-trash"></i></a>
+                                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link text-primary" title="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $user->id }}').submit();" class="btn btn-link text-danger" title="delete"><i class="fa-solid fa-trash"></i></a>
                                                         <form action="{{ route('users.destroy', $user->id) }}" id="delete-form-{{ $user->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
                                                     </div>
                                                 </td>
-                                            </tr> 
-                                            @endforeach
                                             </tr>
-
-                                            
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

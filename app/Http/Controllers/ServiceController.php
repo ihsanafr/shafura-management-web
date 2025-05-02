@@ -22,7 +22,7 @@ class ServiceController extends Controller
                 ->orWhere('company_name', 'like', "%$search%")
                 ->orWhere('title', 'like', "%$search%")
                 ->orWhere('products', 'like', "%$search%");
-                
+
         })
         ->orderByDesc('id')
         ->paginate(50)
@@ -134,6 +134,67 @@ class ServiceController extends Controller
         $serviceCustomer->delete();
 
         return redirect('services')->with('success', 'Data berhasil dihapus.');
-        
+
+    }
+
+
+    /**
+     * Displaying soft deleted Services.
+     */
+    public function indexDeleted()
+    {
+        Gate::authorize('admin');
+
+        $deletedServices = ServiceCustomer::onlyTrashed()->get();
+
+        return view('pages.service.deleted.index', compact('deletedServices'));
+    }
+
+    /**
+     * Show a single soft deleted service by ID.
+     */
+    public function showDeleted(string $id)
+    {
+        Gate::authorize('admin');
+
+        $service = ServiceCustomer::onlyTrashed()->findOrFail($id);
+
+        return view('pages.service.deleted.show', compact('service'));
+    }
+
+    /**
+     * Fully delete specific customer from database.
+     */
+    public function fullyDelete(string $id)
+    {
+        Gate::authorize('admin');
+
+        ServiceCustomer::forceDestroy($id);
+
+        return redirect('services/deleted')->with('success', 'Service permanently deleted.');
+    }
+
+    /**
+     * Restore deleted specific customer from database.
+     */
+    public function restoreDeleted(string $id)
+    {
+        Gate::authorize('admin');
+
+        $customer = ServiceCustomer::onlyTrashed()->findOrFail($id);
+        $customer->restore();
+
+        return redirect('services/deleted')->with('success', 'Service successfully restored');
+    }
+
+    /**
+     * Delete All customer in soft deletes.
+     */
+    public function deleteAll()
+    {
+        Gate::authorize('admin');
+
+        ServiceCustomer::onlyTrashed()->forceDelete();
+        return redirect('services/deleted')->with('success', 'All services are successfully deleted');
     }
 }

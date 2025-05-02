@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
+{{--
+    View: Products Index Page
+
+    Description:
+    - Lists all products with pagination.
+    - Includes search functionality using GET method.
+    - Shows product details: code (ID), name, vendor name, vendor URL.
+    - Action buttons: show, edit, delete (with role-based access control).
+    - Restore deleted products button visible for authorized users.
+--}}
+
 @section('main')
     <div class="main-content">
         <section class="section">
-            {{-- <div class="section-header">
-            <h1>Products Management</h1>
-        </div> --}}
             <div class="section-body">
                 <div class="row mt-4">
                     <div class="col-12">
@@ -15,7 +23,10 @@
                                 @cannot('staff')
                                     <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">+ Add new product</a>
                                 @endcannot
-                                <a href="{{ route('products.deleted') }}" class="btn btn-danger btn-sm">Restore deleted products</a>
+                                @can('admin')
+                                <a href="{{ route('products.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
+                                    products</a>
+                                @endcan
                             </div>
 
 
@@ -52,7 +63,7 @@
                                                     <td>{{ $product->id }}</td>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->vendor_name }}</td>
-                                                    <td><a href="{{ $product->vendor_url }}"
+                                                    <td><a href="{{ $product->vendor_url }}" rel="noopener noreferrer"
                                                             target="_blank">{{ $product->vendor_url }}</a></td>
                                                     <td>
                                                         <div class="btn-group">
@@ -81,12 +92,13 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="float-right">
-                                    <nav>
-
-                                        {{ $products->links() }}
-                                    </nav>
-                                </div>
+                                @if ($products->hasPages())
+                                    <div class="float-right">
+                                        <nav>
+                                            {{ $products->links() }}
+                                        </nav>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
