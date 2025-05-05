@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('settings.index') }}" class="nav-link nav-active">
+                    <a href="{{ route('settings.show') }}" class="nav-link nav-active">
                         <i class="nav-icon fa-solid fa-gear"></i>
                         <p>Settings</p>
                     </a>

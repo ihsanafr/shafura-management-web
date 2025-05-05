@@ -6,35 +6,37 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 use function PHPUnit\Framework\isEmpty;
 
 class SettingsController extends Controller
 {
-    public function index()
+    public function show()
     {
-        $users = Auth::user();
-        return view('pages.settings.index', compact('users'));
+        $user = Auth::user();
+        return view('pages.settings.index', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function edit()
     {
-        if (Auth::id() !== $user->id) {
-            abort(403, 'Unauthorized action.');
-        }
+        $user = Auth::user();
+        return view('pages.settings.edit', compact('user'));
+    }
 
+    public function update(Request $request)
+    {
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id
+            'email' => ['required', 'email', 'unique:users,email,' . Auth::id()],
         ]);
 
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         }
 
-        $user->update($validatedData);
+        Auth::user()->update($validatedData);
 
         return redirect('settings')->with('success', 'Profile updated successfully.');
     }
 }
-
