@@ -21,4 +21,4 @@ Schedule::call(function() {
     ContactCustomer::onlyTrashed()->forceDelete();
     ServiceCustomer::onlyTrashed()->forceDelete();
 
-})->everyThirtySeconds();
+})->sundays();
