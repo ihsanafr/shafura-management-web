@@ -82,8 +82,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //Settings page
-    Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::put('settings/{user}', [SettingsController::class, 'update'])->name('settings.update');
+    Route::singleton('settings', SettingsController::class);
 
     //send email (test only)
     if (app()->environment('local')) {
