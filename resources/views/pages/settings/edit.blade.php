@@ -88,36 +88,4 @@
             </div>
         </section>
     </div>
-
-
-
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const originalName = "{{ $user->name }}";
-            const originalEmail = "{{ $user->email }}";
-
-            const nameInput = document.querySelector('input[name="name"]');
-            const emailInput = document.querySelector('input[name="email"]');
-            const passwordInput = document.querySelector('input[name="password"]');
-            const editBtn = document.getElementById('editBtn');
-            const confirmEdit = document.getElementById('confirmEdit');
-
-            editBtn.addEventListener('click', function() {
-                const nameChanged = nameInput.value !== originalName;
-                const emailChanged = emailInput.value !== originalEmail;
-                const passwordChanged = passwordInput.value !== "";
-
-                if (nameChanged || emailChanged || passwordChanged) {
-                    $('#editConfirmModal').modal('show');
-                } else {
-                    alert("No changes detected.");
-                }
-            });
-
-            confirmEdit.addEventListener('click', function() {
-                // Kirim form secara manual setelah konfirmasi
-                nameInput.form.submit();
-            });
-        });
-    </script> --}}
 @endsection

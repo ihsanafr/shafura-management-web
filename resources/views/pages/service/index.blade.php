@@ -29,8 +29,8 @@
                                     <a href="{{ route('services.create') }}" class="btn btn-primary btn-sm">+ Add new services</a>
                                 @endcannot
                                 @can('admin')
-                                <a href="{{ route('services.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
-                                    services</a>
+                                    <a href="{{ route('services.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
+                                        services</a>
                                 @endcan
                             </div>
 
@@ -83,13 +83,39 @@
                                                                     class="btn btn-link text-primary" title="edit"><i
                                                                         class="fa-solid fa-pen-to-square"></i></a>
                                                                 @cannot('sales')
-                                                                    <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $service->id }}').submit();"
+                                                                    <a data-toggle="modal" data-target="#deleteModal"
                                                                         class="btn btn-link text-danger" title="delete"><i
                                                                             class="fa-solid fa-trash"></i></a>
                                                                     <form action="{{ route('services.destroy', $service) }}"
                                                                         id="delete-form-{{ $service->id }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
+                                                                        <!-- Modal Confimation -->
+                                                                        <div class="modal fade" id="deleteModal" tabindex="-1"
+                                                                            aria-labelledby="editConfirmLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title"
+                                                                                            id="editConfirmLabel">Confirmation!</h5>
+                                                                                        <button type="button" class="close"
+                                                                                            data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        Are you sure you want to delete this?
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal">Cancel</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Delete</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </form>
                                                                 @endcannot
                                                             @endcannot
