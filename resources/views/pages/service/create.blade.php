@@ -5,7 +5,7 @@
     <section class="section">
         {{-- <div class="section-header">
             <h1>Tambah User</h1>
-            
+
         </div> --}}
 
         <div class="section-body">
@@ -42,20 +42,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Product</label>
-                                    <input type="text" name="products" class="form-control" placeholder="Products">
+                                    <input type="text" name="products" class="form-control" placeholder="Product">
                                     @error('products')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Start Date</label>
+                                    <label>Start date</label>
                                     <input type="date" name="start_date" class="form-control" placeholder="Start Date">
                                     @error('start_date')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>End Date</label>
+                                    <label>End date</label>
                                     <input type="date" name="end_date" class="form-control" placeholder="End Date">
                                     @error('end_date')
                                     <div class="text-danger">{{ $message }}</div>

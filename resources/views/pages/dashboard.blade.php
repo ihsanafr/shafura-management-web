@@ -69,19 +69,19 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    {{-- Check if $products is not null --}}
-                                    @if ($products)
-                                        <td>{{ $products->id }}</td>
-                                        <td>{{ $products->name }}</td>
-                                        <td>{{ $products->vendor_name }}</td>
-                                        <td><a href="{{ $products->vendor_url }}"
-                                                target="_blank">{{ $products->vendor_url }}</a></td>
+                                    {{-- Check if $product is not null --}}
+                                    @if ($product)
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->vendor_name }}</td>
+                                        <td><a href="{{ $product->vendor_url }}"
+                                                target="_blank">{{ $product->vendor_url }}</a></td>
                                     @endif
                                 </tr>
                             </tbody>
                         </table>
                         {{-- Show fallback message --}}
-                        @if (!$products)
+                        @if (!$product)
                             <p>No data inserted yet</p>
                         @endif
                     </div>
@@ -110,18 +110,18 @@
                             <tbody>
                                 <tr>
                                     {{-- Check if $customers is not null --}}
-                                    @if ($customers)
-                                        <td>{{ $customers->name }}</td>
-                                        <td>{{ $customers->customer_code }}</td>
-                                        <td><a href="{{ $customers->website_url }}"
-                                                target="_blank">{{ $customers->website_url }}</a></td>
-                                        <td>{{ $customers->phone }}</td>
+                                    @if ($customer)
+                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->customer_code }}</td>
+                                        <td><a href="{{ $customer->website_url }}"
+                                                target="_blank">{{ $customer->website_url }}</a></td>
+                                        <td>{{ $customer->phone }}</td>
                                     @endif
                                 </tr>
                             </tbody>
                         </table>
                         {{-- Show fallback message --}}
-                        @if (!$customers)
+                        @if (!$customer)
                             <p>No data inserted yet</p>
                         @endif
                     </div>
@@ -134,7 +134,7 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                <h3 class="mr-3">Incoming agenda</h3>
+                <h3 class="mr-3">Upcoming agenda</h3>
             </div>
 
             <div class="card-body">
@@ -164,6 +164,9 @@
                             </div>
                         </li>
                     @endforeach
+                    @if ($events->isEmpty() || $events->last()->start < now())
+                        <p>No latest upcoming events</p>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -176,5 +179,4 @@
         <button type="submit" class="btn btn-primary">Send mail</button>
     </form>
     @endenv
-
 @endsection

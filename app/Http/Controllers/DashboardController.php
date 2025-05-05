@@ -22,17 +22,19 @@ class DashboardController extends Controller
             'contact' => ContactCustomer::count()
         ];
 
-        //get the latest products
-        $products = Product::latest()->first();
+        //get the latest product
+        $product = Product::latest()->first();
 
-        //get the latest customers
-        $customers = ListCustomer::latest()->first();
+        //get the latest customer
+        $customer = ListCustomer::latest()->first();
 
         //get the upcoming events
         $events = Event::where('start', '>=', date('Y-m-d'))->orderBy('start')->take(5)->get();
 
+        $eventCheck = Event::latest()->first();
+
         //return dashboard pages
-        return view('pages.dashboard', compact(['count', 'products', 'customers', 'events']));
+        return view('pages.dashboard', compact(['count', 'product', 'customer', 'events', 'eventCheck']));
     }
 
     // sendEmail (ignore because it's for testing only)
