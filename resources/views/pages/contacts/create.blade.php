@@ -3,10 +3,6 @@
 @section('main')
 <div class="main-content">
     <section class="section">
-        {{-- <div class="section-header">
-            <h1>Tambah User</h1>
-
-        </div> --}}
 
         <div class="section-body">
 
@@ -14,61 +10,59 @@
                 <div class="col-12 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Add New Service</h4>
+                            <h4>Add New Contact</h4>
                         </div>
-                        <form action="{{route('services.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('contacts.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Type</label>
-                                    <input type="text" name="type" class="form-control" placeholder="Type">
-                                    @error('type')
-                                    <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" name="company_name" class="form-control" placeholder="Company Name">
-                                    @error('company_name')
+                                    <input type="text" name="company" class="form-control" placeholder="Company Name">
+                                    @error('company')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Title">
-                                    @error('title')
+                                    <label>Name</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Customer Name">
+                                    @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Product</label>
-                                    <input type="text" name="products" class="form-control" placeholder="Product">
-                                    @error('products')
+                                    <label>Position</label>
+                                    <input type="text" name="position" class="form-control" placeholder="Customer Position">
+                                    @error('position')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Start date</label>
-                                    <input type="date" name="start_date" class="form-control" placeholder="Start Date">
-                                    @error('start_date')
+                                    <label>Address</label>
+                                    <input type="text" name="address" class="form-control" placeholder="Address">
+                                    @error('address')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>End date</label>
-                                    <input type="date" name="end_date" class="form-control" placeholder="End Date">
-                                    @error('end_date')
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>PIC Phone</label>
+                                    <input type="text" name="pic_phone" class="form-control" placeholder="PIC Phone">
+                                    @error('pic_phone')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 {{-- button--}}
 
                                 <div class="form-group d-flex justify-content-between">
-                                    <a href="{{ url('services') }}" class="btn btn-secondary">Back</a>
+                                    <a href="{{ url('contacts') }}" class="btn btn-secondary">Back</a>
                                     <button type="submit" class="btn btn-primary">Add</button>
                                 </div>
-
-
                             </div>
                         </form>
                     </div>

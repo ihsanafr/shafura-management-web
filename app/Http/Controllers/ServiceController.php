@@ -12,10 +12,9 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-
-        $search = $request->search;
+        $search = request('search');
 
         $services = ServiceCustomer::where(function ($query) use ($search) {
             $query->where('type', 'like', "%$search%")
@@ -28,7 +27,7 @@ class ServiceController extends Controller
         ->paginate(50)
         ->withQueryString();
 
-        return view('pages.service.index', compact(['request', 'services']));
+        return view('pages.services.index', compact('services'));
 
     }
 
@@ -37,12 +36,11 @@ class ServiceController extends Controller
      */
     public function create()
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.service.create');
+        return view('pages.services.create');
     }
 
     /**
@@ -50,7 +48,6 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
@@ -75,12 +72,11 @@ class ServiceController extends Controller
      */
     public function show(ServiceCustomer $serviceCustomer)
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.service.show', compact('serviceCustomer'));
+        return view('pages.services.show', compact('serviceCustomer'));
     }
 
     /**
@@ -88,12 +84,11 @@ class ServiceController extends Controller
      */
     public function edit(ServiceCustomer $serviceCustomer)
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.service.edit', compact('serviceCustomer'));
+        return view('pages.services.edit', compact('serviceCustomer'));
     }
 
     /**
@@ -101,7 +96,6 @@ class ServiceController extends Controller
      */
     public function update(Request $request, ServiceCustomer $serviceCustomer)
     {
-
         if (Gate::check('staff')) {
             abort(403);
         }
@@ -126,7 +120,6 @@ class ServiceController extends Controller
      */
     public function destroy(ServiceCustomer $serviceCustomer)
     {
-
         if (Gate::any(['staff', 'sales'])) {
             abort(403);
         }
@@ -147,7 +140,7 @@ class ServiceController extends Controller
 
         $deletedServices = ServiceCustomer::onlyTrashed()->get();
 
-        return view('pages.service.deleted.index', compact('deletedServices'));
+        return view('pages.services.deleted.index', compact('deletedServices'));
     }
 
     /**
@@ -159,7 +152,7 @@ class ServiceController extends Controller
 
         $service = ServiceCustomer::onlyTrashed()->findOrFail($id);
 
-        return view('pages.service.deleted.show', compact('service'));
+        return view('pages.services.deleted.show', compact('service'));
     }
 
     /**

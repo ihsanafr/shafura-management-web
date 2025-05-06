@@ -14,6 +14,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
+//Schedule delete All deleted data at sundays.
 Schedule::call(function() {
 
     Product::onlyTrashed()->forceDelete();
