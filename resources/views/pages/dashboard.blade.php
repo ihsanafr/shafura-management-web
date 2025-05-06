@@ -58,7 +58,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table-striped table table-hover">
+                        <table class="table-striped table">
                             <thead>
                                 <tr>
                                     <th>Code</th>
@@ -76,14 +76,12 @@
                                         <td>{{ $product->vendor_name }}</td>
                                         <td><a href="{{ $product->vendor_url }}"
                                                 target="_blank">{{ $product->vendor_url }}</a></td>
+                                    @else
+                                        <p>No data inserted yet</p>
                                     @endif
                                 </tr>
                             </tbody>
                         </table>
-                        {{-- Show fallback message --}}
-                        @if (!$product)
-                            <p>No data inserted yet</p>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -98,7 +96,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table-striped table table-hover">
+                        <table class="table-striped table">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -129,6 +127,59 @@
             </div>
         </div>
     </div>
+
+    {{-- New Customers Section --}}
+    @if(Gate::any(['admin', 'finance', 'sales']))
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mr-3">Invoice due</h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table-striped table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Company</th>
+                                    <th>Title</th>
+                                    <th>Product</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($invoices as $invoice)
+                                    <tr>
+                                        <td>{{ $invoice->type }}</td>
+                                        <td>{{ $invoice->company_name }}</td>
+                                        <td>{{ $invoice->title }}</td>
+                                        <td>{{ $invoice->products }}</td>
+                                        <td>{{ $invoice->start_date }}</td>
+                                        <td>{{ $invoice->end_date }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="{{ route('services.edit', $invoice) }}"
+                                                    class="btn btn-link text-primary" title="edit"><i
+                                                        class="fa-solid fa-pen-to-square"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                @if ($invoices->isEmpty())
+                                    <tr>
+                                        <td colspan="7" class="text-center">No due invoice yet</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     {{-- Agenda Events Section --}}
     <div class="col">
