@@ -29,22 +29,34 @@ class DashboardController extends Controller
         $customer = ListCustomer::latest()->first();
 
         //get the upcoming events
-        $events = Event::where('start', '>=', date('Y-m-d'))->orderBy('start')->take(5)->get();
+        $events = Event::where('start', '>=', date('Y-m-d'))
+            ->orderBy('start')
+            ->take(5)
+            ->get();
 
+        //get the invoices due
+        $invoices = ServiceCustomer::whereDate('end_date', '>=', now())
+            ->whereDate('end_date', '<=', now()->addWeek())
+            ->orderBy('end_date', 'asc')
+            ->take(5)
+            ->get();
+            
         $eventCheck = Event::latest()->first();
 
+        $compactedData = ['count', 'product', 'customer', 'events', 'eventCheck', 'invoices'];
+
         //return dashboard pages
-        return view('pages.dashboard', compact(['count', 'product', 'customer', 'events', 'eventCheck']));
+        return view('pages.dashboard', compact($compactedData));
     }
 
     // sendEmail (ignore because it's for testing only)
-    public function sendEmail() {
+    public function sendEmail()
+    {
 
         //send mail
         Mail::to(config('mail.mailers.resend.resend_to'))->send(new TestMail());
 
         //return homepage with notifications
         return redirect('/')->with('success', 'email already sent');
-
     }
 }
