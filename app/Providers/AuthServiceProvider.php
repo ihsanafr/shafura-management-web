@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 
-class AuthorizeProvider extends ServiceProvider
+class AuthServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -32,6 +32,10 @@ class AuthorizeProvider extends ServiceProvider
         //Full Access but cannot delete User (Sales)
         Gate::define('sales', function (User $user) {
             return $user->role === 'sales';
+        });
+        //Full Access to any features (same like Lead Engineer)
+        Gate::define('finance', function (User $user) {
+            return $user->role === 'finance';
         });
         //can't CRUD only view (Staff Engnineer)
         Gate::define('staff', function (User $user) {

@@ -26,7 +26,7 @@
                             <div class="card-header">
                                 <h3 class="mr-3">Services</h3>
                                 @cannot('staff')
-                                    <a href="{{ route('services.create') }}" class="btn btn-primary btn-sm">+ Add new services</a>
+                                    <a href="{{ route('services.create') }}" class="btn btn-primary btn-sm">+ Add new service</a>
                                 @endcannot
                                 @can('admin')
                                     <a href="{{ route('services.deleted') }}" class="btn btn-danger btn-sm">Restore deleted
@@ -47,8 +47,8 @@
                             </div>
 
                             <div class="card-body">
-                                @if ($request->filled('search'))
-                                    <p><b>Result for "{{ $request->search }}"</b></p>
+                                @if (request()->filled('search'))
+                                    <p><b>Result for "{{ request('search') }}"</b></p>
                                     <p>Showing {{ $services->total() }} results found</p>
                                 @endif
                                 <div class="table-responsive">

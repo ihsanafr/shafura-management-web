@@ -3,10 +3,6 @@
 @section('main')
     <div class="main-content">
         <section class="section">
-            {{-- <div class="section-header">
-            <h1>Tambah User</h1>
-            
-        </div> --}}
 
             <div class="section-body">
 
@@ -16,7 +12,8 @@
                             <div class="card-header">
                                 <h4>Edit User</h4>
                             </div>
-                            <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('users.update', $user->id) }}"
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -39,7 +36,9 @@
                                     <div class="form-group">
                                         <label>Role</label>
                                         <select name="role" class="form-control">
-                                            <option value="">current position: {{ old('role', __('roles.' . $user->role)) }}</option>
+                                            <option value="{{ old('email', $user->role) }}">
+                                                current position: {{ old('role', __('roles.' . $user->role)) }}
+                                            </option>
                                             <option value="admin">Admin</option>
                                             <option value="sales">Sales</option>
                                             <option value="staff_engineer">Staff Engineer</option>

@@ -29,7 +29,7 @@ class ContactController extends Controller
         ->paginate(50)
         ->withQueryString();
 
-        return view('pages.contact.index', compact(['request', 'contacts']));
+        return view('pages.contacts.index', compact(['request', 'contacts']));
 
     }
 
@@ -43,7 +43,7 @@ class ContactController extends Controller
             abort(403);
         }
 
-        return view('pages.contact.create');
+        return view('pages.contacts.create');
     }
 
     /**
@@ -76,7 +76,7 @@ class ContactController extends Controller
      */
     public function show(ContactCustomer $contactCustomer)
     {
-        return view('pages.contact.show', compact('contactCustomer'));
+        return view('pages.contacts.show', compact('contactCustomer'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ContactController extends Controller
             abort(403);
         }
 
-        return view('pages.contact.edit', compact('contactCustomer'));
+        return view('pages.contacts.edit', compact('contactCustomer'));
     }
 
     /**
@@ -142,7 +142,7 @@ class ContactController extends Controller
 
         $deletedContacts = ContactCustomer::onlyTrashed()->get();
 
-        return view('pages.contact.deleted.index', compact('deletedContacts'));
+        return view('pages.contacts.deleted.index', compact('deletedContacts'));
     }
 
     /**
@@ -154,7 +154,7 @@ class ContactController extends Controller
 
         $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
 
-        return view('pages.contact.deleted.show', compact('Contact'));
+        return view('pages.contacts.deleted.show', compact('Contact'));
     }
 
     /**

@@ -22,8 +22,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mr-3">Users</h3>
-                                <a href="{{ route('users.create') }}" type="button" class="btn btn-primary btn-sm">+ Add new
-                                    user</a>
+                                <a href="{{ route('users.create') }}"
+                                type="button" class="btn btn-primary btn-sm">+ Add new user</a>
                             </div>
 
                             <div class="m-3">
@@ -85,7 +85,8 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                This action is irreversible! Are you sure you wanna delete this user?
+                                                                                This action is irreversible! Are you sure
+                                                                                you wanna delete this user?
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
@@ -117,5 +118,4 @@
             </div>
         </section>
     </div>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 @endsection
