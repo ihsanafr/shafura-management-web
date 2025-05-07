@@ -32,8 +32,8 @@
                             </div>
 
                             <div class="card-body">
-                                @if ($request->filled('search'))
-                                    <p><b>Result for "{{ $request->search }}"</b></p>
+                                @if (request()->filled('search'))
+                                    <p><b>Result for "{{ request('search') }}"</b></p>
                                     <p>Showing {{ $contacts->total() }} results found</p>
                                 @endif
                                 <div class="table-responsive">

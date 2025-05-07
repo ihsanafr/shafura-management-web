@@ -12,10 +12,10 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
 
-        $search = $request->search;
+        $search = request('search');
 
         $contacts = ContactCustomer::where(function ($query) use ($search) {
             $query->where('company', 'like', "%$search%")
@@ -29,7 +29,7 @@ class ContactController extends Controller
         ->paginate(50)
         ->withQueryString();
 
-        return view('pages.contacts.index', compact(['request', 'contacts']));
+        return view('pages.contacts.index', compact('contacts'));
 
     }
 

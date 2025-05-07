@@ -12,10 +12,10 @@ class CostumersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
 
-        $search = $request->search;
+        $search = request('search');
 
         $customers = ListCustomer::where(function ($query) use ($search) {
             $query->where('name', 'like', "%$search%")
@@ -27,7 +27,7 @@ class CostumersController extends Controller
         ->paginate(50)
         ->withQueryString();
 
-        return view('pages.costumers.index', compact(['request', 'customers']));
+        return view('pages.costumers.index', compact('customers'));
     }
 
     /**
