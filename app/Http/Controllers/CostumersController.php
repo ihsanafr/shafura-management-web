@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ListCustomer;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -17,7 +17,7 @@ class CostumersController extends Controller
 
         $search = request('search');
 
-        $customers = ListCustomer::where(function ($query) use ($search) {
+        $customers = Customer::where(function ($query) use ($search) {
             $query->where('name', 'like', "%$search%")
                 ->orWhere('customer_code', 'like', "%$search%")
                 ->orWhere('website_url', 'like', "%$search%")
@@ -61,7 +61,7 @@ class CostumersController extends Controller
         ]);
 
 
-        ListCustomer::create($validatedData);
+        Customer::create($validatedData);
 
         return redirect('customers')->with('success', 'Data berhasil dibuat.');
 
@@ -70,28 +70,28 @@ class CostumersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ListCustomer $listCustomer)
+    public function show(Customer $customer)
     {
-        return view('pages.costumers.show', compact('listCustomer'));
+        return view('pages.costumers.show', compact('customer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ListCustomer $listCustomer)
+    public function edit(Customer $customer)
     {
 
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.costumers.edit', compact('listCustomer'));
+        return view('pages.costumers.edit', compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ListCustomer $listCustomer)
+    public function update(Request $request, Customer $customer)
     {
 
         if (Gate::check('staff')) {
@@ -105,7 +105,7 @@ class CostumersController extends Controller
             'phone' => 'required'
         ]);
 
-        $listCustomer->update($validatedData);
+        $customer->update($validatedData);
 
         return redirect('customers')->with('success', 'Data berhasil diubah.');
 
@@ -114,13 +114,13 @@ class CostumersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ListCustomer $listCustomer)
+    public function destroy(Customer $customer)
     {
         if (Gate::any(['staff', 'sales'])) {
             abort(403);
         }
 
-        $listCustomer->delete();
+        $customer->delete();
 
         return redirect('customers')->with('success', 'Data berhasil dihapus.');
     }
@@ -132,7 +132,7 @@ class CostumersController extends Controller
     {
         Gate::authorize('admin');
 
-        $deletedCustomers = ListCustomer::onlyTrashed()->get();
+        $deletedCustomers = Customer::onlyTrashed()->get();
 
         return view('pages.costumers.deleted.index', compact('deletedCustomers'));
     }
@@ -144,9 +144,9 @@ class CostumersController extends Controller
     {
         Gate::authorize('admin');
 
-        $customer = ListCustomer::onlyTrashed()->findOrFail($id);
+        $customer = Customer::onlyTrashed()->findOrFail($id);
 
-        return view('pages.costumers.deleted.show', compact('Customer'));
+        return view('pages.costumers.deleted.show', compact('customer'));
     }
 
     /**
@@ -156,7 +156,7 @@ class CostumersController extends Controller
     {
         Gate::authorize('admin');
 
-        ListCustomer::forceDestroy($id);
+        Customer::forceDestroy($id);
 
         return redirect('customers/deleted')->with('success', 'Customer permanently deleted.');
     }
@@ -168,7 +168,7 @@ class CostumersController extends Controller
     {
         Gate::authorize('admin');
 
-        $customer = ListCustomer::onlyTrashed()->findOrFail($id);
+        $customer = Customer::onlyTrashed()->findOrFail($id);
         $customer->restore();
 
         return redirect('customers/deleted')->with('success', 'Customer successfully restored');
@@ -181,7 +181,7 @@ class CostumersController extends Controller
     {
         Gate::authorize('admin');
 
-        ListCustomer::onlyTrashed()->forceDelete();
+        Customer::onlyTrashed()->forceDelete();
         return redirect('customers/deleted')->with('success', 'All customers are successfully deleted');
     }
 }

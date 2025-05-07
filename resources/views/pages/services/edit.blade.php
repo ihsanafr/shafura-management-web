@@ -12,14 +12,14 @@
                         <div class="card-header">
                             <h4>Edit Service</h4>
                         </div>
-                        <form action="{{ route('services.update', $serviceCustomer) }}" method="POST"
+                        <form action="{{ route('services.update', $service) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <input type="text" name="type" value="{{ old('type', $serviceCustomer->type ) }}"
+                                    <input type="text" name="type" value="{{ old('type', $service->type ) }}"
                                         class="form-control">
                                         @error('type')
                                     <div class="text-danger">{{ $message }}</div>
@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label>Company</label>
                                     <input type="text" name="company_name"
-                                        value="{{ old('company_name', $serviceCustomer->company_name )}}"
+                                        value="{{ old('company_name', $service->company_name )}}"
                                         class="form-control">
                                         @error('company_name')
                                     <div class="text-danger">{{ $message }}</div>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" name="title" value="{{ old('title', $serviceCustomer->title) }}"
+                                    <input type="text" name="title" value="{{ old('title', $service->title) }}"
                                         class="form-control">
                                         @error('title')
                                     <div class="text-danger">{{ $message }}</div>
@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <label>Product</label>
                                     <input type="text" name="products"
-                                        value="{{ old('products', $serviceCustomer->products) }}" class="form-control">
+                                        value="{{ old('products', $service->products) }}" class="form-control">
                                         @error('products')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label>Start Date</label>
                                     <input type="date" name="start_date"
-                                        value="{{ old('created_at', $serviceCustomer->start_date ) }}"
+                                        value="{{ old('created_at', $service->start_date ) }}"
                                         class="form-control">
                                         @error('start_date')
                                     <div class="text-danger">{{ $message }}</div>
@@ -62,7 +62,7 @@
                                 <div class="form-group">
                                     <label>End Date</label>
                                     <input type="date" name="end_date"
-                                        value="{{ old('updated_at', $serviceCustomer->end_date) }}"
+                                        value="{{ old('updated_at', $service->end_date) }}"
                                         class="form-control">
                                     @error('end_date')
                                     <div class="text-danger">{{ $message }}</div>
