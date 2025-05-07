@@ -12,26 +12,26 @@
                 <div class="col-12">
                     <h5>Customer Information</h5>
                     <table class="table table-borderless table-responsive">
-                        
+
                         <tr>
                             <th>Name</th>
                             <td>:</td>
-                            <td>{{ $listCustomer->name }}</td>
+                            <td>{{ $customer->name }}</td>
                         </tr>
                         <tr>
                             <th>Customer Code</th>
                             <td>:</td>
-                            <td>{{ $listCustomer->customer_code }}</td>
+                            <td>{{ $customer->customer_code }}</td>
                         </tr>
                         <tr>
                             <th>Website</th>
                             <td>:</td>
-                            <td>{{ $listCustomer->website_url }}</td>
+                            <td>{{ $customer->website_url }}</td>
                         </tr>
                         <tr>
                             <th>Phone</th>
                             <td>:</td>
-                            <td>{{ $listCustomer->phone }}</td>
+                            <td>{{ $customer->phone }}</td>
                         </tr>
                     </table>
                 </div>
@@ -42,7 +42,7 @@
         <div class="card-footer">
             <a href="{{ url('customers') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
-            <a href="{{ route('customers.edit', $listCustomer) }}" class="btn btn-primary">Edit Customer</a>
+            <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">Edit Customer</a>
             @endcannot
         </div>
     </div>

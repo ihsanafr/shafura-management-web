@@ -12,36 +12,36 @@
                 <div class="col-12">
                     <h5>Service Information</h5>
                     <table class="table table-borderless table-responsive">
-                        
+
                         <tr>
                             <th>Type</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->type }}</td>
+                            <td>{{ $service->type }}</td>
                         </tr>
                         <tr>
                             <th>Company</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->company_name }}</td>
+                            <td>{{ $service->company_name }}</td>
                         </tr>
                         <tr>
                             <th>Title</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->title }}</td>
+                            <td>{{ $service->title }}</td>
                         </tr>
                         <tr>
                             <th>Product</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->products }}</td>
+                            <td>{{ $service->products }}</td>
                         </tr>
                         <tr>
                             <th>Start Date</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->start_date }}</td>
+                            <td>{{ $service->start_date }}</td>
                         </tr>
                         <tr>
                             <th>Product</th>
                             <td>:</td>
-                            <td>{{ $serviceCustomer->end_date }}</td>
+                            <td>{{ $service->end_date }}</td>
                         </tr>
                     </table>
                 </div>
@@ -52,7 +52,7 @@
         <div class="card-footer">
             <a href="{{ url('services') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
-            <a href="{{ route('services.edit', $serviceCustomer) }}" class="btn btn-primary">Edit Service</a>
+            <a href="{{ route('services.edit', $service) }}" class="btn btn-primary">Edit Service</a>
             @endcannot
         </div>
     </div>

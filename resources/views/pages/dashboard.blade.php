@@ -76,12 +76,14 @@
                                         <td>{{ $product->vendor_name }}</td>
                                         <td><a href="{{ $product->vendor_url }}"
                                                 target="_blank">{{ $product->vendor_url }}</a></td>
-                                    @else
-                                        <p>No data inserted yet</p>
                                     @endif
                                 </tr>
                             </tbody>
                         </table>
+                        {{-- Show fallback message --}}
+                        @if (!$product)
+                            <p>No data inserted yet</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -129,7 +131,7 @@
     </div>
 
     {{-- New Customers Section --}}
-    @if(Gate::any(['admin', 'finance', 'sales']))
+    @if (Gate::any(['admin', 'finance', 'sales']))
         <div class="col">
             <div class="card">
                 <div class="card-header">
@@ -168,13 +170,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                @if ($invoices->isEmpty())
-                                    <tr>
-                                        <td colspan="7" class="text-center">No due invoice yet</td>
-                                    </tr>
-                                @endif
                             </tbody>
                         </table>
+                        @if ($invoices->isEmpty())
+                            <p>No due invoice yet</p>
+                        @endif
                     </div>
                 </div>
             </div>

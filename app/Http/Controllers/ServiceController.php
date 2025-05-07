@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ServiceCustomer;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +16,7 @@ class ServiceController extends Controller
     {
         $search = request('search');
 
-        $services = ServiceCustomer::where(function ($query) use ($search) {
+        $services = Service::where(function ($query) use ($search) {
             $query->where('type', 'like', "%$search%")
                 ->orWhere('company_name', 'like', "%$search%")
                 ->orWhere('title', 'like', "%$search%")
@@ -61,7 +61,7 @@ class ServiceController extends Controller
             'end_date' => 'required'
         ]);
 
-        ServiceCustomer::create($validatedData);
+        Service::create($validatedData);
 
         return redirect('services')->with('success', 'Data berhasil dibuat.');
 
@@ -70,31 +70,31 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ServiceCustomer $serviceCustomer)
+    public function show(Service $service)
     {
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.services.show', compact('serviceCustomer'));
+        return view('pages.services.show', compact('service'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ServiceCustomer $serviceCustomer)
+    public function edit(Service $service)
     {
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.services.edit', compact('serviceCustomer'));
+        return view('pages.services.edit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ServiceCustomer $serviceCustomer)
+    public function update(Request $request, Service $service)
     {
         if (Gate::check('staff')) {
             abort(403);
@@ -109,7 +109,7 @@ class ServiceController extends Controller
             'end_date' => 'required'
         ]);
 
-        $serviceCustomer->update($validatedData);
+        $service->update($validatedData);
 
         return redirect('services')->with('success', 'Data berhasil diubah.');
 
@@ -118,13 +118,13 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ServiceCustomer $serviceCustomer)
+    public function destroy(Service $service)
     {
         if (Gate::any(['staff', 'sales'])) {
             abort(403);
         }
 
-        $serviceCustomer->delete();
+        $service->delete();
 
         return redirect('services')->with('success', 'Data berhasil dihapus.');
 
@@ -138,7 +138,7 @@ class ServiceController extends Controller
     {
         Gate::authorize('admin');
 
-        $deletedServices = ServiceCustomer::onlyTrashed()->get();
+        $deletedServices = Service::onlyTrashed()->get();
 
         return view('pages.services.deleted.index', compact('deletedServices'));
     }
@@ -150,7 +150,7 @@ class ServiceController extends Controller
     {
         Gate::authorize('admin');
 
-        $service = ServiceCustomer::onlyTrashed()->findOrFail($id);
+        $service = Service::onlyTrashed()->findOrFail($id);
 
         return view('pages.services.deleted.show', compact('service'));
     }
@@ -162,7 +162,7 @@ class ServiceController extends Controller
     {
         Gate::authorize('admin');
 
-        ServiceCustomer::forceDestroy($id);
+        Service::forceDestroy($id);
 
         return redirect('services/deleted')->with('success', 'Service permanently deleted.');
     }
@@ -174,7 +174,7 @@ class ServiceController extends Controller
     {
         Gate::authorize('admin');
 
-        $customer = ServiceCustomer::onlyTrashed()->findOrFail($id);
+        $customer = Service::onlyTrashed()->findOrFail($id);
         $customer->restore();
 
         return redirect('services/deleted')->with('success', 'Service successfully restored');
@@ -187,7 +187,7 @@ class ServiceController extends Controller
     {
         Gate::authorize('admin');
 
-        ServiceCustomer::onlyTrashed()->forceDelete();
+        Service::onlyTrashed()->forceDelete();
         return redirect('services/deleted')->with('success', 'All services are successfully deleted');
     }
 }

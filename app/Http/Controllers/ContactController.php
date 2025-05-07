@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactCustomer;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -12,12 +12,12 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
 
-        $search = $request->search;
+        $search = request('search');
 
-        $contacts = ContactCustomer::where(function ($query) use ($search) {
+        $contacts = Contact::where(function ($query) use ($search) {
             $query->where('company', 'like', "%$search%")
                 ->orWhere('name', 'like', "%$search%")
                 ->orWhere('position', 'like', "%$search%")
@@ -29,7 +29,7 @@ class ContactController extends Controller
         ->paginate(50)
         ->withQueryString();
 
-        return view('pages.contacts.index', compact(['request', 'contacts']));
+        return view('pages.contacts.index', compact('contacts'));
 
     }
 
@@ -65,7 +65,7 @@ class ContactController extends Controller
             'pic_phone' => 'required',
         ]);
 
-        ContactCustomer::create($validatedData);
+        Contact::create($validatedData);
 
         return redirect('contacts')->with('success', 'Data berhasil dibuat.');
 
@@ -74,28 +74,28 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ContactCustomer $contactCustomer)
+    public function show(Contact $contact)
     {
-        return view('pages.contacts.show', compact('contactCustomer'));
+        return view('pages.contacts.show', compact('contact'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ContactCustomer $contactCustomer)
+    public function edit(Contact $contact)
     {
 
         if (Gate::check('staff')) {
             abort(403);
         }
 
-        return view('pages.contacts.edit', compact('contactCustomer'));
+        return view('pages.contacts.edit', compact('contact'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ContactCustomer $contactCustomer)
+    public function update(Request $request, Contact $contact)
     {
 
         if (Gate::check('staff')) {
@@ -111,7 +111,7 @@ class ContactController extends Controller
             'pic_phone' => 'required'
         ]);
 
-        $contactCustomer->update($validatedData);
+        $contact->update($validatedData);
 
         return redirect('contacts')->with('success', 'Data berhasil diubah.');
 
@@ -120,14 +120,14 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ContactCustomer $contactCustomer)
+    public function destroy(Contact $contact)
     {
 
         if (Gate::any(['staff', 'sales'])) {
             abort(403);
         }
 
-        $contactCustomer->delete();
+        $contact->delete();
 
         return redirect('contacts')->with('success', 'Data berhasil dihapus.');
 
@@ -140,7 +140,7 @@ class ContactController extends Controller
     {
         Gate::authorize('admin');
 
-        $deletedContacts = ContactCustomer::onlyTrashed()->get();
+        $deletedContacts = Contact::onlyTrashed()->get();
 
         return view('pages.contacts.deleted.index', compact('deletedContacts'));
     }
@@ -152,9 +152,9 @@ class ContactController extends Controller
     {
         Gate::authorize('admin');
 
-        $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
+        $contact = Contact::onlyTrashed()->findOrFail($id);
 
-        return view('pages.contacts.deleted.show', compact('Contact'));
+        return view('pages.contacts.deleted.show', compact('contact'));
     }
 
     /**
@@ -164,7 +164,7 @@ class ContactController extends Controller
     {
         Gate::authorize('admin');
 
-        ContactCustomer::forceDestroy($id);
+        Contact::forceDestroy($id);
 
         return redirect('contacts/deleted')->with('success', 'Contact permanently deleted.');
     }
@@ -176,7 +176,7 @@ class ContactController extends Controller
     {
         Gate::authorize('admin');
 
-        $contact = ContactCustomer::onlyTrashed()->findOrFail($id);
+        $contact = Contact::onlyTrashed()->findOrFail($id);
         $contact->restore();
 
         return redirect('contacts/deleted')->with('success', 'Contact successfully restored');
@@ -189,7 +189,7 @@ class ContactController extends Controller
     {
         Gate::authorize('admin');
 
-        ContactCustomer::onlyTrashed()->forceDelete();
+        Contact::onlyTrashed()->forceDelete();
         return redirect('contacts/deleted')->with('success', 'All contacts are successfully deleted');
     }
 }

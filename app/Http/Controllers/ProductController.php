@@ -11,9 +11,9 @@ class ProductController extends Controller
     /**
      * Display a paginated list of products with optional search filtering.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->search;
+        $search = request('search');
 
         $products = Product::where(function ($query) use ($search) {
             $query->where('id', 'like', "%$search%")
@@ -25,7 +25,7 @@ class ProductController extends Controller
             ->paginate(50)
             ->withQueryString();
 
-        return view('pages.products.index', compact(['request', 'products']));
+        return view('pages.products.index', compact('products'));
     }
 
     /**
@@ -169,7 +169,7 @@ class ProductController extends Controller
     public function deleteAll()
     {
         Gate::authorize('admin');
-        
+
         Product::onlyTrashed()->forceDelete();
         return redirect('products/deleted')->with('success', 'All products are successfully deleted');
     }

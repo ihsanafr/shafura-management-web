@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\ContactCustomer;
-use App\Models\ListCustomer;
+use App\Models\Contact;
+use App\Models\Customer;
 use App\Models\Product;
-use App\Models\ServiceCustomer;
+use App\Models\Service;
 use Illuminate\Foundation\Console\ClosureCommand;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -18,8 +18,8 @@ Artisan::command('inspire', function () {
 Schedule::call(function() {
 
     Product::onlyTrashed()->forceDelete();
-    ListCustomer::onlyTrashed()->forceDelete();
-    ContactCustomer::onlyTrashed()->forceDelete();
-    ServiceCustomer::onlyTrashed()->forceDelete();
+    Customer::onlyTrashed()->forceDelete();
+    Contact::onlyTrashed()->forceDelete();
+    Service::onlyTrashed()->forceDelete();
 
 })->sundays();

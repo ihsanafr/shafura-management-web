@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactCustomer;
-use App\Models\ListCustomer;
 use App\Models\Product;
-use App\Models\ServiceCustomer;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
+use App\Models\Contact;
+use App\Models\Customer;
 use App\Models\Event;
+use App\Models\Service;
 
 class DashboardController extends Controller
 {
@@ -17,16 +17,16 @@ class DashboardController extends Controller
         //info count in dashboard
         $count  = [
             "product" => Product::count(),
-            'customer' => ListCustomer::count(),
-            'service' => ServiceCustomer::count(),
-            'contact' => ContactCustomer::count()
+            'customer' => Customer::count(),
+            'service' => Service::count(),
+            'contact' => Contact::count()
         ];
 
         //get the latest product
         $product = Product::latest()->first();
 
         //get the latest customer
-        $customer = ListCustomer::latest()->first();
+        $customer = Customer::latest()->first();
 
         //get the upcoming events
         $events = Event::where('start', '>=', date('Y-m-d'))
@@ -35,12 +35,12 @@ class DashboardController extends Controller
             ->get();
 
         //get the invoices due
-        $invoices = ServiceCustomer::whereDate('end_date', '>=', now())
+        $invoices = Service::whereDate('end_date', '>=', now())
             ->whereDate('end_date', '<=', now()->addWeek())
             ->orderBy('end_date', 'asc')
             ->take(5)
             ->get();
-            
+
         $eventCheck = Event::latest()->first();
 
         $compactedData = ['count', 'product', 'customer', 'events', 'eventCheck', 'invoices'];

@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ListCustomer extends Model
+class Contact extends Model
 {
     use SoftDeletes;
     protected $fillable = [
+        'company',
         'name',
-        'customer_code',
-        'website_url',
-        'phone'
+        'position',
+        'address',
+        'email',
+        'pic_phone'
     ];
 
-    protected $table = 'list_customers';
 }

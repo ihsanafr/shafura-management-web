@@ -40,9 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //Customers page
-    Route::resource('customers', CostumersController::class)->parameters([
-        'customers' => 'listCustomer'
-    ]);
+    Route::resource('customers', CostumersController::class);
 
     //Deleted services page
     Route::prefix('services/deleted')->group(function () {
@@ -54,9 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //Service page
-    Route::resource('services', ServiceController::class)->parameters([
-        'services' => 'serviceCustomer'
-    ]);
+    Route::resource('services', ServiceController::class);
 
     //Deleted contacts page
     Route::prefix('contacts/deleted')->group(function () {
@@ -68,9 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //Contacts page
-    Route::resource('contacts', ContactController::class)->parameters([
-        'contacts' => 'contactCustomer'
-    ]);
+    Route::resource('contacts', ContactController::class);
 
     //Agenda pages
     Route::prefix('agenda')->group(function () {

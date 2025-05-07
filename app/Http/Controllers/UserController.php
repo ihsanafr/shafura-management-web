@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use RealRashid\SweetAlert\Facades\Alert;
-// use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -16,9 +14,7 @@ class UserController extends Controller
     {
         Gate::authorize('admin');
 
-        $search = $request->search;
-
-        $search = $request->search;
+        $search = request('search');
 
         $users = User::where(function ($query) use ($search) {
             $query->where('name', 'like', "%$search%")
@@ -29,7 +25,7 @@ class UserController extends Controller
         ->paginate(50)
         ->withQueryString();
 
-        return view('pages.users.index', compact(['request', 'users']));
+        return view('pages.users.index', compact('users'));
     }
 
     /**
