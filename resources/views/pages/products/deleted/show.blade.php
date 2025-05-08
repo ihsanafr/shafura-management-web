@@ -8,7 +8,6 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Produk -->
                 <div class="col-12">
                     <h5>Product Information</h5>
                     <table class="table table-borderless table-responsive">
@@ -37,7 +36,6 @@
             </div>
         </div>
 
-        <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('products/deleted') }}" class="btn btn-secondary">Back</a>
         </div>

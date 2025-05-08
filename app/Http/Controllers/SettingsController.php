@@ -35,6 +35,6 @@ class SettingsController extends Controller
 
         Auth::user()->update($validatedData);
 
-        return redirect('settings')->with('success', 'Profile updated successfully.');
+        return redirect('settings')->with('success', 'Profile has updated successfully.');
     }
 }

@@ -8,7 +8,6 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Services -->
                 <div class="col-12">
                     <h5>Service Information</h5>
                     <table class="table table-borderless table-responsive">
@@ -48,7 +47,6 @@
             </div>
         </div>
 
-        <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('services') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')

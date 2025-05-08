@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         Product::create($validatedData);
 
-        return redirect('products')->with('success', 'Data berhasil dibuat.');
+        return redirect('products')->with('success', 'Product has successfully created.');
     }
 
     /**
@@ -97,7 +97,7 @@ class ProductController extends Controller
 
         $product->update($validatedData);
 
-        return redirect('products')->with('success', 'Data berhasil diubah.');
+        return redirect('products')->with('success', 'Product has successfully changed.');
     }
 
     /**
@@ -111,7 +111,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect('products')->with('success', 'Data berhasil dihapus.');
+        return redirect('products')->with('success', 'Product has successfully deleted.');
     }
 
     /**
@@ -147,7 +147,7 @@ class ProductController extends Controller
 
         Product::forceDestroy($id);
 
-        return redirect('products/deleted')->with('success', 'Product permanently deleted.');
+        return redirect('products/deleted')->with('success', 'Product has permanently deleted.');
     }
 
     /**
@@ -160,7 +160,7 @@ class ProductController extends Controller
         $product = Product::onlyTrashed()->findOrFail($id);
         $product->restore();
 
-        return redirect('products/deleted')->with('success', 'Product successfully restored');
+        return redirect('products/deleted')->with('success', 'Product has successfully restored');
     }
 
     /**
@@ -171,6 +171,6 @@ class ProductController extends Controller
         Gate::authorize('admin');
 
         Product::onlyTrashed()->forceDelete();
-        return redirect('products/deleted')->with('success', 'All products are successfully deleted');
+        return redirect('products/deleted')->with('success', 'All products has successfully deleted');
     }
 }

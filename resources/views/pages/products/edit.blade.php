@@ -3,10 +3,6 @@
 @section('main')
 <div class="main-content">
     <section class="section">
-        {{-- <div class="section-header">
-            <h1>Tambah User</h1>
-
-        </div> --}}
 
         <div class="section-body">
 
@@ -44,7 +40,6 @@
                                     <div class="text-danger">{{ __('product.regex') }}</div>
                                     @enderror
                                 </div>
-                                {{-- button submit --}}
                                 <div class="form-group d-flex justify-content-between">
                                     <a href="{{ url('products') }}" class="btn btn-secondary">Back</a>
                                     <button type="submit" class="btn btn-primary">Edit</button>

@@ -47,8 +47,6 @@
                                         @enderror
                                     </div>
 
-                                    {{-- button submit --}}
-
                                     <div class="form-group d-flex justify-content-between">
                                         <a href="{{ url('settings') }}" type="button" class="btn btn-secondary">Back</a>
                                         <button type="button" data-toggle="modal" data-target="#editConfirmModal"

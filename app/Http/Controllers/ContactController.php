@@ -67,7 +67,7 @@ class ContactController extends Controller
 
         Contact::create($validatedData);
 
-        return redirect('contacts')->with('success', 'Data berhasil dibuat.');
+        return redirect('contacts')->with('success', 'Data has successfully created.');
 
     }
 
