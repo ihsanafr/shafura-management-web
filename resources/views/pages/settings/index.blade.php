@@ -8,7 +8,6 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Services -->
                 <div class="col-12">
                     <h5>User information</h5>
                     <table class="table table-borderless table-responsive">

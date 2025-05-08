@@ -64,7 +64,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                {{-- button--}}
 
                                     <div class="form-group d-flex justify-content-between">
                                         <a href="{{ url('contacts') }}" class="btn btn-secondary">Back</a>

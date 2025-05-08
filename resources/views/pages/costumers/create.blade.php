@@ -3,10 +3,6 @@
 @section('main')
 <div class="main-content">
     <section class="section">
-        {{-- <div class="section-header">
-            <h1>Tambah User</h1>
-
-        </div> --}}
 
         <div class="section-body">
 
@@ -51,7 +47,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                {{-- button--}}
 
                                     <div class="form-group d-flex justify-content-between">
                                         <a href="{{ url('customers') }}" class="btn btn-secondary">Back</a>

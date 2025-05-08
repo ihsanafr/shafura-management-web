@@ -8,7 +8,6 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <!-- Kiri: Informasi Produk -->
                 <div class="col-12">
                     <h5>Product Information</h5>
                     <table class="table table-borderless table-responsive">
@@ -37,11 +36,10 @@
             </div>
         </div>
 
-        <!-- Footer dengan tombol -->
         <div class="card-footer">
             <a href="{{ url('products') }}" class="btn btn-secondary">Back</a>
             @cannot('staff')
-            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Product</a> 
+            <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit Product</a>
             @endcannot
         </div>
     </div>

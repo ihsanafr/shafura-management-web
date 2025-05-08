@@ -63,7 +63,7 @@ class CostumersController extends Controller
 
         Customer::create($validatedData);
 
-        return redirect('customers')->with('success', 'Data berhasil dibuat.');
+        return redirect('customers')->with('success', 'Customer has successfully created.');
 
     }
 
@@ -107,7 +107,7 @@ class CostumersController extends Controller
 
         $customer->update($validatedData);
 
-        return redirect('customers')->with('success', 'Data berhasil diubah.');
+        return redirect('customers')->with('success', 'Customer has successfully changed.');
 
     }
 
@@ -122,7 +122,7 @@ class CostumersController extends Controller
 
         $customer->delete();
 
-        return redirect('customers')->with('success', 'Data berhasil dihapus.');
+        return redirect('customers')->with('success', 'Data has successfully deleted.');
     }
 
     /**
@@ -158,7 +158,7 @@ class CostumersController extends Controller
 
         Customer::forceDestroy($id);
 
-        return redirect('customers/deleted')->with('success', 'Customer permanently deleted.');
+        return redirect('customers/deleted')->with('success', 'Customer has permanently deleted.');
     }
 
     /**
@@ -171,7 +171,7 @@ class CostumersController extends Controller
         $customer = Customer::onlyTrashed()->findOrFail($id);
         $customer->restore();
 
-        return redirect('customers/deleted')->with('success', 'Customer successfully restored');
+        return redirect('customers/deleted')->with('success', 'Customer has successfully restored');
     }
 
     /**
@@ -182,6 +182,6 @@ class CostumersController extends Controller
         Gate::authorize('admin');
 
         Customer::onlyTrashed()->forceDelete();
-        return redirect('customers/deleted')->with('success', 'All customers are successfully deleted');
+        return redirect('customers/deleted')->with('success', 'All customers has successfully deleted');
     }
 }

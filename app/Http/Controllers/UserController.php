@@ -55,7 +55,7 @@ class UserController extends Controller
         User::create($validatedData);
         // session()->flash('success', 'Data berhasil dibuat.');
 
-        return redirect('users')->with('success', 'Data berhasil dibuat.');
+        return redirect('users')->with('success', 'Data has successfully created.');
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
 
         $user->update($validatedData);
 
-        return redirect('users')->with('success', 'Data berhasil diubah.');
+        return redirect('users')->with('success', 'Data has successfully changed.');
     }
 
     /**
@@ -114,6 +114,6 @@ class UserController extends Controller
         // session()->flash('success', 'Data berhasil dihapus.');
         // Alert::success('Berhasil', 'Data berhasil dihapus.');
 
-        return redirect('users')->with('success', 'Data berhasil dihapus.');
+        return redirect('users')->with('success', 'Data has successfully deleted.');
     }
 }

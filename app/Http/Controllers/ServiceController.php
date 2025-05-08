@@ -63,7 +63,7 @@ class ServiceController extends Controller
 
         Service::create($validatedData);
 
-        return redirect('services')->with('success', 'Data berhasil dibuat.');
+        return redirect('services')->with('success', 'Service has successfully created.');
 
     }
 
@@ -111,7 +111,7 @@ class ServiceController extends Controller
 
         $service->update($validatedData);
 
-        return redirect('services')->with('success', 'Data berhasil diubah.');
+        return redirect('services')->with('success', 'Service has successfully changed.');
 
     }
 
@@ -126,7 +126,7 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect('services')->with('success', 'Data berhasil dihapus.');
+        return redirect('services')->with('success', 'Service has successfully deleted.');
 
     }
 
@@ -164,7 +164,7 @@ class ServiceController extends Controller
 
         Service::forceDestroy($id);
 
-        return redirect('services/deleted')->with('success', 'Service permanently deleted.');
+        return redirect('services/deleted')->with('success', 'Service has permanently deleted.');
     }
 
     /**
@@ -177,7 +177,7 @@ class ServiceController extends Controller
         $customer = Service::onlyTrashed()->findOrFail($id);
         $customer->restore();
 
-        return redirect('services/deleted')->with('success', 'Service successfully restored');
+        return redirect('services/deleted')->with('success', 'Service has successfully restored');
     }
 
     /**
@@ -188,6 +188,6 @@ class ServiceController extends Controller
         Gate::authorize('admin');
 
         Service::onlyTrashed()->forceDelete();
-        return redirect('services/deleted')->with('success', 'All services are successfully deleted');
+        return redirect('services/deleted')->with('success', 'All services has successfully deleted');
     }
 }
