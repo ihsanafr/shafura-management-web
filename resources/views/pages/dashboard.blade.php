@@ -215,7 +215,7 @@
                             </div>
                         </li>
                     @endforeach
-                    @if ($events->isEmpty() || $events->last()->start < now())
+                    @if ($events->isEmpty() || $events->last()->start == now())
                         <p>No latest upcoming events</p>
                     @endif
                 </ul>
