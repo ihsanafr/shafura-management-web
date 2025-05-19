@@ -4,7 +4,7 @@
 @section('main')
     <div class="text-center mb-3">
         <a href="#!">
-            <p>PT. Shafura Digital Indonesia</p>
+            <p>PT. Shafura Solusi Digital</p>
         </a>
     </div>
     <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Enter your details to Login</h2>
